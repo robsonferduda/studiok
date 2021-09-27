@@ -1,0 +1,66 @@
+@extends('layouts.app')
+@section('content')
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="card-title"><i class="nc-icon nc-badge"></i> Participantes</h4>
+                </div>
+                <div class="col-md-6">
+                    <a href="{{ url('participante/create') }}" class="btn btn-primary pull-right" style="margin-right: 12px;"><i class="fa fa-plus"></i> Novo</a>
+                    <a href="{{ url('participante/importar') }}" class="btn btn-info pull-right" style="margin-right: 12px;"><i class="fa fa-download"></i> Importar</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @include('layouts.mensagens')
+                </div>
+            </div>
+            <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Nome Crachá</th>
+                      <th>Email</th>
+                      <th class="text-center">CPF</th>
+                      <th class="disabled-sorting text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Nome Crachá</th>
+                        <th>Email</th>
+                        <th class="text-center">CPF</th>
+                        <th class="disabled-sorting text-center">Ações</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach($participantes as $p)
+                        <tr>
+                            <td>{{ $p->pessoa->nm_pessoa_pes }}</td>
+                            <td>{!! ($p->nm_cracha_par) ? $p->nm_cracha_par : '' !!}</td>
+                            <td>{{ $p->pessoa->ds_email_pes }}</td>
+                            <td class="text-center">{{ $p->nu_cpf_par }}</td>
+                            <td class="text-center">
+                                <a title="Dados do Participante" href="{{ url('participante',$p->id_participante_par) }}" class="btn btn-warning btn-link btn-icon"><i class="nc-icon nc-badge font-25"></i></a>
+                                <a title="Editar" href="{{ route('participante.edit',$p->id_participante_par) }}" class="btn btn-primary btn-link btn-icon"><i class="fa fa-edit fa-2x"></i></a>
+                                <form class="form-delete" style="display: inline;" action="{{ route('participante.destroy',$p->id_participante_par) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button title="Excluir" type="submit" class="btn btn-danger btn-link btn-icon button-remove" title="Delete">
+                                        <i class="fa fa-times fa-2x"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+@endsection

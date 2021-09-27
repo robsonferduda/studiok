@@ -1,0 +1,55 @@
+@extends('layouts.app')
+@section('content')
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="card-title"><i class="nc-icon nc-tag-content"></i> Eventos</h4>
+                </div>
+                <div class="col-md-6">
+                    <a href="{{ url('evento/create') }}" class="btn btn-info pull-right" style="margin-right: 12px;"><i class="fa fa-plus"></i> Cadastrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @include('layouts.mensagens')
+                </div>
+            </div>
+            <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                      <th>Evento</th>
+                      <th>Início</th>
+                      <th>Término</th>
+                      <th class="disabled-sorting text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Evento</th>
+                        <th>Início</th>
+                        <th>Término</th>
+                        <th class="disabled-sorting text-center">Ações</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach($eventos as $e)
+                        <tr>
+                            <td>{{ $e->nm_evento_eve }}</td>
+                            <td>{!! ($e->dt_inicio_eve) ? date('d/m/Y', strtotime($e->dt_inicio_eve)) : 'Não informado' !!}</td>
+                            <td>{!! ($e->dt_fim_eve) ? date('d/m/Y', strtotime($e->dt_fim_eve)) : 'Não informado' !!}</td>
+                            <td class="text-center">
+                                <a href="{{ url('evento/'.$e->id_evento_eve) }}" class="btn btn-warning btn-link btn-icon"><i class="nc-icon nc-tag-content font-25"></i></a>
+                                <a href="{{ route('evento.edit',$e->id_evento_eve) }}" class="btn btn-primary btn-link btn-icon"><i class="fa fa-edit fa-2x"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+@endsection
