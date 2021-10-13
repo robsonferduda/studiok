@@ -24,6 +24,11 @@ class Atividade extends Model
         return $this->hasOne('App\Sala', 'id_sala_sal', 'id_sala_sal');
     }
 
+    public function atividadesParalelas()
+    {
+        return $this->hasMany('App\AtividadeParalela', 'id_atividade_ati', 'id_atividade_ati');
+    }
+
     public function tipo()
     {
         return $this->hasOne('App\TipoAtividade', 'id_tipo_atividade_tia', 'id_tipo_atividade_tia');

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-        <div class="row"> 
+  <div class="row"> 
+    @role('administrador')
           <div class="col-lg-3 col-md-3 col-sm-12">  
             <div class="card card-stats">
               <div class="card-body ">
@@ -13,7 +14,7 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Salas</p>
-                      <p class="card-title">8<p>
+                      <p class="card-title"><a href="{{ url('sala') }}">{{ $sala->count() }}</a><p>
                     </div>
                   </div>
                 </div>
@@ -41,7 +42,7 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Palestrantes</p>
-                      <p class="card-title">5<p>
+                      <p class="card-title"><a href="{{ url('palestrante') }}">{{ $palestrante->count() }}</a><p>
                     </div>
                   </div>
                 </div>
@@ -69,7 +70,7 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Participantes</p>
-                      <p class="card-title">13<p>
+                      <p class="card-title"><a href="{{ url('participante') }}">{{ $participante->count() }}</a><p>
                     </div>
                   </div>
                 </div>
@@ -78,7 +79,7 @@
                 <hr>
                 <div class="stats">
                   <i class="fa fa-clock-o"></i>
-                  Atualizado em 22/08/2020 12:32
+                  Atualizado em {{ Carbon\Carbon::now()->format('d/m/Y H:i:s') }} 
                 </div>
               </div>
             </div>
@@ -96,7 +97,7 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Programação</p>
-                      <p class="card-title">15<p>
+                      <p class="card-title"><a href="{{ url('programacao') }}">{{ $atividade->count() }}</a><p>
                     </div>
                   </div>
                 </div>
@@ -112,64 +113,12 @@
           </div>  
         </div>   
         <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"> Palestras Mais Acessadas</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class="">
-                      <tr><th>
-                        Data
-                      </th>
-                      <th>
-                        Título
-                      </th>
-                      <th>
-                        Local
-                      </th>
-                      <th class="text-right">
-                        Palestrantes
-                      </th>
-                    </tr></thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          11/11/2021 18:00
-                        </td>
-                        <td>
-                          O Fonômeno do Big Data
-                          <span class="badge badge-pill badge-primary">Presencial</span>
-                        </td>
-                        <td>
-                          Sala Garapuvu 
-                        </td>
-                        <td class="text-right">
-                          John Doe
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          12/11/2021 18:00
-                        </td>
-                        <td>
-                          Trabalhando com Ontologias
-                          <span class="badge badge-pill badge-danger">Online</span>
-                        </td>
-                        <td>
-                          Sala Joaquina 
-                        </td>
-                        <td class="text-right">
-                          Monteiro Lobato
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+          <div class="col-md-12">
+            
           </div>  
-        </div>
+    @endrole
+    @role('participante')
+
+    @endrole
+  </div>
 @endsection

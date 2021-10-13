@@ -7,6 +7,7 @@ use App\TipoSala;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\SalaRequest;
 
 class SalaController extends Controller
 {
@@ -24,7 +25,8 @@ class SalaController extends Controller
 
     public function create()
     {
-        return view('salas/create');
+        $tipos = TipoSala::all();
+        return view('salas/create',compact('tipos'));
     }
 
     public function edit(Sala $sala)
@@ -38,7 +40,7 @@ class SalaController extends Controller
         return view('salas/detalhes', compact('sala'));
     }
 
-    public function store(Request $request)
+    public function store(SalaRequest $request)
     {
         try {
             
@@ -66,7 +68,7 @@ class SalaController extends Controller
         }
     }
 
-    public function update(Request $request, Sala $sala)
+    public function update(SalaRequest $request, Sala $sala)
     {
         try {
         

@@ -60,9 +60,9 @@ $(function() {
     $("#upload").on("click", function() {
         croppie.result('base64').then(function(base64) {
             $("#myModal").modal("hide"); 
-            $("#profile-pic").attr("src",host+"/eventos/public/img/spinner.gif");
+            $("#profile-pic").attr("src",host+"/studiok/public/img/spinner.gif");
 
-            var url = host+"/eventos/public/palestrante/perfil/foto-upload";
+            var url = host+"/studiok/public/palestrante/perfil/foto-upload";
             var formData = new FormData();
             formData.append("profile_picture", $.base64ImageToBlob(base64));
 
@@ -84,13 +84,13 @@ $(function() {
                         $("#profile-pic").attr("src", base64); 
                         $("#path_imagem_pal").val(data.file);
                     } else {
-                        $("#profile-pic").attr("src",host+"/eventos/public/img/icon-cam.png"); 
+                        $("#profile-pic").attr("src",host+"/studiok/public/img/icon-cam.png"); 
                         console.log(data['profile_picture']);
                     }
                 },
                 error: function(error) {
                     console.log(error);
-                    $("#profile-pic").attr("src",host+"/eventos/public/img/icon-cam.png"); 
+                    $("#profile-pic").attr("src",host+"/studiok/public/img/icon-cam.png"); 
                 }
             });
         });

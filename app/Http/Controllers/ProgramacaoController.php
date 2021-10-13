@@ -18,7 +18,7 @@ class ProgramacaoController extends Controller
 
     public function index()
     {
-        $atividades = Atividade::all();
+        $atividades = Atividade::orderBy('dt_inicio_atividade_ati')->get();
         return view('programacao/index',compact('atividades'));
     }
 

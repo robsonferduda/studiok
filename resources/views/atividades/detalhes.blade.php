@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h4 class="card-title"><i class="fa fa-graduation-cap"></i> Palestrantes</h4>
+                        <h4 class="card-title"><i class="nc-icon nc-calendar-60"></i> Atividade</h4>
                     </div>
                     <div class="col-md-6">
                         <a href="{{ url('programacao') }}" class="btn btn-info pull-right"><i class="nc-icon nc-calendar-60"></i> Programação</a>

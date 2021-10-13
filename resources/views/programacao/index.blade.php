@@ -94,6 +94,9 @@
                                         {{ $atividade->ds_atividade_ati }}
                                     </div>
                                     <div class="widget-49-meeting-action">
+                                        @if($atividade->tipo->fl_paralelo)
+                                            <a href="{{ url('atividade/atividades-paralelas',$atividade->id_atividade_ati) }}" class="btn btn-sm btn-success"><i class="nc-icon nc-bullet-list-67"></i> Atividades</a>
+                                        @endif
                                         <a href="{{ route('atividade.show',$atividade->id_atividade_ati) }}" class="btn btn-sm btn-warning"><i class="fa fa-table"></i> Detalhes</a>
                                         <a href="{{ route('atividade.edit',$atividade->id_atividade_ati) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Editar</a>
                                     </div>

@@ -7,10 +7,12 @@ use App\Evento;
 use App\Atividade;
 use App\Palestrante;
 use App\TipoAtividade;
+use App\AtividadeParalela;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\AtividadeRequest;
+use App\Http\Requests\AtividadeParalelaRequest;
 
 class AtividadeController extends Controller
 {
@@ -54,17 +56,27 @@ class AtividadeController extends Controller
 
     public function store(AtividadeRequest $request)
     {
-       
+        $fl_ativa_ati = $request->fl_ativa_ati == true ? true : false;
+        $fl_destaque_ati = $request->fl_destaque_ati == true ? true : false;
+
+        $request->merge(['fl_ativa_ati' => $fl_ativa_ati]);
+        $request->merge(['fl_destaque_ati' => $fl_destaque_ati]);
+
+        $tipo = TipoAtividade::find($request->id_tipo_atividade_tia)->fl_paralelo;
+
         $atividade = Atividade::create($request->all());
 
         if($atividade){
             $atividade->palestrantes()->sync($request->palestrantes);
+            Flash::success('<i class="fa fa-check"></i> Atividade <strong>'.$atividade->nm_atividade_ati.'</strong> cadastrada com sucesso');
+            if($tipo)
+                return redirect('atividade/atividades-paralelas/'.$atividade->id_atividade_ati)->withInput(); 
+
+        }else{
+            Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade <strong>'.$atividade->nm_atividade_ati.'</strong>');
         }
 
-        Flash::success('<i class="fa fa-check"></i> Atividade <strong>'.$atividade->nm_atividade_ati.'</strong> cadastrada com sucesso');
-
-        return redirect('atividade/create')->withInput();
-        
+        return redirect('atividade/create')->withInput();        
     }
 
     public function update(Request $request, Atividade $atividade)
@@ -79,5 +91,19 @@ class AtividadeController extends Controller
 
         Flash::success('<i class="fa fa-check"></i> Dados atualizados com sucesso');
         return redirect()->route('atividade.edit', $atividade->id_atividade_ati)->withInput();
+    }
+
+    public function paralelas($atividade)
+    {
+        $salas = Sala::orderBy('nm_sala_sal')->get();
+        $atividade = Atividade::find($atividade);
+
+        return view('atividades/paralelas', compact('atividade','salas'));
+    }
+
+    public function salvarAtividadesParalelas(AtividadeParalelaRequest $request)
+    {
+        $atividadeParalela = AtividadeParalela::create($request->all());
+        return redirect('atividade/atividades-paralelas/'.$request->id_atividade_ati)->withInput(); 
     }
 }

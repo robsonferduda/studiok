@@ -1,9 +1,21 @@
 $(document).ready(function() {
 
     $('#nu_cpf_par').mask('000.000.000-00');
+    $('#hr_inicio_atp').mask('00:00');
+    $('#hr_fim_atp').mask('00:00');
     $('#dt_inicio_atividade_ati').mask('00/00/0000 00:00');
     $('#dt_termino_atividade_ati').mask('00/00/0000 00:00');
     $('#nu_orcid_pes').mask('0000-0000-0000-0000');
+
+    $("#id_tipo_atividade_tia").change(function(){
+
+        var paralelo = $(this).find(':selected').data('paralelo');
+        var palestrante = $(this).find(':selected').data('palestrante');
+
+        if(paralelo) $(".box-paralelo").css("display","block"); else $(".box-paralelo").css("display","none");
+        if(palestrante) $(".box-palestrante").css("display","block"); else $(".box-palestrante").css("display","none");
+
+    });
 
     $('body').on("click", ".button-remove", function(e) {
         e.preventDefault();

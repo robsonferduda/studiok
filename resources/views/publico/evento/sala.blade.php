@@ -19,8 +19,7 @@
     <section class="section about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-6 align-self-center">
-                    
+                <div class="col-lg-12 col-md-6 align-self-center">                    
                     <iframe width="100%" height="600px" src="https://www.youtube.com/embed/NlGzgaPg5os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="col-lg-12 col-md-6 align-self-center">

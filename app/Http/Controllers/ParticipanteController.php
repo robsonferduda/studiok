@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Hash;
 use App\Role;
 use App\User;
@@ -11,13 +12,14 @@ use App\Participante;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\ParticipanteRequest;
 use App\Http\Requests\ParticipanteImportRequest;
 
 class ParticipanteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['cadastro']]);
         Session::put('url','participante');
     }
 
@@ -50,6 +52,39 @@ class ParticipanteController extends Controller
     {
         $eventos = Evento::all();
         return view('participantes/importar', compact('eventos'));
+    }
+
+    public function cadastro(ParticipanteRequest $request)
+    {
+        $pessoa = Pessoa::where('ds_email_pes',$request->email)->first();
+        
+        if(!$pessoa)
+        {
+
+            $chave_pessoa = array('ds_email_pes' => $request->email);
+            $dados_pessoa = array('nm_pessoa_pes' => $request->name);
+            $pessoa = Pessoa::updateOrCreate($chave_pessoa, $dados_pessoa);
+
+            $chave_participante = array('id_pessoa_pes' => $pessoa->id_pessoa_pes);
+            $dados_participante = array('nm_cracha_par' => $request->name);
+            $participante = Participante::updateOrCreate($chave_participante, $dados_participante);
+
+            $chave_usuario = array('email' => $request->email);
+            $dados_usuario = array('id_pessoa_pes' => $pessoa->id_pessoa_pes, 'name' => $request->name, 'password' => Hash::make($request->password));
+            $user = User::updateOrCreate($chave_usuario, $dados_usuario);
+
+            $role = Role::where('name','participante')->first();
+
+            if(!$user->hasRole($role->name))
+                $user->attachRole($role); 
+
+            Auth::login($user);
+            return redirect('home')->withInput();
+
+        }else{
+            Flash::warning('<i class="fa fa-warning"></i> Email já cadastrado');
+            return redirect('/')->withInput();
+        }
     }
 
     public function store(Request $request)

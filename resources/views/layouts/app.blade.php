@@ -39,12 +39,7 @@
                     <p>DASHBOARD</p>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ url('estatisticas') }}">
-                    <i class="nc-icon nc-chart-bar-32"></i>
-                    <p>Estatísticas</p>
-                    </a>
-                </li>
+                @role('administrador')
                 <li class="{{ (Session::has('url') and Session::get('url') == 'evento') ? 'active' : '' }}">
                     <a href="{{ url('evento') }}">
                     <i class="nc-icon nc-tag-content"></i>
@@ -75,11 +70,13 @@
                     <p>Salas</p>
                     </a>
                 </li>  
+                @endrole
                 <hr/>
+                @role('administrador')
                 <li>
-                    <a href="{{ url('permissoes') }}">
-                    <i class="nc-icon nc-settings-gear-65"></i>
-                    <p>Configurações</p>
+                    <a href="{{ url('perfis') }}">
+                    <i class="fa fa-group"></i>
+                    <p>Perfis</p>
                     </a>
                 </li>
                 <li>
@@ -93,7 +90,8 @@
                     <i class="nc-icon nc-circle-10"></i>
                     <p>Usuários</p>
                     </a>
-                </li>                 
+                </li>  
+                @endrole               
                 <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                       <i class="nc-icon nc-button-power"></i>
@@ -256,6 +254,7 @@
       
       $('#datatable').DataTable({
         "pagingType": "full_numbers",
+        
         "lengthMenu": [
           [10, 25, 50, -1],
           [10, 25, 50, "All"]
@@ -263,7 +262,7 @@
         responsive: true,
         language: {
           search: "_INPUT_",
-          searchPlaceholder: "Search records",
+          searchPlaceholder: "Filtrar",
         }
 
       });

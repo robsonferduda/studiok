@@ -39,8 +39,10 @@
                     @foreach($salas as $sala)
                         <tr>
                             <td>{{ $sala->nm_sala_sal }}</td>
-                            <td>{{ $sala->ds_local_sal }}</td>
-                            <td>{{ ($sala->tipo) ? $sala->tipo->ds_tipo_sala_tis : 'Não definido' }}</td>
+                            <td>{!! ($sala->tipo and $sala->tipo->id_tipo_sala_tis == 2) ? '<a href="'.$sala->ds_local_sal.'" target="BLANK">'.$sala->ds_local_sal.'</a>' : $sala->ds_local_sal !!}</td>
+                            <td>
+                                {!! ($sala->tipo) ? $sala->tipo->ds_tipo_sala_tis : 'Não definido' !!}
+                            </td>
                             <td class="text-center">
                                 <a title="Dados da Sala" href="{{ url('sala',$sala->id_sala_sal) }}" class="btn btn-warning btn-link btn-icon"><i class="nc-icon nc-tv-2 font-25"></i></a>
                                 <a href="{{ route('sala.edit',$sala->id_sala_sal) }}" class="btn btn-primary btn-link btn-icon"><i class="fa fa-edit fa-2x"></i></a>

@@ -45,7 +45,7 @@
                             <td>{{ $p->ds_cargo_pal }}</td>
                             <td>{{ $p->pessoa->ds_email_pes }}</td>
                             <td class="center">
-                                <a title="Dados do Palestrante" href="{{ url('palestrante',$p->id_palestrante_pal) }}" class="btn btn-warning btn-link btn-icon"><i class="nc-icon nc-badge font-25"></i></a>
+                                <a title="Dados do Palestrante" href="{{ url('palestrante',$p->id_palestrante_pal) }}" class="btn btn-warning btn-link btn-icon"><i class="fa fa-graduation-cap font-25"></i></a>
                                 <a title="Editar" href="{{ route('palestrante.edit',$p->id_palestrante_pal) }}" class="btn btn-primary btn-link btn-icon"><i class="fa fa-edit fa-2x"></i></a>
                                 <form class="form-delete" style="display: inline;" action="{{ route('palestrante.destroy',$p->id_palestrante_pal) }}" method="POST">
                                     @csrf

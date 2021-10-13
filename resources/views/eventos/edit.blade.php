@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="col-md-12">
-    {!! Form::open(['id' => 'RegisterValidation', 'url' => ['eventos', $evento->cd_evento_eve], 'method' => 'patch', 'novalidate' => 'novalidate']) !!}
+    {!! Form::open(['id' => 'frm_evento_editar', 'url' => ['evento', $evento->id_evento_eve], 'method' => 'patch']) !!}
         <div class="card ">
             <div class="card-header ">
                 <div class="row">
@@ -33,14 +33,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="dt_final_eve">Data Final</label>
-                            <input class="form-control datepicker" name="dt_final_eve" id="dt_final_eve" type="name" />
+                            <input class="form-control datepicker" name="dt_fim_eve" id="dt_fim_eve" value="{{ ($evento->dt_inicio_eve) ? date('d/m/Y', strtotime($evento->dt_fim_eve)) : '' }}" type="name" />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-footer text-right">
-                <a href="{{ url('evento') }}" class="btn btn-danger"><i class="fa fa-times"></i> Cancelar</a>
                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
+                <a href="{{ url('evento') }}" class="btn btn-danger"><i class="fa fa-times"></i> Cancelar</a>
             </div>
         </div>
     {!! Form::close() !!} 

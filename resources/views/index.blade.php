@@ -42,28 +42,22 @@
             </div>
             <div class="col-lg-4 col-md-6 mr-auto">
               <div class="card card-signup text-center">
-                <div class="card-header ">
-                  <h4 class="card-title"><i class="nc-icon nc-badge"></i> Cadastre-se Aqui</h4>
+                <div class="card-header">
+                 
+                  <img src="images/favicon.png">
+                  <h4 class="card-title mt-2"> Cadastre-se Aqui</h4>
                   
                 </div>
                 <div class="card-body ">
-                  <form class="form" method="" action="">
+                  @include('layouts.mensagens')
+                  {!! Form::open(['id' => 'frm_participante_novo', 'url' => 'participante/cadastro' ]) !!}
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                           <i class="nc-icon nc-single-02"></i>
                         </span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Nome">
-                    </div>
-                   
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="nc-icon nc-hat-3"></i>
-                        </span>
-                      </div>
-                      <input type="text" placeholder="Orcid" class="form-control">
+                      <input type="text" name="name" class="form-control" placeholder="Nome">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -71,7 +65,7 @@
                           <i class="nc-icon nc-email-85"></i>
                         </span>
                       </div>
-                      <input type="email" class="form-control" placeholder="Email">
+                      <input type="email" name="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -79,7 +73,7 @@
                           <i class="nc-icon nc-key-25"></i>
                         </span>
                       </div>
-                      <input type="email" class="form-control" placeholder="Senha">
+                      <input type="password" name="password" class="form-control" placeholder="Senha">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -87,23 +81,23 @@
                           <i class="nc-icon nc-key-25"></i>
                         </span>
                       </div>
-                      <input type="email" class="form-control" placeholder="Repita a Senha">
+                      <input type="password" name="password_confirm" class="form-control" placeholder="Repita a Senha">
                     </div>
-                    <div class="form-check text-left">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" checked>
-                        <span class="form-check-sign"></span>
-                        Eu aceito os <a href="#something">termos e condições</a>.
-                      </label>
-                    </div>
-                  </form>
+                    
+                    <button type="submit" class="btn btn-info btn-round"><i class="nc-icon nc-check-2"></i> Cadastrar</button>
+                    {!! Form::close() !!} 
                 </div>
-                <div class="card-footer ">
-                  <a href="javascript:;" class="btn btn-info btn-round"><i class="nc-icon nc-check-2"></i> Cadastrar</a>
+                <hr/>
+                <div class="card-footer mt-0">
+                  <h6><a class="btn-link mb-3" href="{{ route('login') }}">
+                    <span class="forget-password">{{ __('Acessar o sistema') }}</span>
+                  </a></h6>
+                  <a class="btn-link mb-1" href="{{ route('password.request') }}">
+                    <span class="forget-password">{{ __('esqueci minha senha') }}</span>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      
 @endsection

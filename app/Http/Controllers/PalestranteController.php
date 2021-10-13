@@ -56,6 +56,15 @@ class PalestranteController extends Controller
         $chave_palestrante = array('id_pessoa_pes' => $pessoa->id_pessoa_pes);
         $participante = Palestrante::updateOrCreate($chave_palestrante, $request->all());
 
+        $chave_usuario = array('email' => $request->ds_email_pes);
+        $dados_usuario = array('id_pessoa_pes' => $pessoa->id_pessoa_pes, 'name' => $request->nm_pessoa_pes, 'password' => Hash::make('123456'));
+        $user = User::updateOrCreate($chave_usuario, $dados_usuario);
+
+        $role = Role::where('name','palestrante')->first();
+
+            if(!$user->hasRole($role->name))
+                $user->attachRole($role); 
+
         Flash::success('<i class="fa fa-check"></i> Dados inseridos com sucesso');
 
         return redirect('palestrante')->withInput();
@@ -77,7 +86,11 @@ class PalestranteController extends Controller
 
     public function destroy(Request $request, Palestrante $palestrante)
     {
-        
+        if($palestrante->delete())
+            Flash::success('<i class="fa fa-check"></i> Palestrante '.$palestrante->pessoa->nm_pessoa_pes.' excluído com sucesso');
+        else
+            Flash::success('<i class="fa fa-check"></i> Erro ao excluir o palestrante');
+        return redirect('palestrante')->withInput();        
     }
 
     public function uploadFoto(Request $request)
@@ -99,6 +112,8 @@ class PalestranteController extends Controller
             $filename = time().'.'.$image->guessExtension();
             
             $path = $request->file('profile_picture')->storeAs('profile_pictures', $filename, 'public');
+
+            dd($path);
 
             $return = array('file' => $filename, 'msg' => 'success');            
         }

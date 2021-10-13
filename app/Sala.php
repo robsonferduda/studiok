@@ -23,4 +23,9 @@ class Sala extends Model
     {
         return $this->belongsTo('App\Atividade', 'id_sala_sal', 'id_sala_sal');
     }
+
+    public function atividadesParalelas()
+    {
+        return $this->belongsTo('App\AtividadeParalela', 'id_sala_sal', 'id_sala_sal');
+    }
 }

@@ -8,7 +8,7 @@
                     <h4 class="card-title"><i class="nc-icon nc-tag-content"></i> Eventos</h4>
                 </div>
                 <div class="col-md-6">
-                    <a href="{{ url('evento/create') }}" class="btn btn-info pull-right" style="margin-right: 12px;"><i class="fa fa-plus"></i> Cadastrar</a>
+                    
                 </div>
             </div>
         </div>

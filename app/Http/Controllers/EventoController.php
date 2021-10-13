@@ -76,6 +76,7 @@ class EventoController extends Controller
             $evento->update($request->all());
             $retorno = array('flag' => true,
                              'msg' => "Dados atualizados com sucesso");
+                             
         } catch (\Illuminate\Database\QueryException $e) {
             $retorno = array('flag' => false,
                              'msg' => Utils::getDatabaseMessageByCode($e->getCode()));
@@ -86,7 +87,7 @@ class EventoController extends Controller
 
         if ($retorno['flag']) {
             Flash::success($retorno['msg']);
-            return redirect('eventos')->withInput();
+            return redirect('evento')->withInput();
         } else {
             Flash::error($retorno['msg']);
             return redirect()->route('evento.edit', $evento->cd_evento_eve)->withInput();

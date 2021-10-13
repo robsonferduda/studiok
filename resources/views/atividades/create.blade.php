@@ -45,10 +45,10 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Tipo de Atividade <span class="text-danger">Obrigatório</span></label>
-                            <select class="form-control" name="id_tipo_atividade_tia">
+                            <select class="form-control" name="id_tipo_atividade_tia" id="id_tipo_atividade_tia">
                                 <option value="">Selecione um tipo</option>
                                 @foreach($tipos as $tipo)
-                                    <option value="{{ $tipo->id_tipo_atividade_tia }}" {{ (old('tipo') == $tipo->id_tipo_atividade_tia) ? 'selected' : '' }}>{{ $tipo->ds_tipo_atividade_tia }}</option>
+                                    <option value="{{ $tipo->id_tipo_atividade_tia }}" {{ (old('tipo') == $tipo->id_tipo_atividade_tia) ? 'selected' : '' }} data-paralelo="{{ ($tipo->fl_paralelo) ? $tipo->fl_paralelo : 0 }}" data-palestrante="{{ ($tipo->fl_palestrante) ? $tipo->fl_palestrante : 0 }}">{{ $tipo->ds_tipo_atividade_tia }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -76,7 +76,16 @@
                     </div>
                 </div>  
 
-                <div class="row">
+                <div class="row box-paralelo">
+                    <div class="col-md-12 mt-2">
+                    <div class="alert alert-info alert-with-icon alert-dismissible fade show" data-notify="container">
+                        <span data-notify="icon" class="nc-icon nc-bullet-list-67"></span>
+                        <span data-notify="message"><b>Atenção!</b> Esta atividade possui atividades paralelas. Após o cadastro, você será direcionado para a tela de preenchimento de atividades paralelas.</span>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row box-palestrante">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Palestrantes</label>
@@ -88,30 +97,40 @@
                         </div>
                     </div>
                 </div>
-                                        
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group mt-2">
-                            <div class="checkbox">
-                                <input name="fl_ativo_ati" id="fl_ativo_ati" type="checkbox">
-                                <label for="fl_ativo_ati">Cadastro Ativo</label>
-                            </div>
-                            <div class="checkbox">
-                                <input name="fl_destaque_ati" id="fl_destaque_ati" type="checkbox">
-                                <label for="fl_destaque_ati">Destaque (Visualização no Site)</label>
+                        <div class="form-check mt-2">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="fl_ativo_ati" value="true">
+                                    CADASTRO ATIVO
+                                    <span class="form-check-sign"></span>
+                                </label>
                             </div>
                         </div>
                     </div>
-                </div>  
-                                              
+                </div> 
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check mt-2">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="fl_destaque_ati" value="true">
+                                    Destaque (Visualização no Site)
+                                    <span class="form-check-sign"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>                                                                                      
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group pr-2">
                             <label>Resumo</label>
-                            <textarea class="form-control" name="ds_atividade_ati" row="8"></textarea>
+                            <textarea class="form-control" name="ds_atividade_ati" rows="10"></textarea>
                         </div>
                     </div>
-                </div>                        
+                </div>                     
                                  
                 <div class="row">
                     <div class="update ml-auto mr-auto">
