@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-md-2 center">
                         @if($palestrante->path_imagem_pal)
-                            <img src="{{ url('/storage/profile_pictures/'.$palestrante->path_imagem_pal) }}" />
+                            <img src="{{ url('/profile_pictures/'.$palestrante->path_imagem_pal) }}" />
                         @else
                             <img src="{{ url('img/icon-cam.png') }}" />
                         @endif
@@ -29,6 +29,16 @@
                         <p class="mb-1"><strong>Cargo: </strong>{{ $palestrante->ds_cargo_pal }}</p>
                         <p class="mb-1"><strong>Email: </strong>{{ $palestrante->pessoa->ds_email_pes }}</p>
                         <p><strong>Biografia: </strong> {{ $palestrante->biografia_pal }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-10">
+                        <p><strong>PALESTRAS PROGRAMADAS</strong></p>
+                        @foreach($palestrante->atividades as $key => $atividade)
+                            <p>{{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') }} - {{ $atividade->nm_atividade_ati }}</p>
+                        @endforeach
                     </div>
                 </div>
             </div>

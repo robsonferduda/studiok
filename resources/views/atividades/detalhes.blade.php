@@ -30,13 +30,13 @@
                             <div class="row mt-3 hover-overlay">
                                 <div class="col-md-3">
                                     @if($palestrante->path_imagem_pal)
-                                        <img src="{{ url('/storage//profile_pictures/'.$palestrante->path_imagem_pal) }}" />
+                                        <img src="{{ url('/profile_pictures/'.$palestrante->path_imagem_pal) }}" />
                                     @else
                                         <img src="{{ url('img/icon-cam.png') }}" />
                                     @endif
                                 </div>
                                 <div class="col-md-9">
-                                    <p class="mb-1">{{ $palestrante->pessoa->nm_pessoa_pes }}</p>
+                                    <p class="mb-1"><a href="{{ url('palestrante/'.$palestrante->id_palestrante_pal) }}">{{ $palestrante->pessoa->nm_pessoa_pes }}</a></p>
                                     <p class="mb-1">{{ $palestrante->pessoa->ds_email_pes }}</p>
                                 </div>
                             </div>                           

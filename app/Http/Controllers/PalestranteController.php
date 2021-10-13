@@ -110,11 +110,7 @@ class PalestranteController extends Controller
             $image = $request->file('profile_picture');
             // Rename image
             $filename = time().'.'.$image->guessExtension();
-            
             $path = $request->file('profile_picture')->storeAs('profile_pictures', $filename, 'public');
-
-            dd($path);
-
             $return = array('file' => $filename, 'msg' => 'success');            
         }
         

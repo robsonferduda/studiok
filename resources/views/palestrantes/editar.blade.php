@@ -26,7 +26,7 @@
                                 <div class="card-body">
                                     <h6 class="card-title">Foto de Perfil</h6>
                                     <div class="profile-img p-3">
-                                        <img src="{{ ($palestrante->path_imagem_pal) ? url('/storage/profile_pictures/'.$palestrante->path_imagem_pal) : url('img/icon-cam.png') }}" id="profile-pic">
+                                        <img src="{{ ($palestrante->path_imagem_pal) ? url('/profile_pictures/'.$palestrante->path_imagem_pal) : url('img/icon-cam.png') }}" id="profile-pic">
                                     </div>
                                     <div class="btn btn-dark">
                                         <input type="file" class="file-upload" id="file-upload" 
