@@ -3,6 +3,8 @@ $(function() {
     var el = document.getElementById('resizer');
     var host = $(".copyright").data('host');
 
+    alert(host);
+
     $.base64ImageToBlob = function(str) {
         // extract content type and base64 payload from original string
         var pos = str.indexOf(';base64,');
