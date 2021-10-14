@@ -143,7 +143,7 @@
           <div class="row">
             
             <div class="credits ml-auto">
-              <span class="copyright" data-host="{{ env('ASSET_URL') }}">
+              <span class="copyright" data-host="{{ env('PASTA_URL') }}">
                 © <script>
                   document.write(new Date().getFullYear())
                 </script> - Sistema de Gerenciamento de Eventos
