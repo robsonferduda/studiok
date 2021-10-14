@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="utf-8" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -144,7 +143,7 @@
           <div class="row">
             
             <div class="credits ml-auto">
-              <span class="copyright">
+              <span class="copyright" data-host="{{ env('ASSET_URL') }}">
                 © <script>
                   document.write(new Date().getFullYear())
                 </script> - Sistema de Gerenciamento de Eventos

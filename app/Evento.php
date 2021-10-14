@@ -22,6 +22,6 @@ class Evento extends Model
 
     public function atividades()
     {
-        return $this->belongsTo('App\Atividade', 'id_evento_eve', 'id_evento_eve');
+        return $this->hasMany('App\Atividade', 'id_evento_eve', 'id_evento_eve');
     }
 }

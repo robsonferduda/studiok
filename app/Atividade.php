@@ -16,7 +16,7 @@ class Atividade extends Model
 
     public function evento()
     {
-        return $this->hasOne('App\Evento', 'id_evento_eve', 'id_evento_eve');
+        return $this->belongsTo('App\Evento', 'id_evento_eve', 'id_evento_eve');
     }
 
     public function sala()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Sala;
 use App\Evento;
 use App\Certificado;
@@ -36,12 +37,50 @@ class HomeController extends Controller
         $atividade = new Atividade();
         $palestrante = new Palestrante();
         $participante = new participante();
-        return view('dashboard', compact('sala','palestrante','participante','atividade'));
+        $meus_eventos = array();
+        $programacao = array();
+
+        if(Auth::user()->hasRole('participante')){
+
+            $p = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();
+            if($p){
+                $meus_eventos = $p->eventos;
+                $evento = Evento::find(1);
+                $programacao = $evento->atividades->sortBy('dt_inicio_atividade_ati');
+            }
+        }       
+
+        return view('dashboard', compact('sala','palestrante','participante','atividade','meus_eventos','programacao'));
     }
 
     public function show($e)
     {       
         $evento = Evento::where('ds_apelido_eve',$e)->first();
+        Session::put('evento',$evento);
+        $atividades = Atividade::all();
+        return view('publico/evento/index',compact('evento','atividades'));
+    }
+
+    public function programacao($e)
+    {      
+        $evento = Evento::where('ds_apelido_eve',$e)->first();
+        Session::put('evento',$evento);
+        $atividades = Atividade::all();
+        return view('publico/evento/index',compact('evento','atividades'));
+    }
+
+    public function palestrantes($e)
+    {       
+        $evento = Evento::where('ds_apelido_eve',$e)->first();
+        Session::put('evento',$evento);
+        $atividades = Atividade::all();
+        return view('publico/evento/index',compact('evento','atividades'));
+    }
+
+    public function stand($e)
+    {       
+        $evento = Evento::where('ds_apelido_eve',$e)->first();
+        Session::put('evento',$evento);
         $atividades = Atividade::all();
         return view('publico/evento/index',compact('evento','atividades'));
     }

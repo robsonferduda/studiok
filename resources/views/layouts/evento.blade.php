@@ -22,23 +22,23 @@
       <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item dropdown active dropdown-slide">
-          <a class="nav-link" href="#"  data-toggle="dropdown">Início
+          <a class="nav-link" href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve) }}"  data-toggle="dropdown">Início
             <span>/</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="speakers.html">Palestrantes
+          <a class="nav-link" href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/palestrantes') }}">Palestrantes
             <span>/</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="schedule.html">Programação<span>/</span></a>
+          <a class="nav-link" href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/programacao') }}">Programação<span>/</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="sponsors.html">Stand Virtual<span>/</span></a>
+          <a class="nav-link" href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/stand-virtual') }}">Stand Virtual<span>/</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="sponsors.html">Login</a>
+          <a class="nav-link" href="{{ url('login') }}">Login</a>
         </li>
       </ul>
       
@@ -53,7 +53,7 @@
     <div class="row">
       <div class="col-md-6 align-self-center">
         <div class="copyright-text">
-          <p><a href="#">Studio Kem</a> &#169; 2021 Todos os direitos reservados</p>
+          <p><a href="#">StudioK</a> &#169; 2021 Todos os direitos reservados</p>
         </div>
       </div>
       <div class="col-md-6">

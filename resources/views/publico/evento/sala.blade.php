@@ -19,13 +19,13 @@
     <section class="section about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-6 align-self-center">                    
+                <div class="col-lg-12 col-md-6 align-self-center">   
+                    <h4 class="mb-1 mt-2"><strong></strong> {{ $atividade->nm_atividade_ati }}</h4>                 
                     <iframe width="100%" height="600px" src="https://www.youtube.com/embed/NlGzgaPg5os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="col-lg-12 col-md-6 align-self-center">
-                    <h4 class="mb-1 mt-2"><strong></strong> {{ $atividade->nm_atividade_ati }}</h4>
                     <h6 class="mb-1 mt-2"><strong></strong> {{ $atividade->sala->nm_sala_sal }}</h6>
-                    <p class="mb-1 mt-2"><strong>Início: </strong> {{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->inicio_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }}</p>
+                    <p class="mb-1 mt-2"><strong>Início: </strong> {{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }}</p>
                     <p class="mb-1"><strong>Término: </strong> {{ ($atividade->dt_termino_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }}</p>
                     <p><strong>Resumo: </strong> {{ ($atividade->ds_atividade_ati) ? $atividade->ds_atividade_ati : 'Nenhum resumo cadastrado'}}</p>
                 </div>

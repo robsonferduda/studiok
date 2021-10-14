@@ -21,7 +21,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="section-title">
-						<h3>Programação <span class="alternate">Completa</span></h3>
+						<h3>Programação do Evento</h3>
 						<p>Confira a programação e fique por dentro de tudo que acontece no evento!</p>
 					</div>
 				</div>
@@ -33,13 +33,13 @@
 						<li class="nav-item">
 							<a class="nav-link active" href="#nov20" data-toggle="pill">
 								DIA 01
-								<span>18 DE NOVEMBRO DE 2021</span>
+								<span>10 DE OUTUBRO DE 2021</span>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#nov21" data-toggle="pill">
 								DIA 02
-								<span>19 DE NOVEMBRO DE 2021</span>
+								<span>11 DE OUTUBRO DE 2021</span>
 							</a>
 						</li>
 						</ul>
@@ -57,11 +57,11 @@
 									@foreach($atividades as $atividade)
 										<li class="schedule-details">
 											<div class="block">
-												<div class="time">
+												<div class="time valign-top">
 													<i class="fa fa-clock-o"></i>
 													<span class="time">{{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('H:i') }}</span>
 												</div>
-												<div class="subject">{{ $atividade->nm_atividade_ati }}</div>
+												<div class="subject valign-top">{{ $atividade->nm_atividade_ati }}</div>
 												<div class="speaker">
 													@if(count($atividade->palestrantes))
 														Convidados
@@ -70,7 +70,7 @@
 														<p>{{ $palestrante->ds_tratamento_pal }} {{ $palestrante->pessoa->nm_pessoa_pes }}</p>                          
 													@endforeach										
 												</div>											
-												<div class="venue"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}">{{ $atividade->sala->nm_sala_sal }}</a></div>
+												<div class="venue  valign-top"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}">{{ $atividade->sala->nm_sala_sal }}</a></div>
 											</div>
 										</li>
 									@endforeach

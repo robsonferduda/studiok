@@ -3707,3 +3707,7 @@ ul.list-style-none li {
 .font-30 {
   font-size: 30px;
 }
+
+.valign-top{
+  vertical-align: top;
+}

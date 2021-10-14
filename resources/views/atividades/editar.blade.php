@@ -65,7 +65,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Data/Hora Início</label>
-                            <input type="text" class="form-control" name="dt_inicio_atividade_ati" id="dt_inicio_atividade_ati" value="{{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->inicio_atividade_ati)->format('d/m/Y H:i') : '' }}" placeholder="__/__/____ __:__">
+                            <input type="text" class="form-control" name="dt_inicio_atividade_ati" id="dt_inicio_atividade_ati" value="{{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : '' }}" placeholder="__/__/____ __:__">
                         </div>
                     </div>
                     <div class="col-md-3">
