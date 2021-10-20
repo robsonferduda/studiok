@@ -32,11 +32,12 @@ class ParticipanteController extends Controller
 
     public function listar($apelido)
     {
-        $eventos = Evento::all();
-        $participantes = Participante::all();
+        $evento = Evento::with('participantes')->where('ds_apelido_eve', $apelido)->first();
+        $participantes = $evento->participantes;
+
         Session::put('edicao',$apelido);
         
-        return view('participantes/index', compact('eventos','participantes'));
+        return view('participantes/index', compact('participantes'));
     }
 
     public function show($id)
