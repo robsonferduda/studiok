@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-6 align-self-center">   
                     <h4 class="mb-1 mt-2"><strong></strong> {{ $atividade->nm_atividade_ati }}</h4>                 
-                    <iframe width="100%" height="600px" src="https://www.youtube.com/embed/NlGzgaPg5os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="600px" src="https://www.youtube.com/embed/NlGzgaPg5os?mode=opaque&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;wmode=transparent" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="col-lg-12 col-md-6 align-self-center">
                     <h6 class="mb-1 mt-2"><strong></strong> {{ $atividade->sala->nm_sala_sal }}</h6>

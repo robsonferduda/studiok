@@ -45,30 +45,38 @@
                     <p>Eventos</p>
                     </a>
                 </li>  
-                <li class="{{ (Session::get('url') and Session::get('url') == 'palestrante') ? 'active' : '' }}">
-                    <a href="{{ url('palestrante') }}">
-                    <i class="fa fa-graduation-cap"></i>
-                    <p>Palestrantes</p>
-                    </a>
-                </li>              
-                <li class="{{ (Session::get('url') and Session::get('url') == 'participante') ? 'active' : '' }}">
-                  <a href="{{ url('participante') }}">
-                    <i class="nc-icon nc-badge"></i>
-                    <p>Participantes</p>
+                <li class="{{ (Session::get('url')) ? 'active' : '' }}">
+                  <a data-toggle="collapse" href="#mapsExamples" class="{{ (Session::get('url')) ? '' : 'collapsed' }}" aria-expanded="{{ (Session::get('url')) ? 'true' : 'false' }}">
+                    <i class="nc-icon nc-settings-gear-65"></i>
+                    <p>
+                      seminario-studiok <b class="caret"></b>
+                    </p>
                   </a>
-                </li>     
-                <li class="{{ (Session::get('url') and Session::get('url') == 'programacao') ? 'active' : '' }}">
-                  <a href="{{ url('programacao') }}">
-                    <i class="nc-icon nc-calendar-60"></i>
-                    <p>Programação</p>
-                  </a>
-                </li>               
-                <li class="{{ (Session::get('url') and Session::get('url') == 'sala') ? 'active' : '' }}">
-                    <a href="{{ url('sala') }}">
-                    <i class="nc-icon nc-tv-2"></i>
-                    <p>Salas</p>
-                    </a>
-                </li>  
+                  <div class="collapse {{ (Session::get('url')) ? 'show' : '' }}" id="mapsExamples" style="">
+                    <ul class="nav ml-1">
+                      <li class="{{ (Session::get('url') and Session::get('url') == 'sala') ? 'active' : '' }}">
+                        <a href="{{ url('sala') }}">
+                          <span class="sidebar-normal"> <i class="nc-icon nc-tv-2"></i> Salas </span>
+                        </a>
+                      </li>
+                      <li class="{{ (Session::get('url') and Session::get('url') == 'palestrante') ? 'active' : '' }}">
+                        <a href="{{ url('palestrante') }}">
+                          <span class="sidebar-normal"> <i class="fa fa-graduation-cap"></i> Palestrantes </span>
+                        </a>
+                      </li>
+                      <li class="{{ (Session::get('url') and Session::get('url') == 'participante') ? 'active' : '' }}">
+                        <a href="{{ url('participante') }}">
+                          <span class="sidebar-normal"> <i class="nc-icon nc-badge"></i> Participantes </span>
+                        </a>
+                      </li>
+                      <li class="{{ (Session::get('url') and Session::get('url') == 'programacao') ? 'active' : '' }}">
+                        <a href="{{ url('programacao') }}">
+                          <span class="sidebar-normal"> <i class="nc-icon nc-calendar-60"></i> Programação </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
                 @endrole
                 <hr/>
                 @role('administrador')

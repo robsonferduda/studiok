@@ -22,6 +22,7 @@
                 <thead>
                     <tr>
                       <th>Evento</th>
+                      <th>Nome Curto</th>
                       <th>Início</th>
                       <th>Término</th>
                       <th class="disabled-sorting text-center">Ações</th>
@@ -30,6 +31,7 @@
                 <tfoot>
                     <tr>
                         <th>Evento</th>
+                        <th>Nome Curto</th>
                         <th>Início</th>
                         <th>Término</th>
                         <th class="disabled-sorting text-center">Ações</th>
@@ -39,6 +41,7 @@
                     @foreach($eventos as $e)
                         <tr>
                             <td>{{ $e->nm_evento_eve }}</td>
+                            <td>{{ $e->ds_apelido_eve }}</td>
                             <td>{!! ($e->dt_inicio_eve) ? date('d/m/Y', strtotime($e->dt_inicio_eve)) : 'Não informado' !!}</td>
                             <td>{!! ($e->dt_fim_eve) ? date('d/m/Y', strtotime($e->dt_fim_eve)) : 'Não informado' !!}</td>
                             <td class="text-center">
