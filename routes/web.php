@@ -20,6 +20,11 @@ Route::get('participante/importar','ParticipanteController@importar');
 Route::post('participante/importacao','ParticipanteController@importacao');
 Route::post('participante/cadastro','ParticipanteController@cadastro');
 
+Route::get('salas/{evento}','SalaController@listar');
+Route::get('palestrantes/{evento}','PalestranteController@listar');
+Route::get('participantes/{evento}','ParticipanteController@listar');
+Route::get('programacao/{evento}','ProgramacaoController@listar');
+
 Route::get('programacao','ProgramacaoController@index');
 Route::get('programacao/mensagem','ProgramacaoController@enviarPergunta');
 Route::get('atividade/atividades-paralelas/{atividade}','AtividadeController@paralelas');

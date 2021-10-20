@@ -29,6 +29,15 @@ class PalestranteController extends Controller
         return view('palestrantes/index', compact('eventos','palestrantes'));
     }
 
+    public function listar($apelido)
+    {
+        $eventos = Evento::all();
+        $palestrantes = Palestrante::all();
+        Session::put('edicao',$apelido);
+
+        return view('palestrantes/index', compact('eventos','palestrantes'));
+    }
+
     public function show($id)
     {
         $palestrante = Palestrante::find($id);

@@ -14,6 +14,7 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        Session::put('url','perfis');
     }
     
     public function index()

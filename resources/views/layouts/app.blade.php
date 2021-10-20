@@ -44,55 +44,59 @@
                     <i class="nc-icon nc-tag-content"></i>
                     <p>Eventos</p>
                     </a>
-                </li>  
-                <li class="{{ (Session::get('url')) ? 'active' : '' }}">
-                  <a data-toggle="collapse" href="#mapsExamples" class="{{ (Session::get('url')) ? '' : 'collapsed' }}" aria-expanded="{{ (Session::get('url')) ? 'true' : 'false' }}">
-                    <i class="nc-icon nc-settings-gear-65"></i>
-                    <p>
-                      seminario-studiok <b class="caret"></b>
-                    </p>
-                  </a>
-                  <div class="collapse {{ (Session::get('url')) ? 'show' : '' }}" id="mapsExamples" style="">
-                    <ul class="nav ml-1">
-                      <li class="{{ (Session::get('url') and Session::get('url') == 'sala') ? 'active' : '' }}">
-                        <a href="{{ url('sala') }}">
-                          <span class="sidebar-normal"> <i class="nc-icon nc-tv-2"></i> Salas </span>
-                        </a>
-                      </li>
-                      <li class="{{ (Session::get('url') and Session::get('url') == 'palestrante') ? 'active' : '' }}">
-                        <a href="{{ url('palestrante') }}">
-                          <span class="sidebar-normal"> <i class="fa fa-graduation-cap"></i> Palestrantes </span>
-                        </a>
-                      </li>
-                      <li class="{{ (Session::get('url') and Session::get('url') == 'participante') ? 'active' : '' }}">
-                        <a href="{{ url('participante') }}">
-                          <span class="sidebar-normal"> <i class="nc-icon nc-badge"></i> Participantes </span>
-                        </a>
-                      </li>
-                      <li class="{{ (Session::get('url') and Session::get('url') == 'programacao') ? 'active' : '' }}">
-                        <a href="{{ url('programacao') }}">
-                          <span class="sidebar-normal"> <i class="nc-icon nc-calendar-60"></i> Programação </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
                 </li>
+                
+                @foreach(Session::get('meus_eventos') as $evento)
+                  <li class="{{ (Session::has('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                    <a data-toggle="collapse" href="#menu_{{ $evento->id_evento_eve }}" class="{{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? '' : 'collapsed' }}" aria-expanded="{{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'true' : 'false' }}">
+                      <i class="nc-icon nc-settings-gear-65"></i>
+                      <p>
+                        {{ $evento->ds_apelido_eve }} <b class="caret"></b>
+                      </p>
+                    </a>
+                    <div id="menu_{{ $evento->id_evento_eve }}" class="collapse {{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'show' : '' }}" style="">
+                      <ul class="nav ml-4">
+                        <li class="{{ (Session::get('url') and Session::get('url') == 'sala' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                          <a href="{{ url('salas', $evento->ds_apelido_eve) }}">
+                            <span class="sidebar-normal"> <i class="nc-icon nc-tv-2"></i> Salas </span>
+                          </a>
+                        </li>
+                        <li class="{{ (Session::get('url') and Session::get('url') == 'palestrante' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                          <a href="{{ url('palestrantes', $evento->ds_apelido_eve) }}">
+                            <span class="sidebar-normal"> <i class="fa fa-graduation-cap"></i> Palestrantes </span>
+                          </a>
+                        </li>
+                        <li class="{{ (Session::get('url') and Session::get('url') == 'participante' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                          <a href="{{ url('participantes', $evento->ds_apelido_eve) }}">
+                            <span class="sidebar-normal"> <i class="nc-icon nc-badge"></i> Participantes </span>
+                          </a>
+                        </li>
+                        <li class="{{ (Session::get('url') and Session::get('url') == 'programacao' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                          <a href="{{ url('programacao', $evento->ds_apelido_eve) }}">
+                            <span class="sidebar-normal"> <i class="nc-icon nc-calendar-60"></i> Programação </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  @endforeach
+
                 @endrole
                 <hr/>
                 @role('administrador')
-                <li>
+                <li class="{{ (Session::has('url') and Session::get('url') == 'perfis') ? 'active' : '' }}">
                     <a href="{{ url('perfis') }}">
                     <i class="fa fa-group"></i>
                     <p>Perfis</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{ (Session::has('url') and Session::get('url') == 'permissoes') ? 'active' : '' }}">
                     <a href="{{ url('permissoes') }}">
                     <i class="nc-icon nc-lock-circle-open"></i>
                     <p>Permissões</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{ (Session::has('url') and Session::get('url') == 'usuarios') ? 'active' : '' }}">
                     <a href="{{ url('usuarios') }}">
                     <i class="nc-icon nc-circle-10"></i>
                     <p>Usuários</p>

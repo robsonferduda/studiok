@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Sala;
+use App\Evento;
 use App\TipoSala;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
@@ -20,6 +21,15 @@ class SalaController extends Controller
     public function index()
     {
         $salas = Sala::all();
+        return view('salas/index',compact('salas'));
+    }
+
+    public function listar($apelido)
+    {
+        $evento = Evento::where('ds_apelido_eve',$apelido)->first();
+        $salas = Sala::all();
+        Session::put('edicao',$apelido);
+
         return view('salas/index',compact('salas'));
     }
 

@@ -22,6 +22,14 @@ class ProgramacaoController extends Controller
         return view('programacao/index',compact('atividades'));
     }
 
+    public function listar($apelido)
+    {
+        $atividades = Atividade::orderBy('dt_inicio_atividade_ati')->get();
+        Session::put('edicao',$apelido);
+
+        return view('programacao/index',compact('atividades'));
+    }
+
     public function show($id)
     {
         $atividade = Atividade::find($id);

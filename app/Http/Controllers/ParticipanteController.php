@@ -30,6 +30,15 @@ class ParticipanteController extends Controller
         return view('participantes/index', compact('eventos','participantes'));
     }
 
+    public function listar($apelido)
+    {
+        $eventos = Evento::all();
+        $participantes = Participante::all();
+        Session::put('edicao',$apelido);
+        
+        return view('participantes/index', compact('eventos','participantes'));
+    }
+
     public function show($id)
     {
         $participante = Participante::find($id);
