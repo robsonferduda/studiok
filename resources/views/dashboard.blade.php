@@ -2,7 +2,7 @@
 @section('content')
   @role('administrador')
     <div class="row"> 
-          <div class="col-lg-3 col-md-3 col-sm-12">  
+          <div class="col-lg-4 col-md-4 col-sm-12">  
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -30,7 +30,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-3 col-sm-12">
+          <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -58,7 +58,7 @@
             </div>
           </div>
           
-          <div class="col-lg-3 col-md-3 col-sm-12">
+          <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -84,33 +84,6 @@
               </div>
             </div>
           </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-calendar-60 text-primary"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Programação</p>
-                      <p class="card-title"><a href="{{ url('programacao') }}">{{ $atividade->count() }}</a><p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-calendar-o"></i>
-                  Próximo em 20/11/2021 18:00
-                </div>
-              </div>
-            </div>
-          </div>  
         </div>   
         <div class="row">
           <div class="col-md-12">
@@ -119,36 +92,26 @@
     </div>
   @endrole
   @role('participante')
-    <div class="row">
-      <div class="col-md-3 col-lg-3">
-        <h5>Meus Eventos</h5>
-        @foreach($meus_eventos as $key => $evento)
-          <div class="card card-pricing ">
-            <div class="card-header">
-              <h6 class="card-category"></h6>
-            </div>
-            <div class="card-body">
-              <div class="card-icon icon-primary ">
-                <i class="nc-icon nc-tag-content"></i>
-              </div>
-              <h4 class="card-title">{{ $evento->nm_evento_eve }}</h4>
-            </div>
-            <div class="card-footer">
-              <a href="{{ url('eventos/seminario-studiok/programacao') }}" class="btn btn-round btn-primary mb-2">Ver Programação</a>
-            </div>
-          </div>
-        @endforeach
-      </div>
-      <div class="col-md-9 col-lg-9">
-        <h5>Agenda</h5>
+  <div class="row">
+    <h5 class="ml-3">Meus Eventos</h5>
+  </div>
+  <div class="row">
+    @foreach($meus_eventos as $key => $evento)
+      <div class="col-md-12 col-lg-12">
         <div class="card">
           <div class="card-body">
-            @foreach($programacao as $key => $atividade)
-              <p>{{ date('d/m/Y H:i', strtotime($atividade->dt_inicio_atividade_ati)) }} - {{ $atividade->sala->nm_sala_sal }} - {{ $atividade->nm_atividade_ati }}</p>
-            @endforeach
+            <div class="row">
+              <div class="col-md-9 col-lg-9">
+                <h4 class="card-title mt-2 ml-2"> {{ $evento->nm_evento_eve }}</h4>
+              </div>
+              <div class="col-md-3 col-lg-3 text-right">
+                <a href="{{ url('eventos/'.$evento->ds_apelido_eve.'/programacao') }}" target="_BLANK" class="btn btn-round btn-primary mb-2"><i class="fa fa-send mr-1"></i> Ir para o Evento</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    @endforeach
+  </div>
   @endrole
 @endsection

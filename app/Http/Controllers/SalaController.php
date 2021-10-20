@@ -29,6 +29,7 @@ class SalaController extends Controller
         $evento = Evento::where('ds_apelido_eve',$apelido)->first();
         $salas = Sala::all();
         Session::put('edicao',$apelido);
+        Session::put('evento',$evento);
 
         return view('salas/index',compact('salas'));
     }

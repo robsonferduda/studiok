@@ -31,3 +31,6 @@
 .box-palestrante{
     display: none;
 }
+.evento_selecionado_label{
+    text-transform: uppercase;
+}

@@ -146,7 +146,17 @@
         </div>
       </nav>
       <!-- End Navbar -->
-      <div class="content">        
+      <div class="content">  
+        @if(Session::get('evento') and Session::get('url') != 'home')
+          <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <span class="evento_selecionado_label"> {{ Session::get('evento')->nm_evento_eve }} </span>
+                </div>
+             </div>
+          </div>
+        @endif
+        
         @yield('content')          
       </div>
 
