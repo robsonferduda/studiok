@@ -15,6 +15,7 @@ Route::get('programacao/sala/atividade/{id}','ProgramacaoController@show');
 Auth::routes();
 
 Route::get('auditoria','AuditoriaController@index');
+Route::get('auditoria/{id}','AuditoriaController@show');
 
 Route::get('estatisticas','EstatisticaController@index');
 

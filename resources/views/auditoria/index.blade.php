@@ -21,6 +21,7 @@
             <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th>Data</th>
                         <th>Modelo</th>
                         <th>Evento</th>
                         <th>Usuário</th>
@@ -29,6 +30,7 @@
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>Data</th>
                         <th>Modelo</th>
                         <th>Evento</th>
                         <th>Usuário</th>
@@ -38,10 +40,13 @@
                 <tbody>
                     @foreach($audits as $audit)
                         <tr>
+                            <td>{{ date('d/m/Y H:i:s', strtotime($audit->created_at)) }}</td>
                             <td>{{ $audit->auditable_type }}</td>
                             <td>{{ $audit->event }}</td>
                             <td>{{ ($audit->user) ? $audit->user->name : 'Usuário não logado' }}</td>
-                            <td></td>
+                            <td class="center">
+                                <a title="Detalhes" href="{{ url('auditoria',$audit->id) }}" class="btn btn-warning btn-link btn-icon"><i class="fa fa-shield font-25"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

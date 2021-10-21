@@ -27,4 +27,10 @@ class AuditoriaController extends Controller
         return view('auditoria/index',compact('audits'));
     }
 
+    public function show($id)
+    {
+        $auditoria = Audit::with('user')->where('id',$id)->first();
+        return view('auditoria/detalhes',compact('auditoria'));
+    }
+
 }
