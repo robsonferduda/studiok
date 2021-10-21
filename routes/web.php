@@ -14,6 +14,8 @@ Route::get('programacao/sala/atividade/{id}','ProgramacaoController@show');
 
 Auth::routes();
 
+Route::get('auditoria','AuditoriaController@index');
+
 Route::get('estatisticas','EstatisticaController@index');
 
 Route::get('participante/importar','ParticipanteController@importar');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sala;
 use App\Evento;
+use App\Utils;
 use App\TipoSala;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;

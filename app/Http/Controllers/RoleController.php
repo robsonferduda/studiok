@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Utils;
 use App\Role;
 use App\Permission;
 use Laracasts\Flash\Flash;
