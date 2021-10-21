@@ -3,6 +3,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
+            @include('layouts.cabecalho')
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="card-title"><i class="nc-icon nc-calendar-60"></i> Programação</h4>
@@ -20,50 +21,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Evento</label>
-                                <select class="form-control">
-                                    <option value="">Selecione um evento</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                  </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Descrição</label>
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Data</label>
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>                        
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Sala</label>
-                                <select class="form-control">
-                                    <option value="">Selecione uma sala</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div> 
-            <div class="row">
                 @foreach($atividades as $atividade)
                     <div class="col-md-12">                
-                        <div class="card card-margin">
+                        <div class="card card-margin" style="border: 1px solid #9e9e9e26;">
                             <div class="card-header no-border">
                                 <h5 class="card-title">{{ $atividade->nm_atividade_ati }}</h5>
                             </div>

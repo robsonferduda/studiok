@@ -3,6 +3,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
+            @include('layouts.cabecalho')
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="card-title"><i class="nc-icon nc-badge"></i> Participantes</h4>

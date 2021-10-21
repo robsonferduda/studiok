@@ -3,6 +3,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
+            @include('layouts.cabecalho')
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="card-title"><i class="fa fa-graduation-cap"></i> Palestrantes</h4>
