@@ -20,6 +20,12 @@ class Evento extends Model
                     ->withTimestamps();
     }
 
+    public function usuarios()
+    {
+        return $this->belongsToMany('App\User','evento_usuario_evu','id_evento_eve','id') 
+                    ->withTimestamps();
+    }
+
     public function atividades()
     {
         return $this->hasMany('App\Atividade', 'id_evento_eve', 'id_evento_eve');

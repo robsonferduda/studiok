@@ -92,26 +92,85 @@
     </div>
   @endrole
   @role('participante')
-  <div class="row">
-    <h5 class="ml-3">Meus Eventos</h5>
-  </div>
-  <div class="row">
-    @foreach($meus_eventos as $key => $evento)
-      <div class="col-md-12 col-lg-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-9 col-lg-9">
-                <h4 class="card-title mt-2 ml-2"> {{ $evento->nm_evento_eve }}</h4>
-              </div>
-              <div class="col-md-3 col-lg-3 text-right">
-                <a href="{{ url('eventos/'.$evento->ds_apelido_eve.'/programacao') }}" target="_BLANK" class="btn btn-round btn-primary mb-2"><i class="fa fa-send mr-1"></i> Ir para o Evento</a>
+    <div class="row">
+      <h5 class="ml-3">Meus Eventos</h5>
+    </div>
+    <div class="row">
+      @foreach($meus_eventos as $key => $evento)
+        <div class="col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-9 col-lg-9">
+                  <h4 class="card-title mt-2 ml-2"> {{ $evento->nm_evento_eve }}</h4>
+                </div>
+                <div class="col-md-3 col-lg-3 text-right">
+                  <a href="{{ url('eventos/'.$evento->ds_apelido_eve.'/programacao') }}" target="_BLANK" class="btn btn-round btn-primary mb-2"><i class="fa fa-send mr-1"></i> Ir para o Evento</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    @endforeach
-  </div>
+      @endforeach
+    </div>
+  @endrole
+  @role('assistente')
+    <div class="row">
+      <h5 class="ml-3">Meus Eventos</h5>
+    </div>
+    <div class="row">
+      @foreach($meus_eventos as $key => $evento)
+        <div class="col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-9 col-lg-9">
+                  <h4 class="card-title mt-2 ml-2"> {{ $evento->nm_evento_eve }}</h4>
+                </div>
+                <div class="col-md-3 col-lg-3 text-right">
+                  <a href="{{ url('programacao',$evento->ds_apelido_eve) }}" class="btn btn-round btn-primary mb-2"><i class="nc-icon nc-calendar-60 mr-1"></i> Ir para Programação</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  @endrole
+
+  @role('gestor')
+    <div class="row">
+      <h5 class="ml-3">Meus Eventos</h5>
+    </div>
+    <div class="row">
+      @forelse($meus_eventos as $key => $evento)
+        <div class="col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-9 col-lg-9">
+                  <h4 class="card-title mt-2 ml-2"> {{ $evento->nm_evento_eve }}</h4>
+                </div>
+                <div class="col-md-3 col-lg-3 text-right">
+                  <a href="{{ url('programacao',$evento->ds_apelido_eve) }}" class="btn btn-round btn-primary mb-2"><i class="nc-icon nc-calendar-60 mr-1"></i> Ir para Programação</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      @empty
+        <div class="col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-9 col-lg-9">
+                  <h4 class="card-title mt-2 ml-2"> Nenhum evento alocado</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endforelse
+    </div>
   @endrole
 @endsection

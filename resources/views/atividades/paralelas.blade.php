@@ -3,6 +3,7 @@
     <div class="col-md-12">
         <div class="card card-user">
             <div class="card-header">
+                @include('layouts.cabecalho')
                 <div class="row">
                     <div class="col-md-6 ">
                         <h4 class="card-title"><i class="nc-icon nc-calendar-60"></i> Atividades > Atividades Paralelas</h4>

@@ -49,4 +49,10 @@ class User extends Authenticatable implements Auditable
             'logout'
         ];
     }
+
+    public function eventos()
+    {
+        return $this->belongsToMany('App\Evento','evento_usuario_evu','id_usuario_usu','id_evento_eve')
+                    ->withTimestamps();
+    }
 }

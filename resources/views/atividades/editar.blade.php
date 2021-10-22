@@ -91,18 +91,31 @@
                                         
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group mt-2">
-                            <div class="checkbox">
-                                <input name="fl_ativo_ati" id="fl_ativo_ati" type="checkbox">
-                                <label for="fl_ativo_ati">Cadastro Ativo</label>
-                            </div>
-                            <div class="checkbox">
-                                <input name="fl_destaque_ati" id="fl_destaque_ati" type="checkbox">
-                                <label for="fl_destaque_ati">Destaque (Visualização no Site)</label>
+                        <div class="form-check mt-2">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" {{ ($atividade->fl_ativa_ati) ? 'checked' : '' }} type="checkbox" name="fl_ativa_ati" value="true">
+                                    CADASTRO ATIVO
+                                    <span class="form-check-sign"></span>
+                                </label>
                             </div>
                         </div>
                     </div>
-                </div>  
+                </div> 
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check mt-2">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" {{ ($atividade->fl_destaque_ati) ? 'checked' : '' }} type="checkbox" name="fl_destaque_ati" value="true">
+                                    DESTAQUE (Visualização no Site)
+                                    <span class="form-check-sign"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
                                               
                 <div class="row">
                     <div class="col-md-12">
@@ -116,7 +129,7 @@
                 <div class="row">
                     <div class="update ml-auto mr-auto">
                         <button type="submit" class="btn btn-wd btn-success"><i class="fa fa-save"></i> Salvar</button>
-                        <a href="{{ url('palestrante') }}" class="btn btn-danger btn-fill btn-wd"><i class="fa fa-times"></i> Cancelar</a>
+                        <a href="{{ url()->previous() }}" class="btn btn-danger btn-fill btn-wd"><i class="fa fa-times"></i> Cancelar</a>
                     </div>
                 </div>
             {!! Form::close() !!}                         

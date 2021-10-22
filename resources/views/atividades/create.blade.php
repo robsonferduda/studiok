@@ -26,7 +26,7 @@
                             <select class="form-control" name="id_evento_eve">
                                 <option value="">Selecione um evento</option>
                                 @foreach($eventos as $evento)
-                                    <option value="{{ $evento->id_evento_eve }}" {{ (old('evento') == $evento->id_evento_eve) ? 'selected' : '' }}>{{ $evento->nm_evento_eve }}</option>
+                                    <option value="{{ $evento->id_evento_eve }}" {{ (old('id_evento_eve') == $evento->id_evento_eve) ? 'selected' : '' }}>{{ $evento->nm_evento_eve }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -37,7 +37,7 @@
                             <select class="form-control" name="id_sala_sal">
                                 <option value="">Selecione uma sala</option>
                                 @foreach($salas as $sala)
-                                    <option value="{{ $sala->id_sala_sal }}" {{ (old('sala') == $sala->id_sala_sal) ? 'selected' : '' }}>{{ $sala->nm_sala_sal }}</option>
+                                    <option value="{{ $sala->id_sala_sal }}" {{ (old('id_sala_sal') == $sala->id_sala_sal) ? 'selected' : '' }}>{{ $sala->nm_sala_sal }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -48,7 +48,7 @@
                             <select class="form-control" name="id_tipo_atividade_tia" id="id_tipo_atividade_tia">
                                 <option value="">Selecione um tipo</option>
                                 @foreach($tipos as $tipo)
-                                    <option value="{{ $tipo->id_tipo_atividade_tia }}" {{ (old('tipo') == $tipo->id_tipo_atividade_tia) ? 'selected' : '' }} data-paralelo="{{ ($tipo->fl_paralelo) ? $tipo->fl_paralelo : 0 }}" data-palestrante="{{ ($tipo->fl_palestrante) ? $tipo->fl_palestrante : 0 }}">{{ $tipo->ds_tipo_atividade_tia }}</option>
+                                    <option value="{{ $tipo->id_tipo_atividade_tia }}" {{ (old('id_tipo_atividade_tia') == $tipo->id_tipo_atividade_tia) ? 'selected' : '' }} data-paralelo="{{ ($tipo->fl_paralelo) ? $tipo->fl_paralelo : 0 }}" data-palestrante="{{ ($tipo->fl_palestrante) ? $tipo->fl_palestrante : 0 }}">{{ $tipo->ds_tipo_atividade_tia }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,13 +65,13 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Data/Hora Início</label>
-                            <input type="text" class="form-control" name="dt_inicio_atividade_ati" id="dt_inicio_atividade_ati" placeholder="__/__/____ __:__">
+                            <input type="text" class="form-control" name="dt_inicio_atividade_ati" id="dt_inicio_atividade_ati" value="{{ old('dt_inicio_atividade_ati') }}" placeholder="__/__/____ __:__">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Data/Hora Término</label>
-                            <input type="text" class="form-control" name="dt_termino_atividade_ati" id="dt_termino_atividade_ati" placeholder="__/__/____ __:__">
+                            <input type="text" class="form-control" name="dt_termino_atividade_ati" id="dt_termino_atividade_ati" value="{{ old('dt_termino_atividade_ati') }}"  placeholder="__/__/____ __:__">
                         </div>
                     </div>
                 </div>  
@@ -102,7 +102,7 @@
                         <div class="form-check mt-2">
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="fl_ativo_ati" value="true">
+                                    <input class="form-check-input" {{ (old('fl_ativa_ati')) ? 'checked' : '' }} type="checkbox" name="fl_ativa_ati" value="true">
                                     CADASTRO ATIVO
                                     <span class="form-check-sign"></span>
                                 </label>
@@ -115,8 +115,8 @@
                         <div class="form-check mt-2">
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="fl_destaque_ati" value="true">
-                                    Destaque (Visualização no Site)
+                                    <input class="form-check-input" {{ (old('fl_destaque_ati')) ? 'checked' : '' }} type="checkbox" name="fl_destaque_ati" value="true">
+                                    DESTAQUE (Visualização no Site)
                                     <span class="form-check-sign"></span>
                                 </label>
                             </div>
@@ -127,7 +127,7 @@
                     <div class="col-md-12">
                         <div class="form-group pr-2">
                             <label>Resumo</label>
-                            <textarea class="form-control" name="ds_atividade_ati" rows="10"></textarea>
+                            <textarea class="form-control" name="ds_atividade_ati" rows="10">{{ old('ds_atividade_ati') }}</textarea>
                         </div>
                     </div>
                 </div>                     
@@ -135,7 +135,7 @@
                 <div class="row">
                     <div class="update ml-auto mr-auto">
                         <button type="submit" class="btn btn-wd btn-success"><i class="fa fa-save"></i> Salvar</button>
-                        <a href="{{ url('palestrante') }}" class="btn btn-danger btn-fill btn-wd"><i class="fa fa-times"></i> Cancelar</a>
+                        <a href="{{ url()->previous() }}" class="btn btn-danger btn-fill btn-wd"><i class="fa fa-times"></i> Cancelar</a>
                     </div>
                 </div>
             {!! Form::close() !!}                         

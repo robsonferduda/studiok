@@ -10,7 +10,6 @@
                 </div>
                 <div class="col-md-6">
                     <a href="{{ url('atividade/create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Nova Atividade</a>
-                    <a href="{{ url('palestrante/create') }}" class="btn btn-info pull-right" style="margin-right: 12px;"><i class="fa fa-plus"></i> Novo Palestrante</a>
                 </div>
             </div>
         </div>
@@ -24,24 +23,19 @@
                 @foreach($atividades as $atividade)
                     <div class="col-md-12">                
                         <div class="card card-margin" style="border: 1px solid #9e9e9e26;">
-                            <div class="card-header no-border">
-                                <h5 class="card-title">{{ $atividade->nm_atividade_ati }}</h5>
-                            </div>
-                            <div class="card-body pt-0">
+                            <div class="card-body pt-3">
                                 <div class="widget-49">
                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="mb-1 font-21">{!! ($atividade->fl_destaque_ati) ? '<i title="Atividade Destaque" class="fa fa-star text-warning font-21"></i>' : '' !!} {{ $atividade->nm_atividade_ati }}</p>
+                                        </div>
                                         <div class="col-md-6">
-                                            <div class="widget-49-title-wrapper">
-                                                <div class="widget-49-date-primary">
-                                                    <span class="widget-49-date-day">{{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d') }}</span>
-                                                    <span class="widget-49-date-month">{{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('M') }}</span>
-                                                </div>
-                                                <div class="widget-49-meeting-info">
-                                                    <span class="widget-49-pro-title">{{ $atividade->sala->nm_sala_sal }} </span>
-                                                    <span>{{ $atividade->sala->tipo->ds_tipo_sala_tis }}</span>
-                                                    <span class="widget-49-meeting-time">{{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('H:i') }} até {{ Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('H:i') }} horas</span>
-                                                </div>
-                                            </div>
+                                            <p class="mb-1"><strong>Local: </strong> {{ $atividade->sala->nm_sala_sal }}</p>
+                                            <p class="mb-1"><strong>Tipo de Atividade: </strong> {{ $atividade->tipo->ds_tipo_atividade_tia }}</p>
+                                            <p class="mb-1"><strong>Data/Hora Início: </strong> {{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }}</p>
+                                            <p class="mb-1"><strong>Data/Hora Término: </strong> {{ ($atividade->dt_termino_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }}</p>
+                                            <p><strong>Resumo: </strong> {{ ($atividade->ds_atividade_ati) ? $atividade->ds_atividade_ati : 'Nenhum resumo cadastrado'}}</p>
+                                            {!! ($atividade->fl_ativa_ati) ? '<span class="badge badge-pill badge-success">ATIVO</span>' : '<span class="badge badge-pill badge-danger">INATIVO</span>' !!}
                                         </div>
                                         <div class="col-md-6">
                                             @if(count($atividade->palestrantes)) <h6>Palestrantes</h6> @endif
@@ -49,9 +43,6 @@
                                                 {{ $palestrante->pessoa->nm_pessoa_pes }}<br/>
                                             @endforeach
                                         </div>
-                                    </div>
-                                    <div class="widget-49-meeting-info mt-3 mb-3">
-                                        {{ $atividade->ds_atividade_ati }}
                                     </div>
                                     <div class="widget-49-meeting-action">
                                         @if($atividade->tipo->fl_paralelo)

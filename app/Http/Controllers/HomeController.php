@@ -44,6 +44,16 @@ class HomeController extends Controller
             $meus_eventos = Evento::all();
         }
 
+        if(Auth::user()->hasRole('assistente')){
+
+            $meus_eventos = Auth::user()->eventos;
+        }
+
+        if(Auth::user()->hasRole('gestor')){
+
+            $meus_eventos = Auth::user()->eventos;
+        }
+
         if(Auth::user()->hasRole('participante')){
 
             $p = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();

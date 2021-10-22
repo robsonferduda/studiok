@@ -79,6 +79,10 @@ class Utils
             case '23505':
                 return 'Violação de restrição de valor único';
                 break;
+
+            case '22008':
+                return 'Formato de data inválido';
+                break;
             
             default:
                 return 'Código de erro desconhecido: '.$errorCode;

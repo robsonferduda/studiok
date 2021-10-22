@@ -5,6 +5,7 @@
 .upper {text-transform: uppercase !important; }
 .font-25 {font-size: 25px;}
 .font-12 {font-size: 12px !important;}
+.font-21 {font-size: 21px !important;}
 .nounderline, .violet{
     color: #7c4dff !important;
 }
@@ -34,4 +35,7 @@
 .evento_selecionado_label{
     text-transform: uppercase;
     font-size: 20px;
+}
+.atividade_inativa{
+    background: #f443362b;
 }

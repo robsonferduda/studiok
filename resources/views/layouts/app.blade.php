@@ -27,7 +27,7 @@
         <div class="sidebar" data-color="white" data-active-color="danger">
             <div class="logo">
                 <a style="padding-left: 8px;" href="{{ url('perfil') }}" class="simple-text logo-normal">
-                  <i class="fa fa-user"></i> {{ explode(" ", Auth::user()->name)[0] }}
+                  <i class="fa fa-user"></i> {{ (Auth::user()) ? explode(" ", Auth::user()->name)[0] : '' }}
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -38,13 +38,15 @@
                     <p>DASHBOARD</p>
                     </a>
                 </li>
+
                 @role('administrador')
-                <li class="{{ (Session::has('url') and Session::get('url') == 'evento') ? 'active' : '' }}">
-                    <a href="{{ url('evento') }}">
-                    <i class="nc-icon nc-tag-content"></i>
-                    <p>Eventos</p>
-                    </a>
-                </li>
+                  <li class="{{ (Session::has('url') and Session::get('url') == 'evento') ? 'active' : '' }}">
+                      <a href="{{ url('evento') }}">
+                      <i class="nc-icon nc-tag-content"></i>
+                      <p>Eventos</p>
+                      </a>
+                  </li>
+                @endrole
                 
                 @if(Session::has('meus_eventos'))
                   @foreach(Session::get('meus_eventos') as $evento)
@@ -83,8 +85,6 @@
                   @endforeach
 
                   @endif
-
-                @endrole
                 <hr/>
                 @role('administrador')               
                   

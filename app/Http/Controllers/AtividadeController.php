@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Utils;
 use App\Sala;
 use App\Evento;
 use App\Atividade;
@@ -56,24 +57,35 @@ class AtividadeController extends Controller
 
     public function store(AtividadeRequest $request)
     {
-        $fl_ativa_ati = $request->fl_ativa_ati == true ? true : false;
-        $fl_destaque_ati = $request->fl_destaque_ati == true ? true : false;
+        try {
 
-        $request->merge(['fl_ativa_ati' => $fl_ativa_ati]);
-        $request->merge(['fl_destaque_ati' => $fl_destaque_ati]);
+            $fl_ativa_ati = $request->fl_ativa_ati == true ? true : false;
+            $fl_destaque_ati = $request->fl_destaque_ati == true ? true : false;
 
-        $tipo = TipoAtividade::find($request->id_tipo_atividade_tia)->fl_paralelo;
+            $request->merge(['fl_ativa_ati' => $fl_ativa_ati]);
+            $request->merge(['fl_destaque_ati' => $fl_destaque_ati]);
 
-        $atividade = Atividade::create($request->all());
+            $tipo = TipoAtividade::find($request->id_tipo_atividade_tia)->fl_paralelo;
 
-        if($atividade){
-            $atividade->palestrantes()->sync($request->palestrantes);
-            Flash::success('<i class="fa fa-check"></i> Atividade <strong>'.$atividade->nm_atividade_ati.'</strong> cadastrada com sucesso');
-            if($tipo)
-                return redirect('atividade/atividades-paralelas/'.$atividade->id_atividade_ati)->withInput(); 
+            $atividade = Atividade::create($request->all());
 
-        }else{
-            Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade <strong>'.$atividade->nm_atividade_ati.'</strong>');
+            if($atividade){
+                $atividade->palestrantes()->sync($request->palestrantes);
+                Flash::success('<i class="fa fa-check"></i> Atividade <strong>'.$atividade->nm_atividade_ati.'</strong> cadastrada com sucesso');
+                if($tipo)
+                    return redirect('atividade/atividades-paralelas/'.$atividade->id_atividade_ati)->withInput(); 
+
+            }else{
+                Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade <strong>'.$atividade->nm_atividade_ati.'</strong>');
+            }
+
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade <strong>'.Utils::getDatabaseMessageByCode($e->getCode()).'</strong>');
+        
+        }catch (Exception $e) {
+            
+            Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade: <strong>'.$atividade->nm_atividade_ati.'</strong>');
         }
 
         return redirect('atividade/create')->withInput();        
@@ -82,6 +94,12 @@ class AtividadeController extends Controller
     public function update(Request $request, Atividade $atividade)
     {
             
+        $fl_ativa_ati = $request->fl_ativa_ati == true ? true : false;
+        $fl_destaque_ati = $request->fl_destaque_ati == true ? true : false;
+
+        $request->merge(['fl_ativa_ati' => $fl_ativa_ati]);
+        $request->merge(['fl_destaque_ati' => $fl_destaque_ati]);
+
         $atividade = Atividade::find($atividade->id_atividade_ati);
         $atividade->update($request->all());
 
@@ -90,7 +108,7 @@ class AtividadeController extends Controller
         }
 
         Flash::success('<i class="fa fa-check"></i> Dados atualizados com sucesso');
-        return redirect()->route('atividade.edit', $atividade->id_atividade_ati)->withInput();
+        return redirect('programacao')->withInput();
     }
 
     public function paralelas($atividade)
