@@ -42,58 +42,15 @@
             </div>
             <div class="col-lg-4 col-md-6 mr-auto">
               <div class="card card-signup text-center">
-                <div class="card-header">
-                 
-                  <img src="images/favicon.png">
-                  <h4 class="card-title mt-2"> Cadastre-se Aqui</h4>
-                  
-                </div>
+        
                 <div class="card-body ">
-                  @include('layouts.mensagens')
-                  {!! Form::open(['id' => 'frm_participante_novo', 'url' => 'participante/cadastro' ]) !!}
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="nc-icon nc-single-02"></i>
-                        </span>
-                      </div>
-                      <input type="text" name="name" class="form-control" placeholder="Nome">
-                    </div>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="nc-icon nc-email-85"></i>
-                        </span>
-                      </div>
-                      <input type="email" name="email" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="nc-icon nc-key-25"></i>
-                        </span>
-                      </div>
-                      <input type="password" name="password" class="form-control" placeholder="Senha">
-                    </div>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="nc-icon nc-key-25"></i>
-                        </span>
-                      </div>
-                      <input type="password" name="password_confirm" class="form-control" placeholder="Repita a Senha">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-info btn-round"><i class="nc-icon nc-check-2"></i> Cadastrar</button>
-                    {!! Form::close() !!} 
+                  <h5>Próximos Eventos</h5>
+                  <img src="img/12-workshop-egc.jpeg">
                 </div>
                 <hr/>
                 <div class="card-footer mt-0">
-                  <h6><a class="btn-link mb-3" href="{{ route('login') }}">
-                    <span class="forget-password">{{ __('Acessar o sistema') }}</span>
-                  </a></h6>
-                  <a class="btn-link mb-1" href="{{ route('password.request') }}">
-                    <span class="forget-password">{{ __('esqueci minha senha') }}</span>
+                  <a class="btn-link mb-1" href="{{ url('cadastrar') }}">
+                    <span class="forget-password">Cadastre-se Aqui</span>
                   </a>
                 </div>
               </div>

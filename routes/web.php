@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
+Route::get('cadastrar', 'ParticipanteController@cadastrar');
 Route::get('/eventos', 'HomeController@eventos');
 Route::get('/eventos/{evento}', 'HomeController@show');
 Route::get('/eventos/{evento}/programacao', 'HomeController@programacao');

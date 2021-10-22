@@ -41,9 +41,21 @@
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav">
           <li class="nav-item ">
-            <a href="{{ url('dashboard') }}" class="nav-link">
+            <a href="{{ url('/') }}" class="nav-link">
+              <i class="nc-icon nc-shop"></i>
+              Início
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="{{ url('cadastrar') }}" class="nav-link">
+              <i class="nc-icon nc-circle-10"></i>
+              Cadastre-se
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="{{ url('login') }}" class="nav-link">
               <i class="nc-icon nc-lock-circle-open"></i>
-              Login
+              Acesse sua conta
             </a>
           </li>
         </ul>

@@ -19,7 +19,7 @@ class ParticipanteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['cadastro']]);
+        $this->middleware('auth', ['except' => ['cadastro','cadastrar']]);
         Session::put('url','participante');
     }
 
@@ -62,6 +62,11 @@ class ParticipanteController extends Controller
     {
         $eventos = Evento::all();
         return view('participantes/importar', compact('eventos'));
+    }
+
+    public function cadastrar()
+    {
+        return view('cadastro');
     }
 
     public function cadastro(ParticipanteRequest $request)
