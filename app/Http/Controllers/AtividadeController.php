@@ -81,6 +81,8 @@ class AtividadeController extends Controller
 
         } catch (\Illuminate\Database\QueryException $e) {
 
+            dd($e);
+
             Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade <strong>'.Utils::getDatabaseMessageByCode($e->getCode()).'</strong>');
         
         }catch (Exception $e) {
