@@ -69,11 +69,14 @@
                               <span class="sidebar-normal"> <i class="fa fa-graduation-cap"></i> Palestrantes </span>
                             </a>
                           </li>
-                          <li class="{{ (Session::get('url') and Session::get('url') == 'participante' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
-                            <a href="{{ url('participantes', $evento->ds_apelido_eve) }}">
-                              <span class="sidebar-normal"> <i class="nc-icon nc-badge"></i> Participantes </span>
-                            </a>
-                          </li>
+                          
+                          @permission('participantes')
+                            <li class="{{ (Session::get('url') and Session::get('url') == 'participante' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                              <a href="{{ url('participantes', $evento->ds_apelido_eve) }}">
+                                <span class="sidebar-normal"> <i class="nc-icon nc-badge"></i> Participantes </span>
+                              </a>
+                            </li>
+                          @endpermission
                           <li class="{{ (Session::get('url') and Session::get('url') == 'programacao' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
                             <a href="{{ url('programacao', $evento->ds_apelido_eve) }}">
                               <span class="sidebar-normal"> <i class="nc-icon nc-calendar-60"></i> Programação </span>
