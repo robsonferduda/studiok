@@ -90,7 +90,7 @@ class EventoController extends Controller
             return redirect('evento')->withInput();
         } else {
             Flash::error($retorno['msg']);
-            return redirect()->route('evento.edit', $evento->cd_evento_eve)->withInput();
+            return redirect()->route('evento.edit', $evento->id_evento_eve)->withInput();
         }
     }
 }
