@@ -24,14 +24,16 @@ class SalaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nm_sala_sal' => 'required'
+            'nm_sala_sal' => 'required',
+            'id_tipo_sala_tis' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'nm_sala_sal.required' => 'Campo <strong>nome</strong> é obrigatório'
+            'nm_sala_sal.required' => 'Campo <strong>nome</strong> é obrigatório',
+            'id_tipo_sala_tis.required' => 'Campo <strong>Tipo de Sala</strong> é obrigatório'
         ];
     }
 }

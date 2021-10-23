@@ -15,14 +15,15 @@
         </div>
         <div class="card-body p-4">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <h6>Dados da Sala</h6>
                     <p class="mb-1"><strong>Nome: </strong> {{ $sala->nm_sala_sal }} </p>
                     <p class="mb-1"><strong>Tipo: </strong> {!! ($sala->tipo) ? $sala->tipo->ds_tipo_sala_tis : 'Não definido' !!}</p>
                     <p class="mb-1"><strong>Local/Endereço: </strong> {{ ($sala->ds_local_sal) ? $sala->ds_local_sal : 'Não Definido' }}</p>
+                    <p class="mb-1"><strong>Local/URL de Transmissão: </strong> {{ ($sala->ds_ambiente_sal) ? $sala->ds_ambiente_sal : 'Não Definido' }}</p>
                 </div>
-                <div class="col-md-6">
-                    <h6>Local/Endereço</h6>
+                <div class="col-md-12 mt-3">
+                    <h6>Transmissão</h6>
                     @if($sala->tipo and $sala->tipo->id_tipo_sala_tis == 2 and $sala->ds_local_sal)
                         <iframe width="100%" height="600px" src="{{ $sala->ds_local_sal }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     @else

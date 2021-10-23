@@ -38,7 +38,7 @@
           <a class="nav-link" href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/stand-virtual') }}">Stand Virtual<span>/</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('login') }}">Login</a>
+          <a class="nav-link" href="{{ url('cadastrar') }}">Cadastre-se</a>
         </li>
       </ul>
       

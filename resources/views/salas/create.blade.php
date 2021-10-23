@@ -24,9 +24,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Tipo</label>
+                            <label>Tipo de Sala</label>
                             <select class="form-control" name="id_tipo_sala_tis">
-                                <option value="">Selecione um tipo</option>
+                                <option value="">Selecione um tipo de sala</option>
                                 @foreach($tipos as $tipo)
                                     <option value="{{ $tipo->id_tipo_sala_tis }}" {{ (old('id_tipo_sala_tis') == $tipo->id_tipo_sala_tis) ? 'selected' : '' }}>{{ $tipo->ds_tipo_sala_tis }}</option>
                                 @endforeach
@@ -37,8 +37,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Local/Endereço</label>
-                            <input type="text" class="form-control" name="ds_local_sal" id="ds_local_sal" placeholder="Local/Endereço" value="">
+                            <label>Local/URL de Transmissão</label>
+                            <input type="text" class="form-control" name="ds_local_sal" id="ds_local_sal" placeholder="URL de Transmissão" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>URL do Ambinte Virtual(Ex.: Zoom, Meet, StreamYard)</label>
+                            <input type="text" class="form-control" name="ds_ambiente_sal" id="ds_ambiente_sal" placeholder="URL do Ambinte Virtual" value="">
                         </div>
                     </div>
                 </div>
