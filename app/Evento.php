@@ -30,4 +30,9 @@ class Evento extends Model
     {
         return $this->hasMany('App\Atividade', 'id_evento_eve', 'id_evento_eve');
     }
+
+    public function salas()
+    {
+        return $this->hasMany('App\Sala', 'id_evento_eve', 'id_evento_eve');
+    }
 }

@@ -17,6 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h6>Dados da Sala</h6>
+                    <p class="mb-1"><strong>Evento: </strong> {{ ($sala->evento) ? $sala->evento->nm_evento_eve : 'Nenhum evento selecionado' }} </p>
                     <p class="mb-1"><strong>Nome: </strong> {{ $sala->nm_sala_sal }} </p>
                     <p class="mb-1"><strong>Tipo: </strong> {!! ($sala->tipo) ? $sala->tipo->ds_tipo_sala_tis : 'Não definido' !!}</p>
                     <p class="mb-1"><strong>Local/Endereço: </strong> {{ ($sala->ds_local_sal) ? $sala->ds_local_sal : 'Não Definido' }}</p>

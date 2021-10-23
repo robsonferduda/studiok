@@ -28,7 +28,8 @@ class SalaController extends Controller
     public function listar($apelido)
     {
         $evento = Evento::where('ds_apelido_eve',$apelido)->first();
-        $salas = Sala::all();
+        $salas = Sala::where('id_evento_eve',$evento->id_evento_eve)->orderBy('nm_sala_sal')->get();
+
         Session::put('edicao',$apelido);
         Session::put('evento',$evento);
 
@@ -55,6 +56,9 @@ class SalaController extends Controller
     public function store(SalaRequest $request)
     {
         try {
+
+            $id_evento = Session::get('evento')->id_evento_eve;
+            $request->merge(['id_evento_eve' => $id_evento]);
             
             Sala::create($request->all());
             $retorno = array('flag' => true,
