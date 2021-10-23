@@ -20,7 +20,7 @@
   <link href="{{ asset('css/all.css') }}" rel="stylesheet" />
 </head>
 
-<body class="login-page">
+<body class="register-page">
     
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
     <div class="container">
@@ -32,6 +32,7 @@
             <span class="navbar-toggler-bar bar3"></span>
           </button>
         </div>
+        <a class="navbar-brand text-none" href="{{ url('/') }}">StudioK Gerenciamento de Eventos Acadêmicos</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -39,33 +40,32 @@
         <span class="navbar-toggler-bar navbar-kebab"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
-      <ul class="navbar-nav">
-          <li class="nav-item ">
-            <a href="{{ url('/') }}" class="nav-link">
-              <i class="nc-icon nc-shop"></i>
-              Início
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a href="{{ url('cadastrar') }}" class="nav-link">
-              <i class="nc-icon nc-circle-10"></i>
-              Cadastre-se
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a href="{{ url('login') }}" class="nav-link">
-              <i class="nc-icon nc-lock-circle-open"></i>
-              Acesse sua conta
-            </a>
-          </li>
-        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a href="{{ url('/') }}" class="nav-link">
+                <i class="nc-icon nc-shop"></i>
+                Início
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a href="{{ url('cadastrar') }}" class="nav-link text-none">
+                <i class="nc-icon nc-circle-10"></i>
+                Cadastre-se
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a href="{{ url('login') }}" class="nav-link">
+                <i class="nc-icon nc-lock-circle-open"></i>
+                Acesse sua conta
+              </a>
+            </li>
+          </ul>
       </div>
     </div>
   </nav>
-  <!-- End Navbar -->
-  <div class="wrapper wrapper-full-page ">
+
+  <div class="wrapper wrapper-full-page">
     <div class="full-page register-page section-image" filter-color="black" data-image="{{ asset('img/bg/1.jpg') }}">
-      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
       <div class="content">
         <div class="container">
           @yield('content')
@@ -75,14 +75,10 @@
         <div class="container-fluid">
           
         </div>
-      </footer>
-      
+      </footer>      
     </div>
   </div>
 
-
-
-  <!--   Core JS Files   -->
   <script src="{{ asset('js/core/jquery.min.js') }}"></script>
   <script src="{{ asset('js/core/popper.min.js') }}"></script>
   <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>

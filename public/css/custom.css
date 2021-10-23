@@ -39,3 +39,6 @@
 .atividade_inativa{
     background: #f443362b;
 }
+.text-none{
+    text-transform: none !important;
+}

@@ -1,13 +1,12 @@
 @extends('layouts.guest')
 @section('content')
 
-<div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+          <div class="row mb-3">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto mt-5">
               <div class="card card-signup text-center">
                 <div class="card-header">
                  
-                  <img src="images/favicon.png">
+                  <img class="mt-3" src="images/favicon.png">
                   <h4 class="card-title mt-2"> Cadastre-se Aqui</h4>
                   
                 </div>
@@ -47,17 +46,11 @@
                       <input type="password" name="password_confirm" class="form-control" placeholder="Repita a Senha">
                     </div>
                     
-                    <button type="submit" class="btn btn-info btn-round"><i class="nc-icon nc-check-2"></i> Cadastrar</button>
+                    <button type="submit" class="btn btn-info btn-round mb-4"><i class="nc-icon nc-check-2"></i> Cadastrar</button>
                     {!! Form::close() !!} 
-                </div>
-                <hr/>
-                <div class="card-footer mt-0">
-                  <a class="btn-link mb-1" href="{{ route('password.request') }}">
-                    <span class="forget-password">{{ __('esqueci minha senha') }}</span>
-                  </a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        
 @endsection

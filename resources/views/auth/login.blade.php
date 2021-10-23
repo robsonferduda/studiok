@@ -1,17 +1,16 @@
 @extends('layouts.guest')
-
 @section('content')
-<div class="col-lg-4 col-md-6 ml-auto mr-auto">
+<div class="row">
+  <div class="col-lg-4 col-md-6 ml-auto mr-auto mt-5">
     <form method="POST" action="{{ route('login') }}">
-    @csrf
-              <div class="card card-login">
-                <div class="card-header ">
-                  <div class="card-header ">
-                    <h3 class="header text-center"><i class="fa fa-lock"></i> Login</h3>
-                  </div>
-                </div>
-                <div class="card-body ">
-                  
+      @csrf
+        <div class="card card-login">
+          <div class="card-header ">
+            <div class="card-header ">
+              <h3 class="header text-center"><i class="fa fa-lock"></i> Login</h3>
+            </div>
+          </div>
+          <div class="card-body "> 
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
@@ -58,8 +57,9 @@
                             <span class="forget-password">{{ __('esqueceu sua senha?') }}</span>
                         </a>
                     @endif
-                </div>
-              </div>
+          </div>
+        </div>
     </form>
+  </div>
 </div>
 @endsection

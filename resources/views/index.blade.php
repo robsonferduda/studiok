@@ -1,10 +1,9 @@
 @extends('layouts.guest')
 @section('content')
 
-<div class="container">
           <div class="row">
-            <div class="col-lg-5 col-md-5 ml-auto">
-              <div class="info-area info-horizontal mt-5">
+            <div class="col-lg-5 col-md-5 ml-auto mt-5">
+              <div class="info-area info-horizontal">
                 <div class="icon icon-primary">
                   <i class="nc-icon nc-tv-2"></i>
                 </div>
@@ -45,7 +44,7 @@
         
                 <div class="card-body ">
                   <h5>Próximos Eventos</h5>
-                  <img src="img/12-workshop-egc.jpeg">
+                  <a href="{{ url('eventos/seminario-studiok') }}"><img src="img/workshop-egc.jpeg"></a>
                 </div>
                 <hr/>
                 <div class="card-footer mt-0">
@@ -56,5 +55,5 @@
               </div>
             </div>
           </div>
-        </div>
+        
 @endsection
