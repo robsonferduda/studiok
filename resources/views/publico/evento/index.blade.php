@@ -8,8 +8,7 @@
 						<div class="timer"></div>
 						<h1>{{ $evento->nm_evento_eve }}</h1>
 						<h2>Conferência Online</h2>
-						<h6>18-19 de Novembro de 2020</h6>
-						<a href="#" class="btn btn-white-md">Assistir ao Vivo</a>
+						<h6>{{ Carbon\Carbon::parse($evento->dt_inicio_eve)->format('d') }} - {{ Carbon\Carbon::parse($evento->dt_fim_eve)->format('d') }} de {{ App\Utils::validaMes(Carbon\Carbon::parse($evento->dt_fim_eve)->format('m')) }} de {{ Carbon\Carbon::parse($evento->dt_fim_eve)->format('Y') }}</h6>
 					</div>
 				</div>
 			</div>
@@ -30,68 +29,39 @@
 				<div class="col-12">
 					<div class="schedule-tab">
 						<ul class="nav nav-pills text-center">
-						<li class="nav-item">
-							<a class="nav-link active" href="#nov20" data-toggle="pill">
-								DIA 01
-								<span>10 DE OUTUBRO DE 2021</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#nov21" data-toggle="pill">
-								DIA 02
-								<span>11 DE OUTUBRO DE 2021</span>
-							</a>
-						</li>
+							@php
+								$periodo = Carbon\CarbonPeriod::create(Carbon\Carbon::parse($evento->dt_inicio_eve)->format('Y-m-d'), Carbon\Carbon::parse($evento->dt_fim_eve)->format('Y-m-d'));
+							@endphp
+							@foreach ($periodo as $key => $date) 
+								<li class="nav-item">
+									<a class="nav-link" href="#box{{ $key+1 }}" data-toggle="pill">
+										DIA {{ $key+1 }}
+										<span>{{ $date->format('d') }} DE {{ App\Utils::validaMes(Carbon\Carbon::parse($date)->format('m')) }} DE {{ $date->format('Y') }}</span>
+									</a>
+								</li>
+							@endforeach
 						</ul>
 					</div>
 					<div class="schedule-contents bg-schedule">
 						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade show active schedule-item" id="nov20">
-								<ul class="m-0 p-0">
-									<li class="headings">
-										<div class="time">Início</div>
-										<div class="subject">Título</div>
-										<div class="speaker"></div>					  			
-										<div class="venue">Local</div>
-									</li>
-									@foreach($atividades as $atividade)
-										<li class="schedule-details">
-											<div class="block">
-												<div class="time valign-top">
-													<i class="fa fa-clock-o"></i>
-													<span class="time">{{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('H:i') }}</span>
-												</div>
-												<div class="subject valign-top">{{ $atividade->nm_atividade_ati }}</div>
-												<div class="speaker">
-													@if(count($atividade->palestrantes))
-														Convidados
-													@endif
-													@foreach($atividade->palestrantes as $key => $palestrante)
-														<p>{{ $palestrante->ds_tratamento_pal }} {{ $palestrante->pessoa->nm_pessoa_pes }}</p>                          
-													@endforeach										
-												</div>											
-												<div class="venue  valign-top"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}">{{ $atividade->sala->nm_sala_sal }}</a></div>
-											</div>
+							@foreach ($periodo as $key => $date)
+								<div class="tab-pane fade show schedule-item" id="box{{ $key+1 }}">
+									<ul class="m-0 p-0">
+										<li class="headings">
+											<div class="time">Início</div>
+											<div class="subject">Título</div>
+											<div class="speaker"></div>					  			
+											<div class="venue">Local</div>
 										</li>
-									@endforeach
-								</ul>
-							</div>
-							<div class="tab-pane fade schedule-item" id="nov21">
-								<ul class="m-0 p-0">
-									<li class="headings">
-										<div class="time">Início</div>
-										<div class="subject">Título</div>
-										<div class="speaker"></div>					  			
-										<div class="venue">Local</div>
-									</li>
-									@foreach($atividades as $atividade)
+
+										@foreach($atividades->whereBetween('dt_inicio_atividade_ati', [$date->format('Y-m-d'), $date->addDays(1)->format('Y-m-d')])->sortBy('dt_inicio_atividade_ati') as $atividade)
 											<li class="schedule-details">
 												<div class="block">
-													<div class="time">
+													<div class="time valign-top">
 														<i class="fa fa-clock-o"></i>
 														<span class="time">{{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('H:i') }}</span>
 													</div>
-													<div class="subject">{{ $atividade->nm_atividade_ati }}</div>
+													<div class="subject valign-top">{{ $atividade->nm_atividade_ati }}</div>
 													<div class="speaker">
 														@if(count($atividade->palestrantes))
 															Convidados
@@ -100,12 +70,13 @@
 															<p>{{ $palestrante->ds_tratamento_pal }} {{ $palestrante->pessoa->nm_pessoa_pes }}</p>                          
 														@endforeach										
 													</div>											
-													<div class="venue"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}">{{ $atividade->sala->nm_sala_sal }}</a></div>
+													<div class="venue  valign-top"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}">{{ $atividade->sala->nm_sala_sal }}</a></div>
 												</div>
 											</li>
-									@endforeach
-								</ul>
-							</div>
+										@endforeach
+									</ul>
+								</div>
+							@endforeach
 						</div>
 					</div>
 					<div class="download-button text-center">
