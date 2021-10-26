@@ -62,6 +62,14 @@ class AtividadeController extends Controller
             $fl_ativa_ati = $request->fl_ativa_ati == true ? true : false;
             $fl_destaque_ati = $request->fl_destaque_ati == true ? true : false;
 
+            if (!empty($request->dt_inicio_atividade_ati)) {
+                $request->merge(['dt_inicio_atividade_ati' => date('Y-m-d H:i', strtotime(str_replace('/', '-', $request->dt_inicio_atividade_ati)))]);
+            }
+
+            if (!empty($request->dt_termino_atividade_ati)) {
+                $request->merge(['dt_termino_atividade_ati' => date('Y-m-d H:i', strtotime(str_replace('/', '-', $request->dt_termino_atividade_ati)))]);
+            }
+
             $request->merge(['fl_ativa_ati' => $fl_ativa_ati]);
             $request->merge(['fl_destaque_ati' => $fl_destaque_ati]);
 
@@ -81,8 +89,6 @@ class AtividadeController extends Controller
 
         } catch (\Illuminate\Database\QueryException $e) {
 
-            dd($e);
-
             Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade <strong>'.Utils::getDatabaseMessageByCode($e->getCode()).'</strong>');
         
         }catch (Exception $e) {
@@ -96,6 +102,14 @@ class AtividadeController extends Controller
     public function update(Request $request, Atividade $atividade)
     {
             
+        if (!empty($request->dt_inicio_atividade_ati)) {
+            $request->merge(['dt_inicio_atividade_ati' => date('Y-m-d H:i', strtotime(str_replace('/', '-', $request->dt_inicio_atividade_ati)))]);
+        }
+
+        if (!empty($request->dt_termino_atividade_ati)) {
+            $request->merge(['dt_termino_atividade_ati' => date('Y-m-d H:i', strtotime(str_replace('/', '-', $request->dt_termino_atividade_ati)))]);
+        }
+        
         $fl_ativa_ati = $request->fl_ativa_ati == true ? true : false;
         $fl_destaque_ati = $request->fl_destaque_ati == true ? true : false;
 
