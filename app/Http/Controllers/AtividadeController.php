@@ -90,7 +90,7 @@ class AtividadeController extends Controller
             Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade: <strong>'.$atividade->nm_atividade_ati.'</strong>');
         }
 
-        return redirect('atividade/create')->withInput();        
+        return redirect('programacao')->withInput();       
     }
 
     public function update(Request $request, Atividade $atividade)
