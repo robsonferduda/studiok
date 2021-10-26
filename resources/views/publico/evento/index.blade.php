@@ -34,7 +34,7 @@
 							@endphp
 							@foreach ($periodo as $key => $date) 
 								<li class="nav-item">
-									<a class="nav-link" href="#box{{ $key+1 }}" data-toggle="pill">
+									<a class="nav-link {{ ($key == 0) ? 'active' : '' }}" href="#box{{ $key+1 }}"  data-toggle="pill">
 										DIA {{ $key+1 }}
 										<span>{{ $date->format('d') }} DE {{ App\Utils::validaMes(Carbon\Carbon::parse($date)->format('m')) }} DE {{ $date->format('Y') }}</span>
 									</a>
@@ -45,7 +45,7 @@
 					<div class="schedule-contents bg-schedule">
 						<div class="tab-content" id="pills-tabContent">
 							@foreach ($periodo as $key => $date)
-								<div class="tab-pane fade show schedule-item" id="box{{ $key+1 }}">
+								<div class="tab-pane fade show schedule-item {{ ($key == 0) ? 'active' : '' }}" id="box{{ $key+1 }}">
 									<ul class="m-0 p-0">
 										<li class="headings">
 											<div class="time">Início</div>
