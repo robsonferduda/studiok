@@ -38,7 +38,7 @@ class AtividadeController extends Controller
     {
         $eventos = Evento::all();
         $salas = Sala::all();
-        $tipos = TipoAtividade::all();
+        $tipos = TipoAtividade::orderBy('ds_tipo_atividade_tia')->get();
         $palestrantes = Palestrante::all();
 
         return view('atividades/create',compact('eventos','salas','tipos','palestrantes'));
@@ -48,7 +48,7 @@ class AtividadeController extends Controller
     {
         $eventos = Evento::all();
         $salas = Sala::all();
-        $tipos = TipoAtividade::all();
+        $tipos = TipoAtividade::orderBy('ds_tipo_atividade_tia')->get();
         $palestrantes = Palestrante::all();
         $atividade = Atividade::find($id);
 

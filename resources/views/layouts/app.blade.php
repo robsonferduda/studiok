@@ -59,6 +59,11 @@
                       </a>
                       <div id="menu_{{ $evento->id_evento_eve }}" class="collapse {{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'show' : '' }}" style="">
                         <ul class="nav ml-4">
+                          <li>
+                            <a target="BLANK" href="{{ url('eventos', $evento->ds_apelido_eve) }}">
+                              <span class="sidebar-normal"> <i class="nc-icon nc-world-2"></i> Página</span>
+                            </a>
+                          </li>
                           <li class="{{ (Session::get('url') and Session::get('url') == 'sala' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
                             <a href="{{ url('salas', $evento->ds_apelido_eve) }}">
                               <span class="sidebar-normal"> <i class="nc-icon nc-tv-2"></i> Salas </span>
