@@ -27,13 +27,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="dt_inicio_eve">Data Inicial</label>
-                            <input class="form-control datepicker" name="dt_inicio_eve" id="dt_inicio_eve" value="{{ ($evento->dt_inicio_eve) ? date('d/m/Y', strtotime($evento->dt_inicio_eve)) : '' }}" type="name" />
+                            <input class="form-control" name="dt_inicio_eve" id="dt_inicio_eve" value="{{ ($evento->dt_inicio_eve) ? date('d/m/Y', strtotime($evento->dt_inicio_eve)) : '' }}" type="name" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="dt_final_eve">Data Final</label>
-                            <input class="form-control datepicker" name="dt_fim_eve" id="dt_fim_eve" value="{{ ($evento->dt_inicio_eve) ? date('d/m/Y', strtotime($evento->dt_fim_eve)) : '' }}" type="name" />
+                            <input class="form-control" name="dt_fim_eve" id="dt_fim_eve" value="{{ ($evento->dt_inicio_eve) ? date('d/m/Y', strtotime($evento->dt_fim_eve)) : '' }}" type="name" />
                         </div>
                     </div>
                 </div>
