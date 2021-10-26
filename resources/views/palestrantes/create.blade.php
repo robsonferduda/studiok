@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label>ORCID</label>
+                                    <label>ORCID <span class="text-primary">Somente números</span></label>
                                     <input type="text" class="form-control" name="nu_orcid_pes" id="nu_orcid_pes" placeholder="ORCID">
                                 </div>
                             </div>

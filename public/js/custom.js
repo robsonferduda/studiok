@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('#hr_fim_atp').mask('00:00');
     $('#dt_inicio_atividade_ati').mask('00/00/0000 00:00');
     $('#dt_termino_atividade_ati').mask('00/00/0000 00:00');
-    $('#nu_orcid_pes').mask('0000-0000-0000-0000');
+    $('#nu_orcid_pes').mask('0000-0000-0000-0000', {placeholder: "0000-0000-0000-0000"});
 
     $("#id_tipo_atividade_tia").change(function(){
 
