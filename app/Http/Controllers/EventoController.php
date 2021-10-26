@@ -51,7 +51,7 @@ class EventoController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
 
             $retorno = array('flag' => false,
-                             'msg' => Utils::getDatabaseMessageByCode($e->getCode()));
+                             'msg' =>'<i class="fa fa-times"></i> '.Utils::getDatabaseMessageByCode($e->getCode()));
 
         } catch (Exception $e) {
             
@@ -74,14 +74,14 @@ class EventoController extends Controller
         
             $evento->update($request->all());
             $retorno = array('flag' => true,
-                             'msg' => "Dados atualizados com sucesso");
+                             'msg' => '<i class="fa fa-check"></i> Dados atualizados com sucesso');
                              
         } catch (\Illuminate\Database\QueryException $e) {
             $retorno = array('flag' => false,
-                             'msg' => Utils::getDatabaseMessageByCode($e->getCode()));
+                             'msg' => '<i class="fa fa-times"></i> '.Utils::getDatabaseMessageByCode($e->getCode()));
         } catch (Exception $e) {
             $retorno = array('flag' => true,
-                             'msg' => "Ocorreu um erro ao atualizar o registro");
+                             'msg' => '<i class="fa fa-times"></i> Ocorreu um erro ao atualizar o registro');
         }
 
         if ($retorno['flag']) {
