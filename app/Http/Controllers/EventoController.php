@@ -71,7 +71,15 @@ class EventoController extends Controller
     public function update(Request $request, Evento $evento)
     {
         try {
-        
+
+            if (!empty($request->dt_inicio_eve)) {
+                $request->merge(['dt_inicio_eve' => date('Y-m-d', strtotime(str_replace('/', '-', $request->dt_inicio_eve)))]);
+            }
+
+            if (!empty($request->dt_fim_eve)) {
+                $request->merge(['dt_fim_eve' => date('Y-m-d', strtotime(str_replace('/', '-', $request->dt_fim_eve)))]);
+            }
+                    
             $evento->update($request->all());
             $retorno = array('flag' => true,
                              'msg' => '<i class="fa fa-check"></i> Dados atualizados com sucesso');
