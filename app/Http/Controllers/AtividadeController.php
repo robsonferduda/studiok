@@ -126,4 +126,15 @@ class AtividadeController extends Controller
         $atividadeParalela = AtividadeParalela::create($request->all());
         return redirect('atividade/atividades-paralelas/'.$request->id_atividade_ati)->withInput(); 
     }
+
+    public function destroy(Atividade $atividade)
+    {
+        if($atividade->delete()){
+            Flash::success('<i class="fa fa-check"></i> Atividade excluída com sucesso.');
+        } else {
+            Flash::warning("Erro ao excluir a atividade <strong>$atividade->nm_atividade_ati</strong>.");
+        }
+        
+        return redirect('programacao');
+    }
 }

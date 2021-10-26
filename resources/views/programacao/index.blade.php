@@ -48,8 +48,15 @@
                                         @if($atividade->tipo->fl_paralelo)
                                             <a href="{{ url('atividade/atividades-paralelas',$atividade->id_atividade_ati) }}" class="btn btn-sm btn-success"><i class="nc-icon nc-bullet-list-67"></i> Atividades</a>
                                         @endif
-                                        <a href="{{ route('atividade.show',$atividade->id_atividade_ati) }}" class="btn btn-sm btn-warning"><i class="fa fa-table"></i> Detalhes</a>
+                                        <form class="form-delete" style="display: inline;" action="{{ route('atividade.destroy',$atividade->id_atividade_ati) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button title="Excluir" type="submit" class="btn btn-sm btn-danger button-remove" title="Delete">
+                                                <i class="fa fa-times"></i> Excluir
+                                            </button>
+                                        </form>
                                         <a href="{{ route('atividade.edit',$atividade->id_atividade_ati) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Editar</a>
+                                        <a href="{{ route('atividade.show',$atividade->id_atividade_ati) }}" class="btn btn-sm btn-warning"><i class="fa fa-table"></i> Detalhes</a>
                                     </div>
                                 </div>
                             </div>                             

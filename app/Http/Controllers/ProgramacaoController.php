@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Evento;
 use App\Atividade;
 use Illuminate\Http\Request;
 use App\Events\Programacao\SendMessage;
@@ -24,8 +25,11 @@ class ProgramacaoController extends Controller
 
     public function listar($apelido)
     {
+        $evento = Evento::where('ds_apelido_eve',$apelido)->first();
         $atividades = Atividade::orderBy('dt_inicio_atividade_ati')->get();
+
         Session::put('edicao',$apelido);
+        Session::put('evento',$evento);
 
         return view('programacao/index',compact('atividades'));
     }
