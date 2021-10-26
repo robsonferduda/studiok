@@ -26,7 +26,7 @@ class ProgramacaoController extends Controller
     public function listar($apelido)
     {
         $evento = Evento::where('ds_apelido_eve',$apelido)->first();
-        $atividades = Atividade::orderBy('dt_inicio_atividade_ati')->get();
+        $atividades = Atividade::where('id_evento_eve', $evento->id_evento_eve)->orderBy('dt_inicio_atividade_ati')->get();
 
         Session::put('edicao',$apelido);
         Session::put('evento',$evento);
