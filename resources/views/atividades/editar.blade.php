@@ -65,13 +65,13 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Data/Hora Início</label>
-                            <input type="text" class="form-control" name="dt_inicio_atividade_ati" id="dt_inicio_atividade_ati" value="{{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : '' }}" placeholder="__/__/____ __:__">
+                            <input type="text" class="form-control" name="dt_inicio_atividade_ati" id="dt_inicio_atividade_ati" value="{{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : '' }}" placeholder="00/00/0000 00:00">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Data/Hora Término</label>
-                            <input type="text" class="form-control" name="dt_termino_atividade_ati" id="dt_termino_atividade_ati" value="{{ ($atividade->dt_termino_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') : '' }}" placeholder="__/__/____ __:__">
+                            <input type="text" class="form-control" name="dt_termino_atividade_ati" id="dt_termino_atividade_ati" value="{{ ($atividade->dt_termino_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') : '' }}" placeholder="00/00/0000 00:00">
                         </div>
                     </div>
                 </div>  
