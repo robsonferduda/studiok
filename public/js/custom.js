@@ -62,15 +62,55 @@ $(document).ready(function() {
         removeItemButton: true
     });
 
-    $("body").on("click",".publisher-btn", function(e){
+    $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
 
-        var text = $("#text_chat").val();
-        
-        $(".ps-container").append('<div class="media media-chat"> <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="..."><div class="media-body"><p><strong>Robson Fernando Duda</strong> diz: '+text+'</p></div></div>');
+    function atualizaChat(){
+
+        var text = $("#text_chat").val();    
+        var atividade = $("#chat-content").data("atividade");
+    
+        $.ajax({
+            url: '../../../atividades/chat/salvar',
+               type: 'POST',
+               data: {
+                    "mensagem_cha": text,
+                    "id_atividade_ati": atividade,
+                    "_token": $('meta[name="csrf-token"]').attr('content'),
+            },
+            success: function(response) {
+
+                $(".ps-container > .media-chat").remove();
+
+                $.ajax({
+                    url: '../../../atividades/'+atividade+'/chat',
+                    type: 'GET',
+                    success: function(response) {
+                        $.each(response, function( key, value ) {
+                            if(value.mensagem){
+                                $(".ps-container").append('<div class="media media-chat"><p data-letters="'+value.id+'"></p><div class="media-body"><p><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
+                            }
+                        });
+                        $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+                    }
+                });
                 
-        $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+            },
+            error: function(response){
+                console.log(response);
+            }
+        });
        
         $("#text_chat").val("");
         $("#text_chat").focus();
+    }
+
+    $(document).on('keypress',function(e) {
+        if(e.which == 13) {
+            atualizaChat();
+        }
+    });
+
+    $("body").on("click",".publisher-btn", function(e){
+        atualizaChat();
     });
 });

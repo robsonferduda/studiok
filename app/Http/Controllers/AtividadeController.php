@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Utils;
+use App\Chat;
 use App\Sala;
 use App\Evento;
 use App\Atividade;
@@ -19,7 +21,7 @@ class AtividadeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index','getChat']]);
         Session::put('url','programacao');
     }
 
@@ -150,5 +152,24 @@ class AtividadeController extends Controller
         }
         
         return redirect('programacao');
+    }
+
+    public function salvarChat(Request $request)
+    {
+        $request->merge(['id_usuario_usu' => Auth::user()->id ]);
+        Chat::create($request->all());
+    }
+
+    public function getChat($atividade)
+    {
+        $mensagens = array();
+        $dados = Chat::all();
+        foreach($dados as $chat){
+            $mensagens[] = array('mensagem' => $chat->mensagem_cha, 
+                                 'usuario' => $chat->user->name,
+                                 'id' => substr($chat->user->name, 0, 1),
+                                 'data' => date('d/m/Y H:i:s', strtotime($chat->created_at)));
+        }
+        return response()->json($mensagens);       
     }
 }
