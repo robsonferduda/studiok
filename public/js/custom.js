@@ -61,4 +61,16 @@ $(document).ready(function() {
     var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
         removeItemButton: true
     });
+
+    $("body").on("click",".publisher-btn", function(e){
+
+        var text = $("#text_chat").val();
+        
+        $(".ps-container").append('<div class="media media-chat"> <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="..."><div class="media-body"><p><strong>Robson Fernando Duda</strong> diz: '+text+'</p></div></div>');
+                
+        $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+       
+        $("#text_chat").val("");
+        $("#text_chat").focus();
+    });
 });

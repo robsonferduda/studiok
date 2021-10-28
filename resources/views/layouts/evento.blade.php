@@ -11,6 +11,7 @@
   <link href="{{ asset('plugins/slick/slick.css') }}" rel="stylesheet">
   <link href="{{ asset('plugins/slick/slick-theme.css') }}" rel="stylesheet">
   <link href="{{ asset('css/evento.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/chat.css') }}" rel="stylesheet">
   <link href="{{ asset('images/favicon.png') }}" rel="shortcut icon">
 </head>
 <body class="body-wrapper">
@@ -34,9 +35,11 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/programacao') }}">Programação<span>/</span></a>
         </li>
+        <!--
         <li class="nav-item">
           <a class="nav-link" href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/stand-virtual') }}">Stand Virtual<span>/</span></a>
         </li>
+      -->
         <li class="nav-item">
           <a class="nav-link" href="{{ url('cadastrar') }}">Cadastre-se</a>
         </li>
@@ -70,6 +73,8 @@
   <script src="{{ asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
   <script src="{{ asset('plugins/slick/slick.min.js') }}"></script>  
   <script src="{{ asset('plugins/syotimer/jquery.syotimer.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
   <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>

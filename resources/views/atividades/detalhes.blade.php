@@ -45,6 +45,88 @@
                         @endforelse
                     </div>
                 </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Perguntas dos Participantes</h6>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Participante</th>
+                                    <th>Pergunta</th>
+                                    <th>Situação</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Robson Fernando Duda</td>
+                                    <td>Qual a formação do palestrante?</td>
+                                    <td><span class="badge badge-pill badge-danger">REJEITADA</span></td>
+                                    <td>
+                                        <button title="Rejeitar" type="submit" class="btn btn-danger btn-link btn-icon">
+                                            <i class="fa fa-thumbs-down fa-2x"></i>
+                                        </button>
+                                        <button title="Aceitar" type="submit" class="btn btn-primary btn-link btn-icon">
+                                            <i class="fa fa-thumbs-up fa-2x"></i>
+                                        </button>
+                                        <button title="Excluir" type="submit" class="btn btn-success btn-link btn-icon">
+                                            <i class="fa fa-check fa-2x"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Anderson Clayton dos Santos</td>
+                                    <td>Qual curso melhor se encaixa no formato de graduação apresentado nesta palestra?</td>
+                                    <td><span class="badge badge-pill badge-primary">ACEITA</span></td>
+                                    <td>
+                                        <button title="Rejeitar" type="submit" class="btn btn-danger btn-link btn-icon">
+                                            <i class="fa fa-thumbs-down fa-2x"></i>
+                                        </button>
+                                        <button title="Aceitar" type="submit" class="btn btn-primary btn-link btn-icon">
+                                            <i class="fa fa-thumbs-up fa-2x"></i>
+                                        </button>
+                                        <button title="Excluir" type="submit" class="btn btn-success btn-link btn-icon">
+                                            <i class="fa fa-check fa-2x"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Elizabete Catapan</td>
+                                    <td>Qual o sentido da vida?</td>
+                                    <td><span class="badge badge-pill badge-success">RESPONDIDA</span></td>
+                                    <td>
+                                        <button title="Rejeitar" type="submit" class="btn btn-danger btn-link btn-icon">
+                                            <i class="fa fa-thumbs-down fa-2x"></i>
+                                        </button>
+                                        <button title="Aceitar" type="submit" class="btn btn-primary btn-link btn-icon">
+                                            <i class="fa fa-thumbs-up fa-2x"></i>
+                                        </button>
+                                        <button title="Excluir" type="submit" class="btn btn-success btn-link btn-icon">
+                                            <i class="fa fa-check fa-2x"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Robson Fernando Duda</td>
+                                    <td>Quem vai ser campeão da Libertadores?</td>
+                                    <td><span class="badge badge-pill badge-warning">PENDENTE</span></td>
+                                    <td>
+                                        <button title="Rejeitar" type="submit" class="btn btn-danger btn-link btn-icon">
+                                            <i class="fa fa-thumbs-down fa-2x"></i>
+                                        </button>
+                                        <button title="Aceitar" type="submit" class="btn btn-primary btn-link btn-icon">
+                                            <i class="fa fa-thumbs-up fa-2x"></i>
+                                        </button>
+                                        <button title="Excluir" type="submit" class="btn btn-success btn-link btn-icon">
+                                            <i class="fa fa-check fa-2x"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div>
+                </div>
             </div>
         </div>
     </div> 
