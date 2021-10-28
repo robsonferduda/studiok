@@ -163,13 +163,15 @@ class AtividadeController extends Controller
     public function getChat($atividade)
     {
         $mensagens = array();
-        $dados = Chat::all();
+        $dados = Chat::where('id_atividade_ati',$atividade)->get();
+
         foreach($dados as $chat){
             $mensagens[] = array('mensagem' => $chat->mensagem_cha, 
                                  'usuario' => $chat->user->name,
                                  'id' => substr($chat->user->name, 0, 1),
                                  'data' => date('d/m/Y H:i:s', strtotime($chat->created_at)));
         }
+
         return response()->json($mensagens);       
     }
 }
