@@ -31,12 +31,12 @@
                 <div class="col-lg-4 col-md-4">
                     <div class="card card-bordered">
                         <div class="card-header px-2 py-0">
-                            <p class="mt-2 mb-2"><strong>Principais Mensagens</strong></p>
+                            <p class="mt-2 mb-2"><strong>Perguntas e Comentários</strong></p>
                         </div>
                         <div class="ps-container ps-theme-default ps-active-y" id="chat-content" data-atividade="{{ $atividade->id_atividade_ati }}" style="overflow-y: scroll !important; height:400px !important;">
                             @foreach($atividade->chat->sortBy('created_at') as $key => $chat)
                                 <div class="media media-chat"> 
-                                    <p data-letters="{{ strtoupper(substr($chat->user->name, 0, 1)) }}"></p>
+                                    
                                     <div class="media-body">
                                         <p><strong>{{ $chat->user->name }}</strong> {{ $chat->mensagem_cha }}</p>
                                     </div>

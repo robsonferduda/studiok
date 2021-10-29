@@ -74,7 +74,9 @@ class HomeController extends Controller
         $evento = Evento::where('ds_apelido_eve',$e)->first();
         Session::put('evento',$evento);
         $atividades = Atividade::all();
-        return view('publico/evento/index',compact('evento','atividades'));
+        $palestrantes = Palestrante::all();
+
+        return view('publico/evento/index',compact('evento','atividades','palestrantes'));
     }
 
     public function programacao($e)
@@ -82,6 +84,7 @@ class HomeController extends Controller
         $evento = Evento::where('ds_apelido_eve',$e)->first();
         Session::put('evento',$evento);
         $atividades = Atividade::all();
+
         return view('publico/evento/index',compact('evento','atividades'));
     }
 
@@ -90,6 +93,7 @@ class HomeController extends Controller
         $evento = Evento::where('ds_apelido_eve',$e)->first();
         Session::put('evento',$evento);
         $atividades = Atividade::all();
+
         return view('publico/evento/index',compact('evento','atividades'));
     }
 

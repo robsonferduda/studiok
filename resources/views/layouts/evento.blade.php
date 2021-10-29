@@ -76,6 +76,7 @@
   <script src="{{ asset('plugins/syotimer/jquery.syotimer.min.js') }}"></script>
   <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
   <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>

@@ -20,6 +20,32 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="section-title">
+						<h3>Palestrantes</h3>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<section class="customer-logos slider">
+						@foreach($palestrantes as $p)
+							<div class="slide">
+								<img src="{{ url('/profile_pictures/'.$p->path_imagem_pal) }}">
+								<h6>{{ $p->pessoa->nm_pessoa_pes }}</h6>
+								{{ $p->ds_empresa_pal }}
+								{{ $p->ds_cargo_pal }}
+							</div>
+						@endforeach
+					 </section>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section schedule">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
 						<h3>Programação do Evento</h3>
 						<p>Confira a programação e fique por dentro de tudo que acontece no evento!</p>
 					</div>

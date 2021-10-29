@@ -87,7 +87,7 @@ $(document).ready(function() {
                     success: function(response) {
                         $.each(response, function( key, value ) {
                             if(value.mensagem){
-                                $(".ps-container").append('<div class="media media-chat"><p data-letters="'+value.id+'"></p><div class="media-body"><p><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
+                                $(".ps-container").append('<div class="media media-chat"><div class="media-body"><p><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
                             }
                         });
                         $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
@@ -112,5 +112,26 @@ $(document).ready(function() {
 
     $("body").on("click",".publisher-btn", function(e){
         atualizaChat();
+    });
+
+    $('.customer-logos').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1500,
+        arrows: false,
+        dots: false,
+        pauseOnHover: false,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 4
+            }
+        }, {
+            breakpoint: 520,
+            settings: {
+                slidesToShow: 3
+            }
+        }]
     });
 });
