@@ -22,11 +22,16 @@ class HomeController extends Controller
 
     public function index()
     {
+        //$evento = Evento::where('ds_apelido_eve',$e)->first();
+        //Session::put('evento',$evento);
+        $atividades = Atividade::all();
+
+        //return view('seminario');
         return view('index');
     }
 
-    public function eventos()
-    {
+    public function eventos(){
+    
         $eventos = Evento::all();
         return view('publico/evento/listar', compact('eventos'));
     }
@@ -76,7 +81,8 @@ class HomeController extends Controller
         $atividades = Atividade::all();
         $palestrantes = Palestrante::all();
 
-        return view('publico/evento/index',compact('evento','atividades','palestrantes'));
+        return view('seminario',compact('evento','atividades','palestrantes'));
+        //return view('publico/evento/index',compact('evento','atividades','palestrantes'));
     }
 
     public function programacao($e)
@@ -84,8 +90,11 @@ class HomeController extends Controller
         $evento = Evento::where('ds_apelido_eve',$e)->first();
         Session::put('evento',$evento);
         $atividades = Atividade::all();
+        $palestrantes = Palestrante::all();
 
-        return view('publico/evento/index',compact('evento','atividades'));
+        return view('programacao',compact('evento','atividades','palestrantes'));
+
+        return view('publico/evento/index',compact('evento','atividades','palestrantes'));
     }
 
     public function palestrantes($e)
@@ -93,8 +102,9 @@ class HomeController extends Controller
         $evento = Evento::where('ds_apelido_eve',$e)->first();
         Session::put('evento',$evento);
         $atividades = Atividade::all();
+        $palestrantes = Palestrante::all();
 
-        return view('publico/evento/index',compact('evento','atividades'));
+        return view('publico/evento/index',compact('evento','atividades','palestrantes'));
     }
 
     public function stand($e)

@@ -42,3 +42,8 @@
 .text-none{
     text-transform: none !important;
 }
+.menu-evento{
+    background: white;
+    padding: 10px 8px;
+    border-radius: 8px;
+}

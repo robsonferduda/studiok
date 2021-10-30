@@ -65,7 +65,7 @@
   </nav>
 
   <div class="wrapper wrapper-full-page">
-    <div class="full-page register-page section-image" filter-color="black" data-image="{{ asset('img/bg/1.jpg') }}">
+    <div class="full-page register-page section-image" filter-color="black" data-image="{{ asset('img/bg/conference.jpeg') }}">
       <div class="content">
         <div class="container">
           @yield('content')

@@ -1,43 +1,5 @@
 /*=== MEDIA QUERY ===*/
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto:300,400,500,700");
-html {
-  font-size: 16px;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
-  color: #222222;
-  font-weight: 600;
-}
-
-h1 {
-  font-size: 2.8rem;
-}
-
-h2 {
-  font-size: 2.5rem;
-}
-
-h3 {
-  font-size: 2.25rem;
-}
-
-h4 {
-  font-size: 1.6875rem;
-}
-
-h5 {
-  font-size: 1.375rem;
-}
-
-h6 {
-  font-size: 1.25rem;
-}
 
 p, a, li, blockquote, label {
   font-size: 1rem;
