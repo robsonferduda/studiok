@@ -78,10 +78,13 @@ class HomeController extends Controller
     {       
         $evento = Evento::where('ds_apelido_eve',$e)->first();
         Session::put('evento',$evento);
+
+        $salas = Sala::where('id_evento_eve',$evento->id_evento_eve)->get();
+
         $atividades = Atividade::all();
         $palestrantes = Palestrante::all();
 
-        return view('seminario',compact('evento','atividades','palestrantes'));
+        return view('seminario',compact('evento','atividades','palestrantes','salas'));
         //return view('publico/evento/index',compact('evento','atividades','palestrantes'));
     }
 

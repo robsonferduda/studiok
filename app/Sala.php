@@ -28,7 +28,7 @@ class Sala extends Model implements Auditable
 
     public function atividades()
     {
-        return $this->belongsTo('App\Atividade', 'id_sala_sal', 'id_sala_sal');
+        return $this->hasMany('App\Atividade', 'id_sala_sal', 'id_sala_sal');
     }
 
     public function atividadesParalelas()

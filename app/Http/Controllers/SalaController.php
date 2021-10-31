@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Sala;
 use App\Evento;
 use App\Utils;
 use App\TipoSala;
+use App\Atividade;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -23,6 +25,19 @@ class SalaController extends Controller
     {
         $salas = Sala::all();
         return view('salas/index',compact('salas'));
+    }
+
+    public function contato()
+    {
+        return view('eventos/contato');
+    }
+
+    public function sala($evento, $id_sala)
+    {
+        $sala = Sala::with('atividades')->find($id_sala);
+        $atividade = Atividade::where('id_sala_sal', $id_sala)->where('dt_termino_atividade_ati','>',Carbon::now()->toDateTimeString())->where('dt_termino_atividade_ati', '<', Carbon::now()->toDateTimeString())->first();
+        
+        return view('publico/evento/sala', compact('atividade','sala'));
     }
 
     public function listar($apelido)

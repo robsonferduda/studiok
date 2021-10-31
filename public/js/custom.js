@@ -87,7 +87,7 @@ $(document).ready(function() {
                     success: function(response) {
                         $.each(response, function( key, value ) {
                             if(value.mensagem){
-                                $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important"><div class="media-body"><p><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
+                                $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
                             }
                         });
                         $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
