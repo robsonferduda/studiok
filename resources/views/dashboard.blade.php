@@ -91,6 +91,7 @@
           </div> 
     </div>
   @endrole
+
   @role('participante')
     <div class="row">
       <h5 class="ml-3">Meus Eventos</h5>
@@ -105,7 +106,7 @@
                   <h4 class="card-title mt-2 ml-2"> {{ $evento->nm_evento_eve }}</h4>
                 </div>
                 <div class="col-md-3 col-lg-3 text-right">
-                  <a href="{{ url('eventos/'.$evento->ds_apelido_eve.'/programacao') }}" target="_BLANK" class="btn btn-round btn-primary mb-2"><i class="fa fa-send mr-1"></i> Ir para o Evento</a>
+                  <a href="{{ url('eventos/'.$evento->ds_apelido_eve.'/programacao') }}" target="_BLANK" class="btn btn-round btn-primary mb-2"><i class="fa fa-check mr-1"></i> Inscreva-se</a>
                 </div>
               </div>
             </div>
@@ -114,6 +115,7 @@
       @endforeach
     </div>
   @endrole
+
   @role('assistente')
     <div class="row">
       <h5 class="ml-3">Meus Eventos</h5>

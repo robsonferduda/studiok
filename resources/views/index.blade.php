@@ -48,9 +48,12 @@
                 </div>
                 <hr/>
                 <div class="card-footer mt-0">
-                  <a class="btn-link mb-1" href="{{ url('cadastrar') }}">
-                    <span class="forget-password">Cadastre-se Aqui</span>
-                  </a>
+                  @if(Auth::user())
+                    <a href="{{ url('dashboard') }}" class="btn btn-info"><i class="fa fa-check"></i> Inscreva-se</a>
+                    <a href="{{ url('eventos/12-workshop-egc') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
+                  @else
+                    <a href="{{ url('cadastrar') }}" class="btn btn-info"><i class="fa fa-check"></i> Cadastra-se</a>
+                  @endif
                 </div>
               </div>
             </div>

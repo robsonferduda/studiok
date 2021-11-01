@@ -27,11 +27,6 @@ class SalaController extends Controller
         return view('salas/index',compact('salas'));
     }
 
-    public function contato()
-    {
-        return view('eventos/contato');
-    }
-
     public function sala($evento, $id_sala)
     {
         $sala = Sala::with('atividades')->find($id_sala);

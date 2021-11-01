@@ -14,7 +14,7 @@ class EventoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['contato']]);
         Session::put('url','evento');
     }
 
@@ -22,6 +22,11 @@ class EventoController extends Controller
     {
         $eventos = Evento::paginate(10);
         return view('eventos/index', compact('eventos'));
+    }
+
+    public function contato()
+    {
+        return view('eventos/contato');
     }
 
     public function create()

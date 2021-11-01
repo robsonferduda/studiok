@@ -93,7 +93,9 @@
                   @endforeach
 
                   @endif
+                  
                 <hr/>
+
                 @role('administrador')               
                   
                 <li class="{{ (Session::has('url') and Session::get('url') == 'auditoria') ? 'active' : '' }}">

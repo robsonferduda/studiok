@@ -12,7 +12,7 @@ class Participante extends Model
     protected $connection = 'pgsql';
     protected $table = 'participante_par';
     protected $primaryKey = 'id_participante_par';
-    protected $fillable = ['id_pessoa_pes','nm_cracha_par','nu_cpf_par','biografia_pal'];
+    protected $fillable = ['id_pessoa_pes','nm_cracha_par','nu_cpf_par','biografia_pal','id_situacao_sit'];
     
     public function pessoa()
     {
