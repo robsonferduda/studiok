@@ -32,7 +32,7 @@
             <span class="navbar-toggler-bar bar3"></span>
           </button>
         </div>
-        <a class="navbar-brand text-none" href="{{ url('/') }}">StudioK Gerenciamento de Eventos Acadêmicos</a>
+        <a class="navbar-brand text-none" href="{{ url('/') }}">StudioK</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -47,19 +47,43 @@
                 Início
               </a>
             </li>
-            <li class="nav-item ">
-              <a href="{{ url('cadastrar') }}" class="nav-link text-none">
-                <i class="nc-icon nc-circle-10"></i>
-                Cadastre-se
-              </a>
+            @if(Auth::user())
+              <li class="nav-item ">
+                <a href="{{ url('dashboard') }}" class="nav-link text-none">
+                  <i class="nc-icon nc-tag-content"></i>
+                  Meus Eventos
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a href="{{ url('dashboard') }}" class="nav-link text-none">
+                  <i class="nc-icon nc-circle-10"></i>
+                  {{ Auth::user()->name }}
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="nav-link text-none">
+                  <i class="nc-icon nc-button-power"></i>
+                  <p>Sair</p>
+                </a>
             </li>
-            <li class="nav-item ">
-              <a href="{{ url('login') }}" class="nav-link">
-                <i class="nc-icon nc-lock-circle-open"></i>
-                Acesse sua conta
-              </a>
-            </li>
+            @else
+              <li class="nav-item ">
+                <a href="{{ url('cadastrar') }}" class="nav-link text-none">
+                  <i class="nc-icon nc-circle-10"></i>
+                  Cadastre-se
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a href="{{ url('login') }}" class="nav-link">
+                  <i class="nc-icon nc-lock-circle-open"></i>
+                  Acesse sua conta
+                </a>
+              </li>
+            @endif
           </ul>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
       </div>
     </div>
   </nav>
