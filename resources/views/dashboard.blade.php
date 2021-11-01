@@ -97,7 +97,7 @@
       <h5 class="ml-3">Meus Eventos</h5>
     </div>
     <div class="row">
-      @foreach($meus_eventos as $key => $evento)
+      @forelse($meus_eventos as $key => $evento)
         <div class="col-md-12 col-lg-12">
           <div class="card">
             <div class="card-body">
@@ -112,7 +112,19 @@
             </div>
           </div>
         </div>
-      @endforeach
+      @empty
+      <div class="col-md-12 col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-9 col-lg-9">
+                <h4 class="card-title mt-2 ml-2">Você não está inscrito em nenhum evento</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforelse
     </div>
   @endrole
 
