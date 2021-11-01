@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-            @else
+        @else
                 <div class="row">
                     <div class="col-lg-12 col-md-12 align-self-center">    
                         <h4 class="mb-1 mt-2 mb-2"><strong></strong> {{ $sala->nm_sala_sal }}</h4> 
@@ -51,18 +51,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 col-md-8 mt-1">                
-                        <iframe width="100%" height="460px" src="{{ $sala->ds_local_sal }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-12 col-md-12">
                         @if($sala->atividades)
                             @foreach($sala->atividades as $key => $atividade)
-                                <p>{{ $atividade->nm_atividade_ati }}</p>
+                                <p class="mb-1"><strong>Data/Hora Início: </strong> {{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }} - {{ $atividade->nm_atividade_ati }}</p>
                             @endforeach
                         @endif
                     </div>
                 </div>
-            @endif
+        @endif
             <div class="col-lg-12 col-md-8">
                 <div class="download-button text-center">
                     <a href="{{ url('eventos',Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Início</a>
