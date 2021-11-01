@@ -98,7 +98,7 @@ class ParticipanteController extends Controller
 
         }else{
             Flash::warning('<i class="fa fa-warning"></i> Email já cadastrado');
-            return redirect('/')->withInput();
+            return redirect('cadastrar')->withInput();
         }
     }
 
