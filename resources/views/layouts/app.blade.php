@@ -47,53 +47,54 @@
                       </a>
                   </li>
                 @endrole
-                
-                @if(Session::has('meus_eventos'))
-                  @foreach(Session::get('meus_eventos') as $evento)
-                    <li class="{{ (Session::has('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
-                      <a data-toggle="collapse" href="#menu_{{ $evento->id_evento_eve }}" class="{{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? '' : 'collapsed' }}" aria-expanded="{{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'true' : 'false' }}">
-                        <i class="nc-icon nc-settings-gear-65"></i>
-                        <p>
-                          {{ $evento->ds_apelido_eve }} <b class="caret"></b>
-                        </p>
-                      </a>
-                      <div id="menu_{{ $evento->id_evento_eve }}" class="collapse {{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'show' : '' }}" style="">
-                        <ul class="nav ml-4">
-                          <li>
-                            <a target="BLANK" href="{{ url('eventos', $evento->ds_apelido_eve) }}">
-                              <span class="sidebar-normal"> <i class="nc-icon nc-world-2"></i> Página</span>
-                            </a>
-                          </li>
-                          <li class="{{ (Session::get('url') and Session::get('url') == 'sala' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
-                            <a href="{{ url('salas', $evento->ds_apelido_eve) }}">
-                              <span class="sidebar-normal"> <i class="nc-icon nc-tv-2"></i> Salas </span>
-                            </a>
-                          </li>
-                          <li class="{{ (Session::get('url') and Session::get('url') == 'palestrante' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
-                            <a href="{{ url('palestrantes', $evento->ds_apelido_eve) }}">
-                              <span class="sidebar-normal"> <i class="fa fa-graduation-cap"></i> Palestrantes </span>
-                            </a>
-                          </li>
-                          
-                          @permission('participantes')
-                            <li class="{{ (Session::get('url') and Session::get('url') == 'participante' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
-                              <a href="{{ url('participantes', $evento->ds_apelido_eve) }}">
-                                <span class="sidebar-normal"> <i class="nc-icon nc-badge"></i> Participantes </span>
+                                
+                @if(Auth::user()->hasRole(['administrador', 'palestrante']))
+                  @if(Session::has('meus_eventos'))
+                    @foreach(Session::get('meus_eventos') as $evento)
+                      <li class="{{ (Session::has('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                        <a data-toggle="collapse" href="#menu_{{ $evento->id_evento_eve }}" class="{{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? '' : 'collapsed' }}" aria-expanded="{{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'true' : 'false' }}">
+                          <i class="nc-icon nc-settings-gear-65"></i>
+                          <p>
+                            {{ $evento->ds_apelido_eve }} <b class="caret"></b>
+                          </p>
+                        </a>
+                        <div id="menu_{{ $evento->id_evento_eve }}" class="collapse {{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'show' : '' }}" style="">
+                          <ul class="nav ml-4">
+                            <li>
+                              <a target="BLANK" href="{{ url('eventos', $evento->ds_apelido_eve) }}">
+                                <span class="sidebar-normal"> <i class="nc-icon nc-world-2"></i> Página</span>
                               </a>
                             </li>
-                          @endpermission
-                          <li class="{{ (Session::get('url') and Session::get('url') == 'programacao' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
-                            <a href="{{ url('programacao', $evento->ds_apelido_eve) }}">
-                              <span class="sidebar-normal"> <i class="nc-icon nc-calendar-60"></i> Programação </span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  @endforeach
+                            <li class="{{ (Session::get('url') and Session::get('url') == 'sala' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                              <a href="{{ url('salas', $evento->ds_apelido_eve) }}">
+                                <span class="sidebar-normal"> <i class="nc-icon nc-tv-2"></i> Salas </span>
+                              </a>
+                            </li>
+                            <li class="{{ (Session::get('url') and Session::get('url') == 'palestrante' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                              <a href="{{ url('palestrantes', $evento->ds_apelido_eve) }}">
+                                <span class="sidebar-normal"> <i class="fa fa-graduation-cap"></i> Palestrantes </span>
+                              </a>
+                            </li>
+                            
+                            @permission('participantes')
+                              <li class="{{ (Session::get('url') and Session::get('url') == 'participante' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                                <a href="{{ url('participantes', $evento->ds_apelido_eve) }}">
+                                  <span class="sidebar-normal"> <i class="nc-icon nc-badge"></i> Participantes </span>
+                                </a>
+                              </li>
+                            @endpermission
+                            <li class="{{ (Session::get('url') and Session::get('url') == 'programacao' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">
+                              <a href="{{ url('programacao', $evento->ds_apelido_eve) }}">
+                                <span class="sidebar-normal"> <i class="nc-icon nc-calendar-60"></i> Programação </span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    @endforeach
 
+                    @endif
                   @endif
-                  
                 <hr/>
 
                 @role('administrador')               
