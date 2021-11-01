@@ -50,3 +50,12 @@
 .box-programacao p a{
     color: black;
 }
+.view-eye{
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    z-index: 1000;
+}
+.view-eye:hover{
+    cursor: pointer;
+}

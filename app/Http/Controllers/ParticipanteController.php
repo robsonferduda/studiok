@@ -72,6 +72,8 @@ class ParticipanteController extends Controller
     public function cadastro(ParticipanteRequest $request)
     {
         $pessoa = Pessoa::where('ds_email_pes',$request->email)->first();
+
+        dd($request->all());
         
         if(!$pessoa)
         {
@@ -85,7 +87,7 @@ class ParticipanteController extends Controller
             $participante = Participante::updateOrCreate($chave_participante, $dados_participante);
 
             $chave_usuario = array('email' => $request->email);
-            $dados_usuario = array('id_pessoa_pes' => $pessoa->id_pessoa_pes, 'name' => $request->name, 'password' => Hash::make($request->password));
+            $dados_usuario = array('id_pessoa_pes' => $pessoa->id_pessoa_pes, 'name' => $request->name, 'password' => Hash::make($request->senha));
             $user = User::updateOrCreate($chave_usuario, $dados_usuario);
 
             $role = Role::where('name','participante')->first();

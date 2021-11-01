@@ -19,7 +19,7 @@
                           <i class="nc-icon nc-single-02"></i>
                         </span>
                       </div>
-                      <input type="text" name="name" class="form-control" placeholder="Nome">
+                      <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Nome">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -27,7 +27,7 @@
                           <i class="nc-icon nc-email-85"></i>
                         </span>
                       </div>
-                      <input type="email" name="email" class="form-control" placeholder="Email">
+                      <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="Email">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -35,7 +35,10 @@
                           <i class="nc-icon nc-key-25"></i>
                         </span>
                       </div>
-                      <input type="password" name="password" class="form-control" placeholder="Senha">
+                      <input type="password" name="senha" id="senha" class="form-control" value="{{ old('senha') }}" placeholder="Senha">
+                      <div class="view-eye">
+                        <i class="fa fa-eye view-password" data-target="senha"></i>  
+                      </div>                   
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -43,7 +46,10 @@
                           <i class="nc-icon nc-key-25"></i>
                         </span>
                       </div>
-                      <input type="password" name="password_confirm" class="form-control" placeholder="Repita a Senha">
+                      <input type="password" name="password_confirm" id="password_confirm" class="form-control" value="{{ old('password_confirm') }}" placeholder="Repita a Senha">
+                      <div class="view-eye">
+                        <i class="fa fa-eye view-password" data-target="password_confirm"></i>  
+                      </div> 
                     </div>
                     
                     <button type="submit" class="btn btn-info btn-round mb-4"><i class="nc-icon nc-check-2"></i> Cadastrar</button>

@@ -44,6 +44,7 @@ class HomeController extends Controller
         $participante = new participante();
         $meus_eventos = array();
         $programacao = array();
+        
 
         if(Auth::user()->hasRole('administrador')){
             $meus_eventos = Evento::all();

@@ -26,8 +26,8 @@ class ParticipanteRequest extends FormRequest
         return [
             'email' => 'required',
             'name'  => 'required',
-            'password'  => 'required',
-            'password_confirm'  => 'required|same:password'
+            'senha'  => 'required',
+            'password_confirm'  => 'required|same:senha'
         ];
     }
 
@@ -36,7 +36,7 @@ class ParticipanteRequest extends FormRequest
         return [
             'email.required' => 'Email obrigatório',
             'name.required' => 'Nome obrigatório',
-            'password.required' => 'Senha obrigaória',
+            'senha.required' => 'Senha obrigatória',
             'password_confirm.required' => 'Confirmação de senha obrigatória',
             'password_confirm.same' => 'As senhas devem ser iguais'
         ];
