@@ -24,7 +24,7 @@ class ResetPassword extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('StudioK - Recuperação de Senha')
+            ->subject('Recuperação de Senha')
             ->markdown('auth.reset.email')
             ->line('Você está recebendo este e-mail porque recebemos uma solicitação de redefinição de senha para sua conta.')
             ->action('Alterar Senha', url('password/reset', $this->token))
