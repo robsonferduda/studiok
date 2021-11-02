@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Evento;
 use App\Atividade;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Events\Programacao\SendMessage;
 use Illuminate\Support\Facades\Event;
@@ -36,8 +37,12 @@ class ProgramacaoController extends Controller
 
     public function show($id)
     {
-        $atividade = Atividade::find($id);
-        return view('publico/evento/sala', compact('atividade'));
+        $ati = Atividade::find($id);
+        $sala = $ati->sala;
+
+        $atividade = Atividade::where('id_atividade_ati', $id)->where('dt_inicio_atividade_ati','>',Carbon::now()->toDateTimeString())->where('dt_termino_atividade_ati', '<', Carbon::now()->toDateTimeString())->first();
+    
+        return view('publico/evento/sala', compact('atividade','sala'));
     }
 
     public function enviarPergunta()

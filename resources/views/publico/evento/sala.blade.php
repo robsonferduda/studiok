@@ -8,7 +8,8 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 align-self-center">   
                     <h4 class="mb-1 mt-2"><strong></strong> {{ $atividade->nm_atividade_ati }}</h4>   
-                    <h6 class="mb-1 mt-2 mb-2"><strong></strong> {{ $atividade->sala->nm_sala_sal }}</h6>              
+                    <h6 class="mb-1 mt-2 mb-2"><strong></strong> {{ $atividade->sala->nm_sala_sal }}</h6> 
+                    <span class="badge badge-success">ONLINE</span>             
                 </div>
             </div>
             <div class="row">
@@ -47,14 +48,29 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 align-self-center">    
                         <h4 class="mb-1 mt-2 mb-2"><strong></strong> {{ $sala->nm_sala_sal }}</h4> 
-                        <p>Olá visitante! A sala não possui programação AO VIVO no momento. Confira a programação da sala para saber mais.</p>             
+                        <span class="badge badge-danger">OFFLINE</span>
+                        <p class="mt-2">Olá visitante! A sala não possui programação AO VIVO no momento.</p>
+                        <p>Confira a programação da sala para saber mais.</p>  
+                        <hr/>           
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         @if($sala->atividades)
                             @foreach($sala->atividades as $key => $atividade)
-                                <p class="mb-1"><strong>Data/Hora Início: </strong> {{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }} - {{ $atividade->nm_atividade_ati }}</p>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div style="float: left;">
+                                            <p>{{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }} - </p>
+                                        </div>
+                                        <div class="ml-1" style="float: left;">
+                                            <p><strong>{{ $atividade->nm_atividade_ati }}</strong></p>
+                                            @foreach($atividade->palestrantes as $key => $palestrante)
+                                                <p>{{ $palestrante->ds_tratamento_pal }}{{ $palestrante->pessoa->nm_pessoa_pes }}</p>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         @endif
                     </div>
