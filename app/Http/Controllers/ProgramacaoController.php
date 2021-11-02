@@ -41,7 +41,6 @@ class ProgramacaoController extends Controller
         $sala = $ati->sala;
 
         $atividade = Atividade::where('id_sala_sal', $sala->id_sala_sal)
-                            ->where('id_atividade_ati', $id)
                             ->where('dt_inicio_atividade_ati','<',Carbon::now()->toDateTimeString())
                             ->where('dt_termino_atividade_ati', '>', Carbon::now()->toDateTimeString())
                             ->first();
