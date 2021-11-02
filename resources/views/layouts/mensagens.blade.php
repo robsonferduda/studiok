@@ -6,7 +6,7 @@
         </div>
     @endforeach
 @endif    
-{!! Session::forget('flash_notification') !!}
+{{ Session::forget('flash_notification') }}
 
 @if ($errors->any())
 	@foreach($errors->all() as $error)
