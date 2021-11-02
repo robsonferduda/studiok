@@ -14,7 +14,7 @@ return [
     */
 
     'reset' => 'Sua senha foi alterada',
-    'sent' => 'Enviamos seu link de redefinição de senha por e-mail. Caso não tenha recebido o email, verifique sua caixa de <span>SPAM</span>',
+    'sent' => 'Enviamos seu link de redefinição de senha por e-mail. Caso não tenha recebido o email, verifique sua caixa de <strong>SPAM</strong>',
     'throttled' => 'Aguarde antes de tentar novamente',
     'token' => 'Token de redefinição de senha é inválido',
     'user' => "Não conseguimos encontrar um usuário com esse endereço de e-mail",
