@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         @if($sala->atividades)
-                            @foreach($sala->atividades as $key => $atividade)
+                            @foreach($sala->atividades->sortBy('dt_inicio_atividade_ati') as $key => $atividade)
                                 <div class="row mb-1">
                                     <div class="col-lg-12 col-md-12">
                                         <div style="float: left;">
