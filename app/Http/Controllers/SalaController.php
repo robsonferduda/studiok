@@ -30,9 +30,10 @@ class SalaController extends Controller
     public function sala($evento, $id_sala)
     {
         $sala = Sala::with('atividades')->find($id_sala);
-        $atividade = Atividade::where('id_sala_sal', $id_sala)->where('dt_inicio_atividade_ati','<',Carbon::now()->toDateTimeString())
-                                                              ->where('dt_termino_atividade_ati', '>', Carbon::now()->toDateTimeString())
-                                                              ->first();
+        $atividade = Atividade::where('id_sala_sal', $id_sala)
+                                ->where('dt_inicio_atividade_ati','<',Carbon::now()->toDateTimeString())
+                                ->where('dt_termino_atividade_ati', '>', Carbon::now()->toDateTimeString())
+                                ->first();
             
         return view('publico/evento/sala', compact('atividade','sala'));
     }
