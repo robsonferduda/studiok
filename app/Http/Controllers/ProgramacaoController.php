@@ -40,7 +40,10 @@ class ProgramacaoController extends Controller
         $ati = Atividade::find($id);
         $sala = $ati->sala;
 
-        $atividade = Atividade::where('id_atividade_ati', $id)->where('dt_inicio_atividade_ati','>',Carbon::now()->toDateTimeString())->where('dt_termino_atividade_ati', '<', Carbon::now()->toDateTimeString())->first();
+        $atividade = Atividade::where('id_atividade_ati', $id)
+                            ->where('dt_inicio_atividade_ati','<',Carbon::now()->toDateTimeString())
+                            ->where('dt_termino_atividade_ati', '>', Carbon::now()->toDateTimeString())
+                            ->first();
     
         return view('publico/evento/sala', compact('atividade','sala'));
     }
