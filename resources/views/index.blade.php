@@ -1,6 +1,5 @@
 @extends('layouts.guest')
 @section('content')
-
           <div class="row">
             <div class="col-lg-5 col-md-5 ml-auto mt-5">
               <div class="info-area info-horizontal">

@@ -1,6 +1,6 @@
 @extends('layouts.sala')
 @section('content')
-    <div class="col-lg-12 col-md-8">
+    <div class="col-lg-12 col-md-8 w-100">
         <h2 class="text-white text-center">12º Workshop EGC</h2>
     </div>
     <div class="col-lg-12 col-md-12 m-auto bg-white">
@@ -50,7 +50,6 @@
                         <h4 class="mb-1 mt-2 mb-2"><strong></strong> {{ $sala->nm_sala_sal }}</h4> 
                         <span class="badge badge-danger">OFFLINE</span>
                         <p class="mt-2">Olá visitante! A sala não possui programação AO VIVO no momento.</p>
-                        <p>Confira a programação da sala para saber mais.</p>  
                         <hr/>           
                     </div>
                 </div>

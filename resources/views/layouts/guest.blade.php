@@ -91,7 +91,7 @@
   <div class="wrapper wrapper-full-page">
     <div class="full-page register-page section-image" filter-color="black" data-image="{{ asset('img/bg/conference.jpeg') }}">
       <div class="content">
-        <div class="container">
+        <div class="content">
           @yield('content')
         </div>
       </div>

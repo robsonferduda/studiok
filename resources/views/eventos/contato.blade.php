@@ -1,6 +1,6 @@
 @extends('layouts.evento')
 @section('content')
-    <div class="col-lg-12 col-md-8">
+    <div class="col-lg-12 col-md-8 w-100">
         <h2 class="text-white text-center">12º Workshop EGC</h2>
     </div>
     <div class="col-lg-12 col-md-12 m-auto bg-white">
