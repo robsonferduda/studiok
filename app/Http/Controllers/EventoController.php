@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Utils;
 use App\Evento;
+use App\Participante;
 use App\TipoParticipacao;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
@@ -43,6 +45,15 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
         return view('eventos/detalhes', compact('evento'));
+    }
+
+    public function inscricao($id)
+    {
+        $evento = Evento::find($id);
+        $participante = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();
+        $participante->eventos()->attach($evento);
+
+        return redirect('dashboard')->withInput();
     }
 
     public function store(Request $request)

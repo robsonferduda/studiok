@@ -26,6 +26,7 @@ Route::post('participante/cadastro','ParticipanteController@cadastro');
 
 Route::get('eventos/{evento}/contato','EventoController@contato');
 Route::get('eventos/{evento}/sala/{sala}','SalaController@sala');
+Route::get('eventos/{evento}/inscricao','EventoController@inscricao');
 
 Route::get('salas/{evento}','SalaController@listar');
 Route::get('palestrantes/{evento}','PalestranteController@listar');

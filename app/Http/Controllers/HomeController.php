@@ -41,10 +41,10 @@ class HomeController extends Controller
         $sala = new Sala();
         $atividade = new Atividade();
         $palestrante = new Palestrante();
-        $participante = new participante();
+        $participante = new Participante();
         $meus_eventos = array();
         $programacao = array();
-        
+        $eventos = Evento::all();
 
         if(Auth::user()->hasRole('administrador')){
             $meus_eventos = Evento::all();
@@ -63,7 +63,12 @@ class HomeController extends Controller
         if(Auth::user()->hasRole('participante')){
 
             $p = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();
+            
             if($p){
+
+                $eventos_participante = $p->eventos->pluck('id_evento_eve')->toArray();
+                $eventos = Evento::whereNotIn('id_evento_eve', $eventos_participante)->get();
+
                 $meus_eventos = $p->eventos;
                 $evento = Evento::find(1);
                 $programacao = $evento->atividades->sortBy('dt_inicio_atividade_ati');
@@ -72,7 +77,7 @@ class HomeController extends Controller
         
         Session::put('meus_eventos', $meus_eventos);
 
-        return view('dashboard', compact('sala','palestrante','participante','atividade','meus_eventos','programacao'));
+        return view('dashboard', compact('sala','palestrante','participante','atividade','meus_eventos','programacao','eventos'));
     }
 
     public function show($e)
