@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="download-button text-center">
-                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Voltar</a>
+                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
                 </div>
             </div>
         </div>

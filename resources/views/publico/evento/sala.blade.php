@@ -77,7 +77,7 @@
         @endif
             <div class="col-lg-12 col-md-8">
                 <div class="download-button text-center">
-                    <a href="{{ url('eventos',Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Início</a>
+                    <a href="{{ url('eventos',Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
                     <a href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/programacao') }}" class="btn btn-main-md">Programação</a>
                 </div>
             </div>
