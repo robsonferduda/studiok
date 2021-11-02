@@ -72,8 +72,6 @@ class ParticipanteController extends Controller
     public function cadastro(ParticipanteRequest $request)
     {
         $pessoa = Pessoa::where('ds_email_pes',$request->email)->first();
-
-        dd($request->all());
         
         if(!$pessoa)
         {

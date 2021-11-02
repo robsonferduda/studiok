@@ -66,7 +66,7 @@
                                         <div class="ml-1" style="float: left;">
                                             <p><strong>{{ $atividade->nm_atividade_ati }}</strong></p>
                                             @foreach($atividade->palestrantes as $key => $palestrante)
-                                                <p>{{ $palestrante->ds_tratamento_pal }}{{ $palestrante->pessoa->nm_pessoa_pes }}</p>
+                                                <p>{{ $palestrante->ds_tratamento_pal }} {{ $palestrante->pessoa->nm_pessoa_pes }}</p>
                                             @endforeach
                                         </div>
                                     </div>
