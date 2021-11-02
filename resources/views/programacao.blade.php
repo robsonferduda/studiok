@@ -52,7 +52,7 @@
                                                         <p>{{ $palestrante->ds_tratamento_pal }} {{ $palestrante->pessoa->nm_pessoa_pes }}</p>                          
                                                     @endforeach										
                                                 </div>											
-                                                <div class="venue  valign-top"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}">{{ $atividade->sala->nm_sala_sal }}</a></div>
+                                                <div class="venue valign-top"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}" class="link-programacao">{{ $atividade->sala->nm_sala_sal }}</a></div>
                                             </div>
                                         </li>
                                     @endforeach

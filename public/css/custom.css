@@ -67,3 +67,7 @@
 .w-100{
     margin-top: 100px;
 }
+.link-programacao{
+    color: #007bff !important;
+    text-decoration: underline;
+}
