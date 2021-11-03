@@ -14,7 +14,7 @@
                     <a href="{{ url('dashboard') }}" class="btn btn-info"><i class="fa fa-check"></i> Inscreva-se</a>
                     <a href="{{ url('eventos/12-workshop-egc') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
                   @else
-                    <a href="{{ url('cadastrar') }}" class="btn btn-info"><i class="fa fa-check"></i> Cadastra-se</a>
+                    <a href="{{ url('cadastrar') }}" class="btn btn-info"><i class="fa fa-check"></i> Inscreva-se</a>
                   @endif
                 </div>
               </div>
