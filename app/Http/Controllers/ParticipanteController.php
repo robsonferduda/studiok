@@ -72,10 +72,15 @@ class ParticipanteController extends Controller
     public function cadastro(ParticipanteRequest $request)
     {
         $pessoa = Pessoa::where('ds_email_pes',$request->email)->first();
-        
-        if(!$pessoa)
-        {
+        $participante = Participante::where('id_pessoa_pes', $pessoa->id_pessoa_pes)->first();
 
+        if($participante){
+            Flash::warning('<i class="fa fa-warning"></i> Email já cadastrado no sistema. Utilize a recuperação de senha para reativar seu cadastro');
+            return redirect('cadastrar')->withInput();
+        }
+        
+        if(!$pessoa and !$participante)
+        {
             $chave_pessoa = array('ds_email_pes' => $request->email);
             $dados_pessoa = array('nm_pessoa_pes' => $request->name);
             $pessoa = Pessoa::updateOrCreate($chave_pessoa, $dados_pessoa);
@@ -93,13 +98,27 @@ class ParticipanteController extends Controller
             if(!$user->hasRole($role->name))
                 $user->attachRole($role); 
 
-            Auth::login($user);
-            return redirect('home')->withInput();
 
-        }else{
-            Flash::warning('<i class="fa fa-warning"></i> Email já cadastrado');
-            return redirect('cadastrar')->withInput();
+        }elseif($pessoa and !$participante){
+
+            $chave_participante = array('id_pessoa_pes' => $pessoa->id_pessoa_pes);
+            $dados_participante = array('nm_cracha_par' => $request->name);
+            $participante = Participante::updateOrCreate($chave_participante, $dados_participante);
+
+            //Atualiza a senha de acordo com o cadastro de participante
+            $user = User::where('id_pessoa_pes', $pessoa->id_pessoa_pes)->first();
+            $user->password = Hash::make($request->senha);
+            $user->save();
+
+            $role = Role::where('name','participante')->first();
+
+            if(!$user->hasRole($role->name))
+                $user->attachRole($role); 
+
         }
+
+        Auth::login($user);
+        return redirect('home')->withInput();
     }
 
     public function store(Request $request)

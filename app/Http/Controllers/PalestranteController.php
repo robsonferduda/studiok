@@ -58,23 +58,50 @@ class PalestranteController extends Controller
 
     public function store(PalestranteRequest $request)
     {
-        $chave_pessoa = array('ds_email_pes' => $request->ds_email_pes);
-        $dados_pessoa = array('nm_pessoa_pes' => $request->nm_pessoa_pes);
-        $pessoa = Pessoa::updateOrCreate($chave_pessoa, $dados_pessoa);
+        $pessoa = Pessoa::where('ds_email_pes',$request->ds_email_pes)->first();
+        if($pessoa)
+            $palestrante = Palestrante::where('id_pessoa_pes', $pessoa->id_pessoa_pes)->first();
+        else
+            $palestrante = null;
 
-        $chave_palestrante = array('id_pessoa_pes' => $pessoa->id_pessoa_pes);
-        $participante = Palestrante::updateOrCreate($chave_palestrante, $request->all());
+        if(!$pessoa and !$palestrante){
 
-        $chave_usuario = array('email' => $request->ds_email_pes);
-        $dados_usuario = array('id_pessoa_pes' => $pessoa->id_pessoa_pes, 'name' => $request->nm_pessoa_pes, 'password' => Hash::make('123456'));
-        $user = User::updateOrCreate($chave_usuario, $dados_usuario);
+            $chave_pessoa = array('ds_email_pes' => $request->ds_email_pes);
+            $dados_pessoa = array('nm_pessoa_pes' => $request->nm_pessoa_pes);
+            $pessoa = Pessoa::updateOrCreate($chave_pessoa, $dados_pessoa);
 
-        $role = Role::where('name','palestrante')->first();
+            $chave_palestrante = array('id_pessoa_pes' => $pessoa->id_pessoa_pes);
+            $palestrante = Palestrante::updateOrCreate($chave_palestrante, $request->all());
+
+            $chave_usuario = array('email' => $request->ds_email_pes);
+            $dados_usuario = array('id_pessoa_pes' => $pessoa->id_pessoa_pes, 'name' => $request->nm_pessoa_pes, 'password' => Hash::make('123456'));
+            $user = User::updateOrCreate($chave_usuario, $dados_usuario);
+
+            $role = Role::where('name','palestrante')->first();
 
             if(!$user->hasRole($role->name))
-                $user->attachRole($role); 
+                $user->attachRole($role);
 
-        Flash::success('<i class="fa fa-check"></i> Dados inseridos com sucesso');
+            Flash::success('<i class="fa fa-check"></i> Palestrante cadastrado com sucesso');
+
+        }elseif($pessoa and !$palestrante){
+
+            $chave_palestrante = array('id_pessoa_pes' => $pessoa->id_pessoa_pes);
+            $palestrante = Palestrante::updateOrCreate($chave_palestrante, $request->all());
+
+            $user = User::where('id_pessoa_pes', $pessoa->id_pessoa_pes)->first();
+
+            $role = Role::where('name','palestrante')->first();
+
+            if(!$user->hasRole($role->name))
+                $user->attachRole($role);
+
+            Flash::success('<i class="fa fa-check"></i> Palestrante cadastrado com sucesso');
+
+        }else{
+
+            Flash::warning('<i class="fa fa-check"></i> Palestrante já cadastrado no sistema');
+        }
 
         return redirect('palestrante')->withInput();
         

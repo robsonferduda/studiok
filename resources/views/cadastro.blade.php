@@ -52,7 +52,12 @@
                       </div> 
                     </div>
                     
-                    <button type="submit" class="btn btn-info btn-round mb-4"><i class="nc-icon nc-check-2"></i> Cadastrar</button>
+                    <button type="submit" class="btn btn-info btn-round mb-3"><i class="nc-icon nc-check-2"></i> Cadastrar</button>
+                    <div class="mb-2">
+                      <a class="btn-link mb-5" href="{{ route('password.request') }}">
+                        <span class="forget-password">{{ __('Recuperar Senha') }}</span>
+                      </a>
+                    </div>
                     {!! Form::close() !!} 
                 </div>
               </div>

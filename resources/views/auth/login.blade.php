@@ -51,12 +51,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer center">
+                <div class="card-footer center mb-3">
                     <button type="submit" class="btn btn-primary btn-round btn-block mb-4">
                         {{ __('Login') }}
                     </button>
                     @if (Route::has('password.request'))
-                        <a class="btn-link mb-3" href="{{ route('password.request') }}">
+                        <a class="btn-link mb-5" href="{{ route('password.request') }}">
                             <span class="forget-password">{{ __('esqueceu sua senha?') }}</span>
                         </a>
                     @endif
