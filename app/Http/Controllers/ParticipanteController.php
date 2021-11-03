@@ -72,7 +72,10 @@ class ParticipanteController extends Controller
     public function cadastro(ParticipanteRequest $request)
     {
         $pessoa = Pessoa::where('ds_email_pes',$request->email)->first();
-        $participante = Participante::where('id_pessoa_pes', $pessoa->id_pessoa_pes)->first();
+        if($pessoa)
+            $participante = Participante::where('id_pessoa_pes', $pessoa->id_pessoa_pes)->first();
+        else
+            $participante = null;
 
         if($participante){
             Flash::warning('<i class="fa fa-warning"></i> Email já cadastrado no sistema. Utilize a recuperação de senha para reativar seu cadastro');
