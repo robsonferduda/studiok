@@ -1432,8 +1432,8 @@ select.form-control:not([size]):not([multiple]) {
   }
 }
 
-@media (max-width: 575px) {
-  .schedule .schedule-contents .schedule-item ul li .speaker img {
+@media (max-width: 767px) {
+  .schedule .schedule-contents .schedule-item ul li .speaker {
     display: none;
   }
 }
@@ -1444,7 +1444,7 @@ select.form-control:not([size]):not([multiple]) {
 
 @media (max-width: 1200px) {
   .schedule .schedule-contents .schedule-item ul li .subject {
-    display: none;
+    
   }
 }
 
@@ -1667,7 +1667,7 @@ select.form-control:not([size]):not([multiple]) {
 
 @media (max-width: 1200px) {
   .schedule.two .schedule-contents .schedule-item ul li .subject {
-    display: none;
+    
   }
 }
 
