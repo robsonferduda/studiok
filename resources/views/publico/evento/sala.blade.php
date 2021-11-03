@@ -9,8 +9,10 @@
                 <div class="col-lg-12 col-md-12 align-self-center">  
                     <h4 class="mb-1 mt-2"><strong> {{ $atividade->sala->nm_sala_sal }}</h4></strong> 
                     <h4 class="mb-1 mt-2"><strong></strong> {{ $atividade->nm_atividade_ati }}</h4>  
-                    Atividade iniciada em {{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') }} e término em {{ Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') }} 
-                    <span class="badge badge-success">ONLINE</span>             
+                    <div class="text-right">
+                        Atividade iniciada em {{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') }} e término em {{ Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') }} 
+                        <span class="badge badge-success">ONLINE</span>      
+                    </div>       
                 </div>
             </div>
             <div class="row">
