@@ -46,7 +46,7 @@
                             <a class="publisher-btn text-info" data-abc="true"><i class="fa fa-paper-plane"></i></a> 
                         </div>
                     </div>
-                    <div class="mt-2">
+                    <div class="text-center mt-2">
                         <a href="{{ url('eventos',Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
                     </div>
                 </div>
