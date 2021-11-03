@@ -1450,7 +1450,7 @@ select.form-control:not([size]):not([multiple]) {
 
 @media (max-width: 767px) {
   .schedule .schedule-contents .schedule-item ul li .venue {
-    display: none;
+    
   }
 }
 
@@ -1677,7 +1677,7 @@ select.form-control:not([size]):not([multiple]) {
 
 @media (max-width: 767px) {
   .schedule.two .schedule-contents .schedule-item ul li .venue {
-    display: none;
+   
   }
 }
 
