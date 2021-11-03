@@ -60,6 +60,11 @@
                             <span class="forget-password">{{ __('esqueceu sua senha?') }}</span>
                         </a>
                     @endif
+                    <div class="mt-2">
+                      <a class="btn-link mb-5" href="{{ url('cadastrar') }}">
+                        <span class="forget-password">CRIAR CONTA</span>
+                      </a>
+                    </div>
           </div>
         </div>
     </form>

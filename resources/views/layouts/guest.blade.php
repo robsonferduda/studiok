@@ -70,7 +70,7 @@
               <li class="nav-item ">
                 <a href="{{ url('cadastrar') }}" class="nav-link text-none">
                   <i class="nc-icon nc-circle-10"></i>
-                  Cadastre-se
+                  Criar Conta
                 </a>
               </li>
               <li class="nav-item ">
