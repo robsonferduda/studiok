@@ -35,6 +35,7 @@ class ParticipanteController extends Controller
         $evento = Evento::with('participantes')->where('ds_apelido_eve', $apelido)->first();
         $participantes = $evento->participantes;
 
+        Session::put('evento',$evento);
         Session::put('edicao',$apelido);
         
         return view('participantes/index', compact('participantes'));

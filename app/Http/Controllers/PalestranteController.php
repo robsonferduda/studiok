@@ -31,6 +31,8 @@ class PalestranteController extends Controller
 
     public function listar($apelido)
     {
+        $evento = Evento::where('ds_apelido_eve',$apelido)->first();
+        Session::put('evento',$evento);
         $eventos = Evento::all();
         $palestrantes = Palestrante::all();
         Session::put('edicao',$apelido);
