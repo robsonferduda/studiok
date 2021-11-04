@@ -32,7 +32,8 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
-        dd($request->email);
+        $email = str_replace("%40","@", $request->email);
+        dd($email);
 
         return view('auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
