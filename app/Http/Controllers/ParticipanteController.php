@@ -47,6 +47,18 @@ class ParticipanteController extends Controller
         return view('participantes/perfil', compact('participante'));
     }
 
+    public function resetar($usuario)
+    {
+        $pessoa = Pessoa::find($usuario);
+        $user = User::where('id_pessoa_pes',$usuario)->first();
+        if($user){
+            Flash::success('<i class="fa fa-warning"></i> Senha atualizada com sucesso');
+        }else{
+            Flash::danger('<i class="fa fa-warning"></i> Erro ao atualizar senha');
+        }
+        return redirect('participante/'.$pessoa->participante->id_participante_par)->withInput();
+    }
+
     public function create()
     {
         $eventos = Evento::all();

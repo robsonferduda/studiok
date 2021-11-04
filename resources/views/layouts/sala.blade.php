@@ -52,13 +52,13 @@
             </li>
             @if(Auth::user())
               <li class="nav-item ">
-                <a href="{{ url('perfil') }}" class="nav-link text-none">
+                <a href="{{ url('home') }}" class="nav-link text-none">
                   <i class="nc-icon nc-tag-content"></i>
                   Meus Eventos
                 </a>
               </li>
               <li class="nav-item ">
-                <a href="{{ url('home') }}" class="nav-link text-none">
+                <a href="{{ url('perfil') }}" class="nav-link text-none">
                   <i class="nc-icon nc-circle-10"></i>
                   {{ Auth::user()->name }}
                 </a>

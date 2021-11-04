@@ -11,6 +11,7 @@
                         <a href="{{ url('participante') }}" class="btn btn-default pull-right" style="margin-right: 12px;"><i class="fa fa-table"></i> Participantes</a>
                     </div>
                 </div>
+                @include('layouts.mensagens')
             </div>
             <div class="card-body p-4">
               <div class="row">
@@ -23,10 +24,10 @@
                     <p><strong>Data de Cadastro: </strong>{{ date('d/m/Y H:i:s', strtotime($participante->created_at)) }}</p>
                 </div>
                 
-                <div class="col-md-12 mt-3">
+                <div class="col-md-12 mt-3 mb-2">
                     <h6  class="w-auto">Dados de Acesso</h6>
                     <p class="mb-1"><strong>Email: </strong>{{ $participante->pessoa->ds_email_pes }}</p>
-                    <p>
+                    <p class="mb-1">
                       <strong>Nível: </strong>
                       @forelse($participante->pessoa->user->roles as $role)
                         <span>{{ $role->display_name }}</span>
@@ -34,6 +35,7 @@
 
                       @endforelse
                     </p>
+                    <a href="{{ url('participante/senha/resetar', $participante->pessoa->id_pessoa_pes) }}" class="btn btn-sm btn-danger" style="margin-right: 12px;"><i class="fa fa-unlock"></i> Resetar Senha</a>
                 </div>
 
                 <div class="col-md-12 mt-3">

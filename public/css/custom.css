@@ -4,7 +4,7 @@
 .select2 { width: 100% !important; }
 .upper {text-transform: uppercase !important; }
 .font-25 {font-size: 25px;}
-.font-12 {font-size: 12px !important;}
+.font-12 {font-size: 12px !important; color: rgb(95, 95, 95) !important; font-weight: 500 !important;}
 .font-16 {font-size: 12px !important;}
 .font-18 {font-size: 18px !important;}
 .font-21 {font-size: 21px !important;}
