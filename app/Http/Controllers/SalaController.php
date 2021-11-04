@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Carbon\Carbon;
 use App\Sala;
 use App\Evento;
 use App\Utils;
 use App\TipoSala;
 use App\Atividade;
+use App\AtividadeAcesso;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -34,6 +36,14 @@ class SalaController extends Controller
                                 ->where('dt_inicio_atividade_ati','<',Carbon::now()->toDateTimeString())
                                 ->where('dt_termino_atividade_ati', '>', Carbon::now()->toDateTimeString())
                                 ->first();
+
+        $id_atividade = ($atividade) ? $atividade->id_atividade_ati : null;
+
+        $dados = array('id_usuario_usu' => Auth::user()->id,
+                       'id_sala_ati' => $id_sala,
+                       'id_atividade_ati' => $id_atividade);
+
+        AtividadeAcesso::create($dados);
             
         return view('publico/evento/sala', compact('atividade','sala'));
     }

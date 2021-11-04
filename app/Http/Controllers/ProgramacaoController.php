@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Evento;
 use App\Atividade;
+use App\AtividadeAcesso;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Events\Programacao\SendMessage;
@@ -44,6 +46,12 @@ class ProgramacaoController extends Controller
                             ->where('dt_inicio_atividade_ati','<',Carbon::now()->toDateTimeString())
                             ->where('dt_termino_atividade_ati', '>', Carbon::now()->toDateTimeString())
                             ->first();
+
+        $dados = array('id_usuario_usu' => Auth::user()->id,
+                        'id_sala_ati' => $sala->id_sala_sal,
+                        'id_atividade_ati' => $id);
+     
+        AtividadeAcesso::create($dados);
     
         return view('publico/evento/sala', compact('atividade','sala'));
     }
