@@ -7,8 +7,8 @@
         @if($atividade)
             <div class="row">
                 <div class="col-lg-12 col-md-12 align-self-center">  
-                    <h4 class="mb-1 mt-2"><strong> {{ $atividade->sala->nm_sala_sal }}</h4></strong> 
-                    <h4 class="mb-1 mt-2"><strong></strong> {{ $atividade->nm_atividade_ati }}</h4>  
+                    <h4 class="mb-1 mt-2 mb-0"><strong>{{ $atividade->sala->nm_sala_sal }}</strong> {{ $atividade->nm_atividade_ati }}</h4> 
+                    <h4 class="mb-1 mt-0"><strong></strong> </h4>  
                     <div>
                         Atividade iniciada em {{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') }} e término em {{ Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') }} 
                         <span class="badge badge-success">ONLINE</span>      
@@ -26,10 +26,9 @@
                         </div>
                         <div class="ps-container ps-theme-default ps-active-y" id="chat-content" data-atividade="{{ $atividade->id_atividade_ati }}" style="overflow-y: scroll !important; height:400px !important;">
                             @foreach($atividade->chat->sortBy('created_at') as $key => $chat)
-                                <div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"> 
-                                    
+                                <div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;">                                     
                                     <div class="media-body">
-                                        <p><strong>{{ $chat->user->name }}</strong> {{ $chat->mensagem_cha }}</p>
+                                        <p class="font-12"><strong>{{ $chat->user->name }}</strong> {{ $chat->mensagem_cha }}</p>
                                     </div>
                                 </div>                                
                             @endforeach
@@ -40,11 +39,12 @@
                                 <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                             </div>
                         </div>
-                        <div class="publisher bt-1 border-light"> 
-                            <p data-letters="{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}"></p>
-                            <input class="publisher-input" type="text" name="text_chat" id="text_chat" placeholder="Digite aqui..." autofocus>  
-                            <a class="publisher-btn text-info" data-abc="true"><i class="fa fa-paper-plane"></i></a> 
-                        </div>
+                        @if(Auth::user())
+                            <div class="publisher bt-1 border-light"> 
+                                <input class="publisher-input" type="text" name="text_chat" id="text_chat" placeholder="Digite aqui...">  
+                                <a class="publisher-btn text-info" data-abc="true"><i class="fa fa-paper-plane"></i></a> 
+                            </div>
+                        @endif
                     </div>
                     <div class="text-center mt-2 mb-2">
                         <a href="{{ url('eventos',Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
@@ -80,13 +80,13 @@
                         @endif
                     </div>
                 </div>
-        @endif
-            <div class="col-lg-12 col-md-8">
-                <div class="download-button text-center">
-                    <a href="{{ url('eventos',Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
-                    <a href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/programacao') }}" class="btn btn-main-md">Programação</a>
+                <div class="col-lg-12 col-md-8">
+                    <div class="download-button text-center">
+                        <a href="{{ url('eventos',Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                        <a href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/programacao') }}" class="btn btn-main-md">Programação</a>
+                    </div>
                 </div>
-            </div>
+        @endif
         </div>
     </div>
 @endsection

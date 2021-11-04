@@ -11,8 +11,11 @@
                 <hr/>
                 <div class="card-footer mt-0">
                   @if(Auth::user())
-                    <a href="{{ url('dashboard') }}" class="btn btn-info"><i class="fa fa-check"></i> Inscreva-se</a>
-                    <a href="{{ url('eventos/12-workshop-egc') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
+                    @if(count($meus_eventos))
+                      <a href="{{ url('eventos/12-workshop-egc') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
+                    @else
+                      <a href="{{ url('dashboard') }}" class="btn btn-info"><i class="fa fa-check"></i> Inscreva-se</a>
+                    @endif
                   @else
                     <a href="{{ url('login') }}" class="btn btn-info"><i class="fa fa-check"></i> Inscreva-se</a>
                   @endif

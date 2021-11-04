@@ -8,7 +8,8 @@
             <div class="col-12 schedule">
                 <h4 class="text-center">Contato</h4>
             </div>
-            <div class="col-12 schedule">
+            <div class="col-12 schedule text-center">
+                <p><i class="fa fa-envelope"></i> studiok.suporte@gmail.com</p>
                 <div class="download-button text-center">
                     <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
                 </div>

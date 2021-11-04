@@ -25,9 +25,26 @@ class HomeController extends Controller
         //$evento = Evento::where('ds_apelido_eve',$e)->first();
         //Session::put('evento',$evento);
         $atividades = Atividade::all();
+        $meus_eventos = array();
+
+        if(Auth::user() and Auth::user()->hasRole('participante')){
+
+            $p = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();
+            
+            if($p){
+
+                $eventos_participante = $p->eventos->pluck('id_evento_eve')->toArray();
+                $eventos = Evento::whereNotIn('id_evento_eve', $eventos_participante)->where('fl_publicado_eve', true)->get();
+
+                $meus_eventos = $p->eventos;
+                $evento = Evento::find(1);
+                $programacao = $evento->atividades->sortBy('dt_inicio_atividade_ati');
+            }
+
+        } 
 
         //return view('seminario');
-        return view('index');
+        return view('index', compact('meus_eventos'));
     }
 
     public function eventos(){
