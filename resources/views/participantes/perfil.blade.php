@@ -19,7 +19,8 @@
                     <p class="mb-1"><strong>CPF: </strong>{{ ($participante->nu_cpf_par ) ? $participante->nu_cpf_par : 'Não informado' }}</p>
                     <p class="mb-1"><strong>ORCID: </strong>{{ ($participante->pessoa->nu_orcid_pes) ? $participante->pessoa->nu_orcid_pes : 'Não informado' }}</p>
                     <p class="mb-1"><strong>Nome: </strong>{{ $participante->pessoa->nm_pessoa_pes }}</p>
-                    <p><strong>Nome Crachá: </strong>{{ $participante->nm_cracha_par }}</p>
+                    <p class="mb-1"><strong>Nome Crachá: </strong>{{ $participante->nm_cracha_par }}</p>
+                    <p><strong>Data de Cadastro: </strong>{{ date('d/m/Y H:i', strtotime($participante->created_at)) }}</p>
                 </div>
                 
                 <div class="col-md-12 mt-3">
