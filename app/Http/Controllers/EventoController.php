@@ -51,9 +51,6 @@ class EventoController extends Controller
     {
         $evento = Evento::find($id);
         $participante = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();
-
-        dd($participante);
-
         $participante->eventos()->attach($evento);
 
         return redirect('dashboard')->withInput();
