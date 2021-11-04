@@ -18,6 +18,25 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 mt-1">                
                     <iframe width="100%" height="460px" src="{{ $atividade->sala->ds_local_sal }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="mt-2 mb-3">
+                        <p>Conferencistas</p>
+                        @foreach($atividade->palestrantes as $key => $palestrante)
+                            <div class="row mt-3 hover-overlay">
+                                <div class="col-md-2 text-center">
+                                    @if($palestrante->path_imagem_pal)
+                                        <img src="{{ url('/profile_pictures/'.$palestrante->path_imagem_pal) }}" />
+                                    @else
+                                        <img src="{{ url('img/icon-cam.png') }}" />
+                                    @endif
+                                </div>
+                                <div class="col-md-10">
+                                    <p><strong>{{ $palestrante->ds_tratamento_pal }} {{ $palestrante->pessoa->nm_pessoa_pes }}</strong></p> 
+                                    <p>{{ $palestrante->ds_empresa_pal }}</p> 
+                                    <p>{{ $palestrante->ds_cargo_pal }}</p>
+                                </div>
+                            </div>                        
+                        @endforeach	
+                    </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="card card-bordered">
