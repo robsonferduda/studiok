@@ -7,5 +7,12 @@
         <p><strong>Nome</strong>: {{ Auth::user()->name }}</p>
         <p><strong>Email</strong>: {{ Auth::user()->email }}</p>
         <p><strong>Membro desde</strong>: {{ date('d/m/Y H:i', strtotime(Auth::user()->created_at)) }}</p>
+        <p>
+            @forelse(Auth::user()->roles as $role)
+                <span class="badge badge-{{ $role->display_color }}">{{ $role->display_name }}</span>
+            @empty
+                Nenhum perfil associado
+            @endforelse
+        </p>
     </div>
 @endsection
