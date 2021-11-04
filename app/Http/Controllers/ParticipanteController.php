@@ -155,6 +155,12 @@ class ParticipanteController extends Controller
         $pessoa = Pessoa::find($participante->id_pessoa_pes);
         $pessoa->update($request->all());
 
+        //Atualiza Usuário
+        $user = User::where('id_pessoa_pes',$pessoa->id_pessoa_pes)->first();
+        $dados = array('name' => $request->ds_email_pes,
+                       'email' => $request->nm_pessoa_pes);
+
+        $user->update($dados);
 
         //Atualiza Participante
         $participante->update($request->all());

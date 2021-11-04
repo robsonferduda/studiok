@@ -115,6 +115,13 @@ class PalestranteController extends Controller
         $palestrante->update($request->all());
         $palestrante->pessoa()->update($dados_pessoa);
 
+        //Atualiza Usuário
+        $user = User::where('id_pessoa_pes',$palestrante->pessoa->id_pessoa_pes)->first();
+        $dados = array('name' => $request->ds_email_pes,
+                       'email' => $request->nm_pessoa_pes);
+
+        $user->update($dados);
+
         Flash::success('<i class="fa fa-check"></i> Dados atualizados com sucesso');
 
         return redirect('palestrante')->withInput();
