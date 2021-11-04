@@ -30,6 +30,9 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <div class="view-eye-p">
+                                    <i class="fa fa-eye view-password" data-target="password"></i>  
+                                </div>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -50,9 +53,9 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                <div class="view-eye">
+                                <div class="view-eye-p">
                                     <i class="fa fa-eye view-password" data-target="password-confirm"></i>  
-                                  </div>
+                                </div>
                             </div>
                         </div>
 
