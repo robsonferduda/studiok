@@ -67,12 +67,14 @@ class HomeController extends Controller
             if($p){
 
                 $eventos_participante = $p->eventos->pluck('id_evento_eve')->toArray();
-                $eventos = Evento::whereNotIn('id_evento_eve', $eventos_participante)->get();
+                $eventos = Evento::whereNotIn('id_evento_eve', $eventos_participante)->where('fl_publicado_eve', true)->get();
 
                 $meus_eventos = $p->eventos;
                 $evento = Evento::find(1);
                 $programacao = $evento->atividades->sortBy('dt_inicio_atividade_ati');
             }
+
+            return view('painel', compact('sala','palestrante','participante','atividade','meus_eventos','programacao','eventos'));
         }   
         
         Session::put('meus_eventos', $meus_eventos);

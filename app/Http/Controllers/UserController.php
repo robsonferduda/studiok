@@ -19,4 +19,9 @@ class UserController extends Controller
         $usuarios = User::orderBy('name')->get();
         return view('usuarios/index',compact('usuarios'));
     }
+
+    public function perfil()
+    {
+        return view('perfil');
+    }
 }

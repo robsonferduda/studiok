@@ -12,6 +12,7 @@ Route::get('/eventos/{evento}/stand-virtual', 'HomeController@stand');
 Route::get('home', 'HomeController@dashboard');
 Route::get('dashboard', 'HomeController@dashboard');
 Route::get('programacao/sala/atividade/{id}','ProgramacaoController@show');
+Route::get('perfil', 'UserController@perfil');
 
 Auth::routes();
 
