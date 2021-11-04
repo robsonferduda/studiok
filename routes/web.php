@@ -44,6 +44,7 @@ Route::post('palestrante/perfil/foto-upload','PalestranteController@uploadFoto')
 
 Route::post('atividades/chat/salvar','AtividadeController@salvarChat');
 Route::get('atividades/{atividade}/chat','AtividadeController@getChat');
+Route::get('atividade/situacao/{id}','AtividadeController@atualizaStatus');
 
 Route::get('permissoes','PermissaoController@index');
 Route::get('perfis','RoleController@index');

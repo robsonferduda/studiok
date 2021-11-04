@@ -24,6 +24,37 @@
                     <p class="mb-1"><strong>Local/URL de Transmissão: </strong> {{ ($sala->ds_ambiente_sal) ? $sala->ds_ambiente_sal : 'Não Definido' }}</p>
                 </div>
                 <div class="col-md-12 mt-3">
+                    <h6>Atividades</h6>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Início</th>
+                            <th>Término</th>
+                            <th>Atividade</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($sala->atividades->sortBy('dt_inicio_atividade_ati') as $key => $atividade)
+                                <tr>
+                                    <td>{{ date('d/m/Y H:i:s', strtotime($atividade->dt_inicio_atividade_ati)) }}</td>
+                                    <td>{{ date('d/m/Y H:i:s', strtotime($atividade->dt_termino_atividade_ati)) }}</td>
+                                    <td>{{ $atividade->nm_atividade_ati }}</td>
+                                    <td>
+                                        <a href="{{ url('atividade/situacao/'.$atividade->id_atividade_ati) }}">
+                                            @if($atividade->fl_corrente_ati)
+                                                <span class="badge badge-success">ATIVO</span>
+                                            @else
+                                                <span class="badge badge-danger">INATIVO</span>
+                                            @endif
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach       
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col-md-12 mt-3">
                     <h6>Transmissão</h6>
                     @if($sala->tipo and $sala->tipo->id_tipo_sala_tis == 2 and $sala->ds_local_sal)
                         <iframe width="100%" height="600px" src="{{ $sala->ds_local_sal }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

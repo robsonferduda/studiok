@@ -73,6 +73,7 @@ class SalaController extends Controller
 
     public function show(Sala $sala)
     {
+        $sala = Sala::with('atividades')->find($sala->id_sala_sal);
         return view('salas/detalhes', compact('sala'));
     }
 

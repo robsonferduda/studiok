@@ -36,6 +36,22 @@ class AtividadeController extends Controller
         return view('atividades/detalhes', compact('atividade'));
     }
 
+    public function atualizaStatus($id)
+    {
+        $atividade = Atividade::find($id);
+        $sala = Sala::with('atividades')->find($atividade->id_sala_sal);
+
+        foreach($sala->atividades as $ati){
+            $ati->fl_corrente_ati = false;
+            $ati->save();
+        }
+
+        $atividade->fl_corrente_ati = true;
+        $atividade->save();
+
+        return redirect('sala/'.$atividade->sala->id_sala_sal)->withInput();
+    }
+
     public function create()
     {
         $eventos = Evento::all();

@@ -12,7 +12,7 @@ class Atividade extends Model
     protected $connection = 'pgsql';
     protected $table = 'atividade_ati';
     protected $primaryKey = 'id_atividade_ati';
-    protected $fillable = ['id_sala_sal','id_evento_eve','id_tipo_atividade_tia','nm_atividade_ati','ds_atividade_ati','dt_inicio_atividade_ati','dt_termino_atividade_ati','fl_ativa_ati','fl_destaque_ati'];
+    protected $fillable = ['id_sala_sal','id_evento_eve','id_tipo_atividade_tia','nm_atividade_ati','ds_atividade_ati','dt_inicio_atividade_ati','dt_termino_atividade_ati','fl_ativa_ati','fl_destaque_ati','fl_corrente_ati'];
 
     public function evento()
     {
