@@ -15,33 +15,28 @@
             <div class="card-body p-4">
               <div class="row">
                 <div class="col-md-12">
-                  <fieldset class="border p-2 font-12">
-                    <legend  class="w-auto">Dados Pessoais</legend>
-                    <h5 class="mb-1"><strong>CPF: </strong>{{ $participante->nu_cpf_par }}</h5>
-                    <h5 class="mb-1"><strong>ORCID: </strong>{{ $participante->pessoa->nu_orcid_pes }}</h5>
-                    <h5 class="mb-1"><strong>Nome: </strong>{{ $participante->pessoa->nm_pessoa_pes }}</h5>
-                    <h5><strong>Nome Crachá: </strong>{{ $participante->nm_cracha_par }}</h5>
-                  </fieldset>
+                    <h6 class="w-auto">Dados Pessoais</h6>
+                    <p class="mb-1"><strong>CPF: </strong>{{ ($participante->nu_cpf_par ) ? $participante->nu_cpf_par : 'Não informado' }}</p>
+                    <p class="mb-1"><strong>ORCID: </strong>{{ ($participante->pessoa->nu_orcid_pes) ? $participante->pessoa->nu_orcid_pes : 'Não informado' }}</p>
+                    <p class="mb-1"><strong>Nome: </strong>{{ $participante->pessoa->nm_pessoa_pes }}</p>
+                    <p><strong>Nome Crachá: </strong>{{ $participante->nm_cracha_par }}</p>
                 </div>
                 
-                <div class="col-md-12">
-                  <fieldset class="border p-2 mt-4 font-12">
-                    <legend  class="w-auto">Dados de Acesso</legend>
-                    <h5 class="mb-1"><strong>Email: </strong>{{ $participante->pessoa->ds_email_pes }}</h5>
-                    <h5>
+                <div class="col-md-12 mt-3">
+                    <h6  class="w-auto">Dados de Acesso</h6>
+                    <p class="mb-1"><strong>Email: </strong>{{ $participante->pessoa->ds_email_pes }}</p>
+                    <p>
                       <strong>Nível: </strong>
                       @forelse($participante->pessoa->user->roles as $role)
                         <span>{{ $role->display_name }}</span>
                       @empty
 
                       @endforelse
-                    </h5>
-                  </fieldset>
+                    </p>
                 </div>
 
-                <div class="col-md-12">
-                  <fieldset class="border p-2 mt-4">
-                    <legend class="w-auto">Participação em Eventos</legend>
+                <div class="col-md-12 mt-3">
+                    <h6 class="w-auto">Participação em Eventos</h6>
                       <table class="table">
                         <thead>
                           <tr>
@@ -60,7 +55,6 @@
                           @endforeach        
                         </tbody>
                       </table>
-                  </fieldset>
                 </div>
 
               </div>
