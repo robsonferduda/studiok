@@ -117,8 +117,8 @@ class PalestranteController extends Controller
 
         //Atualiza Usuário
         $user = User::where('id_pessoa_pes',$palestrante->pessoa->id_pessoa_pes)->first();
-        $dados = array('name' => $request->ds_email_pes,
-                       'email' => $request->nm_pessoa_pes);
+        $dados = array('name' => $request->nm_pessoa_pes,
+                       'email' => $request->ds_email_pes);
 
         $user->update($dados);
 
