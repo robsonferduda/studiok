@@ -50,6 +50,9 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <div class="view-eye">
+                                    <i class="fa fa-eye view-password" data-target="password-confirm"></i>  
+                                  </div>
                             </div>
                         </div>
 
