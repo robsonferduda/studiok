@@ -49,7 +49,7 @@ class ProgramacaoController extends Controller
                             ->first();
         */
 
-        $atividade = Atividade::where('id_sala_sal', $id_sala)
+        $atividade = Atividade::where('id_sala_sal', $sala->id_sala_sal)
                                 ->where('fl_corrente_ati','=', true)
                                 ->first();
 
