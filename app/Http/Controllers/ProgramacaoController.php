@@ -42,10 +42,16 @@ class ProgramacaoController extends Controller
         $ati = Atividade::find($id);
         $sala = $ati->sala;
 
+        /*
         $atividade = Atividade::where('id_sala_sal', $sala->id_sala_sal)
                             ->where('dt_inicio_atividade_ati','<',Carbon::now()->toDateTimeString())
                             ->where('dt_termino_atividade_ati', '>', Carbon::now()->toDateTimeString())
                             ->first();
+        */
+
+        $atividade = Atividade::where('id_sala_sal', $id_sala)
+                                ->where('fl_corrente_ati','=', true)
+                                ->first();
 
         $dados = array('id_usuario_usu' => Auth::user()->id,
                         'id_sala_ati' => $sala->id_sala_sal,
