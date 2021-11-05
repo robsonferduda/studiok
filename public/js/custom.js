@@ -104,11 +104,7 @@ $(document).ready(function() {
         $("#text_chat").focus();
     }
 
-    var data = new Date();
-    var dia = String(data.getDate()).padStart(2, '0');
-    var mes = String(data.getMonth() + 1).padStart(2, '0');
-    var ano = data.getFullYear();
-    dataAtual = dia + '/' + mes + '/' + ano;
+    var atividade_inicial = 0;
    
     function refresh(){
 
@@ -125,26 +121,31 @@ $(document).ready(function() {
 
                 var ativ = $("#chat-content").data("atividade");
                
-                    console.log(response);
+                    var data = new Date();
+                    dataAtual = data.toLocaleString();
+
                     sala.html(response.sala);
                     atividade.html(response.atividade);
                     hora.html(response.data);
-                
+                                    
+                if(atividade_inicial != response.id_atividade_ati){
 
-                $(".ps-container > .media-chat").remove();
+                    atividade_inicial = response.id_atividade_ati;
 
-                $.ajax({
-                    url: '../../../atividades/'+ativ+'/chat',
-                    type: 'GET',
-                    success: function(response) {
-                        $.each(response, function( key, value ) {
-                            if(value.mensagem){
-                                $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
-                            }
-                        });
-                        $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
-                    }
-                });
+                    $(".ps-container > .media-chat").remove();
+                    $.ajax({
+                        url: '../../../atividades/'+atividade_inicial+'/chat',
+                        type: 'GET',
+                        success: function(response) {
+                            $.each(response, function( key, value ) {
+                                if(value.mensagem){
+                                    $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
+                                }
+                            });
+                            $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+                        }
+                    });
+                }
             }
         });
 
@@ -152,7 +153,7 @@ $(document).ready(function() {
 
     setInterval(function(){
       refresh()
-    }, 15000);
+    }, 1000);
 
     $(document).on('keypress',function(e) {
         if(e.which == 13) {

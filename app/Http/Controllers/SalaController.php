@@ -160,10 +160,12 @@ class SalaController extends Controller
 
         if($atividade){
             $dados = array('sala' => $sala->nm_sala_sal,
+                            'id_atividade_ati' => $atividade->id_atividade_ati,
                             'atividade' => $atividade->nm_atividade_ati,
                             'data' => 'Atividade iniciada em '.Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i').' e término em '.Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i'));
         }else{
             $dados = array('sala' => $sala->nm_sala_sal,
+                            'id_atividade_ati' => 0,
                             'atividade' => "",
                             'data' => "Nenhuma atividade online no momento");
         }
