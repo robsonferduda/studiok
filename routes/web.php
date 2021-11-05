@@ -21,6 +21,8 @@ Route::get('auditoria/{id}','AuditoriaController@show');
 
 Route::get('estatisticas','EstatisticaController@index');
 
+Route::get('sala/transmissao/atual/{sala}', 'SalaController@getSalaAtual');
+
 Route::get('participante/importar','ParticipanteController@importar');
 Route::get('participante/senha/resetar/{usuario}','ParticipanteController@resetar'); 
 Route::post('participante/importacao','ParticipanteController@importacao');

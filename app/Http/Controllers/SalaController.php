@@ -149,4 +149,25 @@ class SalaController extends Controller
         
         return redirect('sala');
     }
+
+    public function getSalaAtual($id)
+    {
+        $dados = array();
+        $sala = Sala::find($id);
+        $atividade = Atividade::where('id_sala_sal', $id)
+                                ->where('fl_corrente_ati','=', true)
+                                ->first();
+
+        if($atividade){
+            $dados = array('sala' => $sala->nm_sala_sal,
+                            'atividade' => $atividade->nm_atividade_ati,
+                            'data' => 'Atividade iniciada '.Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i').' e término em '.Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i'));
+        }else{
+            $dados = array('sala' => $sala->nm_sala_sal,
+                            'atividade' => "",
+                            'data' => "");
+        }
+
+        return response()->json($dados);       
+    }
 }

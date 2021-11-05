@@ -7,16 +7,17 @@
         @if($atividade)
             <div class="row">
                 <div class="col-lg-12 col-md-12 align-self-center">  
-                    <h4 class="mb-1 mt-2 mb-0"><strong>{{ $atividade->sala->nm_sala_sal }}</strong> {{ $atividade->nm_atividade_ati }}</h4> 
+                    <h4 class="mb-1 mt-2 mb-0"><strong class="lbl_sala">{{ $atividade->sala->nm_sala_sal }}</strong> <span class="lbl_atividade">{{ $atividade->nm_atividade_ati }}</span></h4> 
                     <h4 class="mb-1 mt-0"><strong></strong> </h4>  
                     <div>
-                        Atividade iniciada em {{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') }} e término em {{ Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') }} 
-                        <span class="badge badge-success">ONLINE</span>      
+                        <p class="lbl_hora">Atividade iniciada em {{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') }} e término em {{ Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') }}</p>
+                        <span class="badge badge-success lbl_status">ONLINE</span>      
                     </div>       
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 col-md-8 mt-1">                
+                <div class="col-lg-8 col-md-8 mt-1">  
+                    <input type="hidden" id="id_sala_sal" value="{{ $atividade->sala->id_sala_sal }}">              
                     <iframe width="100%" height="460px" src="{{ $atividade->sala->ds_local_sal }}" title="YouTube video player" frameborder="0" autoplay="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="mt-2 mb-3">
                         <p>Conferencistas</p>

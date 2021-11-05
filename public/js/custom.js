@@ -104,6 +104,56 @@ $(document).ready(function() {
         $("#text_chat").focus();
     }
 
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
+    dataAtual = dia + '/' + mes + '/' + ano;
+   
+    function refresh(){
+
+        var sala = $('.lbl_sala');
+        var atividade = $('.lbl_atividade');
+        var hora = $('.lbl_hora');
+        
+        var id = $("#id_sala_sal").val();
+
+        $.ajax({
+            url: '../../../sala/transmissao/atual/'+id,
+            type: 'GET',
+            success: function(response) {
+
+                var ativ = $("#chat-content").data("atividade");
+               
+                    console.log(response);
+                    sala.html(response.sala);
+                    atividade.html(response.atividade);
+                    hora.html(response.data);
+                
+
+                $(".ps-container > .media-chat").remove();
+
+                $.ajax({
+                    url: '../../../atividades/'+ativ+'/chat',
+                    type: 'GET',
+                    success: function(response) {
+                        $.each(response, function( key, value ) {
+                            if(value.mensagem){
+                                $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
+                            }
+                        });
+                        $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+                    }
+                });
+            }
+        });
+
+    }
+
+    setInterval(function(){
+      refresh()
+    }, 10000);
+
     $(document).on('keypress',function(e) {
         if(e.which == 13) {
             atualizaChat();
