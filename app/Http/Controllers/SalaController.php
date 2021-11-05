@@ -161,7 +161,7 @@ class SalaController extends Controller
         if($atividade){
             $dados = array('sala' => $sala->nm_sala_sal,
                             'atividade' => $atividade->nm_atividade_ati,
-                            'data' => 'Atividade iniciada '.Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i').' e término em '.Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i'));
+                            'data' => 'Atividade iniciada em '.Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i').' e término em '.Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i'));
         }else{
             $dados = array('sala' => $sala->nm_sala_sal,
                             'atividade' => "",

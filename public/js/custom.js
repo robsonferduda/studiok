@@ -152,7 +152,7 @@ $(document).ready(function() {
 
     setInterval(function(){
       refresh()
-    }, 10000);
+    }, 15000);
 
     $(document).on('keypress',function(e) {
         if(e.which == 13) {
