@@ -165,7 +165,7 @@ class SalaController extends Controller
         }else{
             $dados = array('sala' => $sala->nm_sala_sal,
                             'atividade' => "",
-                            'data' => "");
+                            'data' => "Nenhuma atividade online no momento");
         }
 
         return response()->json($dados);       
