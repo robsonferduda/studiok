@@ -20,6 +20,7 @@
                     @include('layouts.mensagens')
                 </div>
             </div>
+            <p class="ml-2"><i class="fa fa-exclamation-circle"></i> Clique sobre a <strong>Situação</strong> para alterar a inscrição. Mas atenção, essa ação não requer confirmação e será efetivada logo após o clique.</p>
             <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -45,7 +46,7 @@
                             <td>{{ $p->pessoa->nm_pessoa_pes }}</td>
                             <td>{{ $p->pessoa->ds_email_pes }}</td>
                             <td>
-                                {!! ($p->pivot and $p->pivot->id_situacao_sit) ? '<a href="'.url('/').'"><span class="badge badge-'.\App\Situacao::find($p->pivot->id_situacao_sit)->display_color.'">'.\App\Situacao::find($p->pivot->id_situacao_sit)->ds_situacao_sit.'</span></a>'  : 'Não informado' !!}
+                                {!! ($p->pivot and $p->pivot->id_situacao_sit) ? '<a href="'.url('participante/'.$p->id_participante_par.'/situacao/'.$p->pivot->id_situacao_sit).'"><span class="badge badge-'.\App\Situacao::find($p->pivot->id_situacao_sit)->display_color.'">'.\App\Situacao::find($p->pivot->id_situacao_sit)->ds_situacao_sit.'</span></a>'  : 'Não informado' !!}
                             </td>
                             <td>{{ ($p->pivot and $p->pivot->id_tipo_inscricao_tii) ? \App\TipoInscricao::find($p->pivot->id_tipo_inscricao_tii)->ds_tipo_inscricao_tii : 'Não informado' }}</td>
                             <td class="text-center">
