@@ -24,28 +24,28 @@
                 <thead>
                     <tr>
                       <th>Nome</th>
-                      <th>Nome Crachá</th>
                       <th>Email</th>
-                      <th class="text-center">CPF</th>
+                      <th>Situação</th>
+                      <th>Tipo da Inscrição</th>
                       <th class="disabled-sorting text-center">Ações</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Nome</th>
-                        <th>Nome Crachá</th>
                         <th>Email</th>
-                        <th class="text-center">CPF</th>
-                        <th class="disabled-sorting text-center">Ações</th>
+                        <th>Situação</th>
+                        <th>Tipo da Inscrição</th>
+                        <th class="disabled-sorting text-center">Ações</th>>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach($participantes as $p)
                         <tr>
                             <td>{{ $p->pessoa->nm_pessoa_pes }}</td>
-                            <td>{!! ($p->nm_cracha_par) ? $p->nm_cracha_par : '' !!}</td>
                             <td>{{ $p->pessoa->ds_email_pes }}</td>
-                            <td class="text-center">{{ $p->nu_cpf_par }}</td>
+                            <td>{{ ($p->pivot) ? $p->pivot->ds_situacao_sit  : 'Não informado' }}</td>
+                            <td>{{ ($p->pivot) ? $p->pivot->ds_tipo_inscricao_tii : 'Não informado' }}</td>
                             <td class="text-center">
                                 <a title="Dados do Participante" href="{{ url('participante',$p->id_participante_par) }}" class="btn btn-warning btn-link btn-icon"><i class="nc-icon nc-badge font-25"></i></a>
                                 <a title="Editar" href="{{ route('participante.edit',$p->id_participante_par) }}" class="btn btn-primary btn-link btn-icon"><i class="fa fa-edit fa-2x"></i></a>
