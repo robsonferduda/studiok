@@ -1,7 +1,7 @@
 @extends('layouts.conferencia')
 @section('content')
     <div class="col-lg-12 col-md-8">
-        <h2 class="text-white text-center">12º Workshop EGC - Hall de Entrada</h2>
+        <h2 class="text-white text-center">{{ Session::get('evento')->nm_evento_eve }} - Hall de Entrada</h2>
     </div>
     <div class="col-lg-8 col-md-8 m-auto">
         <div class="row">
