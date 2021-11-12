@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Situacao extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
     
     protected $connection = 'pgsql';
     protected $table = 'situacao_sit';

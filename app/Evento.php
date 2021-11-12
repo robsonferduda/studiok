@@ -17,6 +17,7 @@ class Evento extends Model
     public function participantes()
     {
         return $this->belongsToMany('App\Participante','evento_participante_evp','id_evento_eve','id_participante_par')
+                    ->withPivot('id_situacao_sit', 'id_tipo_inscricao_tii')
                     ->withTimestamps();
     }
 

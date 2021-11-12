@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TipoAtividade extends Model
+class TipoInscricao extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
     
     protected $connection = 'pgsql';
     protected $table = 'tipo_inscricao_tii';
