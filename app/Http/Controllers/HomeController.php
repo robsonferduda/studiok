@@ -109,6 +109,23 @@ class HomeController extends Controller
         $atividades = Atividade::all();
         $palestrantes = Palestrante::all();
 
+        if($evento->fl_publicado_eve)
+            return view('seminario',compact('evento','atividades','palestrantes','salas'));
+        else
+            return view('temporario',compact('evento','atividades','palestrantes','salas'));
+        //return view('publico/evento/index',compact('evento','atividades','palestrantes'));
+    }
+
+    public function temporario($e)
+    {       
+        $evento = Evento::where('ds_apelido_eve',$e)->first();
+        Session::put('evento',$evento);
+
+        $salas = Sala::where('id_evento_eve',$evento->id_evento_eve)->get();
+
+        $atividades = Atividade::all();
+        $palestrantes = Palestrante::all();
+
         return view('seminario',compact('evento','atividades','palestrantes','salas'));
         //return view('publico/evento/index',compact('evento','atividades','palestrantes'));
     }

@@ -64,8 +64,13 @@
                         <div id="menu_{{ $evento->id_evento_eve }}" class="collapse {{ (Session::get('edicao') and Session::get('edicao') == $evento->ds_apelido_eve) ? 'show' : '' }}" style="">
                           <ul class="nav ml-4">
                             <li>
+                              <a target="BLANK" href="{{ url('temporario', $evento->ds_apelido_eve) }}">
+                                <span class="sidebar-normal"> <i class="fa fa-eye-slash"></i> Pré-Site</span>
+                              </a>
+                            </li>
+                            <li>
                               <a target="BLANK" href="{{ url('eventos', $evento->ds_apelido_eve) }}">
-                                <span class="sidebar-normal"> <i class="nc-icon nc-world-2"></i> Página</span>
+                                <span class="sidebar-normal"> <i class="fa fa-eye"></i> Site</span>
                               </a>
                             </li>
                             <li class="{{ (Session::get('url') and Session::get('url') == 'sala' and Session::get('edicao') == $evento->ds_apelido_eve) ? 'active' : '' }}">

@@ -6,6 +6,7 @@ Route::get('/', 'HomeController@index');
 Route::get('cadastrar', 'ParticipanteController@cadastrar');
 Route::get('/eventos', 'HomeController@eventos');
 Route::get('/eventos/{evento}', 'HomeController@show');
+Route::get('/temporario/{evento}', 'HomeController@temporario');
 Route::get('/eventos/{evento}/programacao', 'HomeController@programacao');
 Route::get('/eventos/{evento}/palestrantes', 'HomeController@palestrantes');
 Route::get('/eventos/{evento}/stand-virtual', 'HomeController@stand');
