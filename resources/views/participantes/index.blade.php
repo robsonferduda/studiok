@@ -36,7 +36,7 @@
                         <th>Email</th>
                         <th>Situação</th>
                         <th>Tipo da Inscrição</th>
-                        <th class="disabled-sorting text-center">Ações</th>>
+                        <th class="disabled-sorting text-center">Ações</th>
                     </tr>
                 </tfoot>
                 <tbody>
