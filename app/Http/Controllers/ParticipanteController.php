@@ -49,11 +49,13 @@ class ParticipanteController extends Controller
 
     public function alterarSituacao($id, $situacao)
     {
+        $id_evento = Session::get('evento')->id_evento_eve;
         $participante = Participante::with('eventos')->find($id);
+
         if($situacao == 1)
-            $participante->eventos()->updateExistingPivot(1,array('id_situacao_sit' => 2),false);
+            $participante->eventos()->updateExistingPivot($id_evento, array('id_situacao_sit' => 2),false);
         else
-            $participante->eventos()->updateExistingPivot(1,array('id_situacao_sit' => 1),false);
+            $participante->eventos()->updateExistingPivot($id_evento, array('id_situacao_sit' => 1),false);
 
         Flash::success('<i class="fa fa-warning"></i> Situação da inscrição de <strong>'.$participante->pessoa->nm_pessoa_pes.'</strong> atualizada com sucesso');
         return redirect('participantes/'.Session::get('evento')->ds_apelido_eve)->withInput();
