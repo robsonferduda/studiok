@@ -44,7 +44,9 @@
                         <tr>
                             <td>{{ $p->pessoa->nm_pessoa_pes }}</td>
                             <td>{{ $p->pessoa->ds_email_pes }}</td>
-                            <td>{{ ($p->pivot and $p->pivot->id_situacao_sit) ? \App\Situacao::find($p->pivot->id_situacao_sit)->ds_situacao_sit  : 'Não informado' }}</td>
+                            <td>
+                                {!! ($p->pivot and $p->pivot->id_situacao_sit) ? '<a href="'.url('/').'"><span class="badge badge-'.\App\Situacao::find($p->pivot->id_situacao_sit)->display_color.'">'.\App\Situacao::find($p->pivot->id_situacao_sit)->ds_situacao_sit.'</span></a>'  : 'Não informado' !!}
+                            </td>
                             <td>{{ ($p->pivot and $p->pivot->id_tipo_inscricao_tii) ? \App\TipoInscricao::find($p->pivot->id_tipo_inscricao_tii)->ds_tipo_inscricao_tii : 'Não informado' }}</td>
                             <td class="text-center">
                                 <a title="Dados do Participante" href="{{ url('participante',$p->id_participante_par) }}" class="btn btn-warning btn-link btn-icon"><i class="nc-icon nc-badge font-25"></i></a>
