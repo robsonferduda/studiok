@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['primeiroAcesso']]);
         Session::put('url','usuarios');
     }
 
@@ -23,5 +23,10 @@ class UserController extends Controller
     public function perfil()
     {
         return view('perfil');
+    }
+
+    public function primeiroAcesso()
+    {
+        return view('auth/passwords/primeiro-acesso');
     }
 }

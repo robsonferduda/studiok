@@ -14,6 +14,7 @@ Route::get('home', 'HomeController@dashboard');
 Route::get('dashboard', 'HomeController@dashboard');
 Route::get('programacao/sala/atividade/{id}','ProgramacaoController@show');
 Route::get('perfil', 'UserController@perfil');
+Route::get('primeiro-acesso', 'UserController@primeiroAcesso');
 
 Auth::routes();
 
