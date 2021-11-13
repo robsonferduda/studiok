@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3 col-lg-3">                            
-                            <a href="{{ url('eventos/seminario-studiok') }}"><img src="img/workshop-egc.jpeg"></a>
+                            <a href="{{ url('eventos', $evento->ds_apelido_eve) }}"><img src="img/eventos/{{ $evento->img_evento_eve }}"></a>
                         </div>
                         <div class="col-md-9 col-lg-9">
                             <h4 class="card-title mt-2 ml-2"> {{ $evento->nm_evento_eve }}</h4>
@@ -61,7 +61,7 @@
             <div class="card-body">
             <div class="row">
                 <div class="col-md-9 col-lg-9">
-                <h4 class="card-title mt-2 ml-2"> Nenhum evento disponível no momento</h4>
+                <h5 class="card-title mt-2 ml-2"><i class="fa fa-frown"></i> No momento não existem eventos com inscrição disponível </h5>
                 </div>
             </div>
             </div>

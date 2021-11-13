@@ -5,11 +5,10 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h4 class="card-title"><i class="nc-icon nc-badge"></i> Participantes</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Editar Dados</h6>
+                        <h4 class="card-title"><i class="nc-icon nc-badge"></i> Editar Participantes</h4>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ url('participante') }}" class="btn btn-default pull-right" style="margin-right: 12px;"><i class="fa fa-table"></i> Participantes</a>
+                        <a href="{{ url('participantes', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-info pull-right" style="margin-right: 12px;"><i class="fa fa-table"></i> Participantes</a>
                     </div>
                 </div>
                 @include('layouts.mensagens')

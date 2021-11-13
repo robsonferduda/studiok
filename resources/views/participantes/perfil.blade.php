@@ -8,7 +8,7 @@
                         <h4 class="card-title"><i class="nc-icon nc-badge"></i> Participantes</h4>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ url('participante') }}" class="btn btn-default pull-right" style="margin-right: 12px;"><i class="fa fa-table"></i> Participantes</a>
+                        <a href="{{ url('participantes', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-info pull-right" style="margin-right: 12px;"><i class="fa fa-table"></i> Participantes</a>
                     </div>
                 </div>
                 @include('layouts.mensagens')

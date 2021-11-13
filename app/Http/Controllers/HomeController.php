@@ -84,7 +84,7 @@ class HomeController extends Controller
             if($p){
 
                 $eventos_participante = $p->eventos->pluck('id_evento_eve')->toArray();
-                $eventos = Evento::whereNotIn('id_evento_eve', $eventos_participante)->where('fl_publicado_eve', true)->get();
+                $eventos = Evento::whereNotIn('id_evento_eve', $eventos_participante)->where('dt_fim_eve', '<', date('Y-m-d') )->where('fl_publicado_eve', true)->get();
 
                 $meus_eventos = $p->eventos;
                 $evento = Evento::find(1);
