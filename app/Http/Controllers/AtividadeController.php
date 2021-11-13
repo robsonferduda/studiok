@@ -54,8 +54,8 @@ class AtividadeController extends Controller
 
     public function create()
     {
-        $eventos = Evento::all();
-        $salas = Sala::all();
+        $eventos = Evento::orderBy('nm_evento_eve')->get();
+        $salas = Sala::where('id_evento_eve', Session::get('evento')->id_evento_eve)->orderBy('nm_sala_sal')->get();
         $tipos = TipoAtividade::orderBy('ds_tipo_atividade_tia')->get();
         $palestrantes = Palestrante::all();
 
