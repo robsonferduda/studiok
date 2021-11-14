@@ -29,9 +29,9 @@
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 px-0">
-                                    <div class="input-group">
-                                        <button type="submit" class="btn btn-primary">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="input-group mt-0">
+                                        <button type="submit" class="btn btn-primary" style="margin-top: 8px;">
                                             <i class="fa fa-check"></i> {{ __('Requisitar Senha') }}
                                         </button>
                                     </div>
