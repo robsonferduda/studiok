@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5>Primeiro Acesso</h5>
-                        <p>Caso você não tenha feito sua inscrição pelo nosso formulário de cadastro, precisará criar uma senha de acesso ao sistema.</p>
+                        <p>Caso você não tenha feito sua inscrição por esta plataforma, precisará criar uma senha de acesso ao sistema.</p>
                         <p>Mas fique tranquilo, esse procedimento é muito simples. Informe no campo abaixo o email que você utilizou na inscrição feita em outra plataforma.</p>
                         <p>Caso o endereço de email informado já esteja em nossa base de dados, você receberá uma mensagem com as instruções de criação de uma senha de acesso.</p>
                         
