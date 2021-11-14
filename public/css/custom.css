@@ -83,3 +83,7 @@
 .text-red{
     color: #ef3232;
 }
+.border-red{
+    border-color: #dc3545 !important;
+    color: #dc3545;
+}

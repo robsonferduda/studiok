@@ -20,9 +20,9 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                                    <div class="input-group mt-2">
+                                    <div class="input-group mt-2 is-invalid">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">
+                                            <span class="input-group-text @error('email') border-red @enderror">
                                                 <i class="nc-icon nc-email-85"></i>
                                             </span>
                                         </div>
