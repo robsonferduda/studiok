@@ -28,11 +28,6 @@
                                         </div>
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                                     </div>
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{!! $message !!}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                                 <div class="col-lg-6 col-md-6 px-0">
                                     <div class="input-group">
@@ -40,6 +35,13 @@
                                             <i class="fa fa-check"></i> {{ __('Requisitar Senha') }}
                                         </button>
                                     </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 px-2 mb-2 text-center">
+                                    @error('email')
+                                        <span class="text-red">
+                                            <strong>{!! $message !!}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </form>
