@@ -28,6 +28,9 @@
     height: 200px;
     border-radius: 50%;
 }  
+.box-sala{
+    display: none;
+}
 .box-paralelo{
     display: none;
 }

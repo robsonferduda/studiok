@@ -9,11 +9,16 @@ $(document).ready(function() {
     $('#dt_termino_atividade_ati').mask('00/00/0000 00:00');
     $('#nu_orcid_pes').mask('0000-0000-0000-0000', {placeholder: "0000-0000-0000-0000"});
 
+    var sala = $(this).find(':selected').data('sala');
+    if(sala) $(".box-sala").css("display","none"); else $(".box-sala").css("display","block");
+
     $("#id_tipo_atividade_tia").change(function(){
 
         var paralelo = $(this).find(':selected').data('paralelo');
         var palestrante = $(this).find(':selected').data('palestrante');
+        var sala = $(this).find(':selected').data('sala');
 
+        if(sala) $(".box-sala").css("display","none"); else $(".box-sala").css("display","block");
         if(paralelo) $(".box-paralelo").css("display","block"); else $(".box-paralelo").css("display","none");
         if(palestrante) $(".box-palestrante").css("display","block"); else $(".box-palestrante").css("display","none");
 

@@ -20,7 +20,7 @@
             </div>
             {!! Form::open(['id' => 'frm_atividade_editar', 'url' => ['atividade', $atividade->id_atividade_ati], 'method' => 'patch']) !!}
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Evento <span class="text-danger">Obrigatório</span></label>
                             <select class="form-control" name="id_evento_eve">
@@ -31,7 +31,21 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Tipo de Atividade <span class="text-danger">Obrigatório</span></label>
+                            <select class="form-control" name="id_tipo_atividade_tia" id="id_tipo_atividade_tia">
+                                <option value="">Selecione um tipo</option>
+                                @foreach($tipos as $tipo)
+                                    <option value="{{ $tipo->id_tipo_atividade_tia }}" {{ ($atividade->id_tipo_atividade_tia == $tipo->id_tipo_atividade_tia) ? 'selected' : '' }} data-paralelo="{{ ($tipo->fl_paralelo) ? $tipo->fl_paralelo : 0 }}" data-sala="{{ ($tipo->fl_sala_sal) ? $tipo->fl_sala_sal : 0 }}" data-palestrante="{{ ($tipo->fl_palestrante) ? $tipo->fl_palestrante : 0 }}">{{ $tipo->ds_tipo_atividade_tia }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>  
+
+                <div class="row box-sala">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label>Local/Sala <span class="text-danger">Obrigatório</span></label>
                             <select class="form-control" name="id_sala_sal">
@@ -42,18 +56,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Tipo de Atividade <span class="text-danger">Obrigatório</span></label>
-                            <select class="form-control" name="id_tipo_atividade_tia">
-                                <option value="">Selecione um tipo</option>
-                                @foreach($tipos as $tipo)
-                                    <option value="{{ $tipo->id_tipo_atividade_tia }}" {{ ($atividade->id_tipo_atividade_tia == $tipo->id_tipo_atividade_tia) ? 'selected' : '' }}>{{ $tipo->ds_tipo_atividade_tia }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div>  
+                </div>
 
                 <div class="row">
                     <div class="col-md-6">

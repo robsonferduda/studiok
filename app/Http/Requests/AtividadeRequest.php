@@ -25,7 +25,7 @@ class AtividadeRequest extends FormRequest
     {
         return [
             'id_evento_eve' => 'required',
-            'id_sala_sal' => 'required',
+            'id_sala_sal' => 'required_if:fl_tipo,==,1',
             'id_tipo_atividade_tia' => 'required',
             'nm_atividade_ati' => 'required'
         ];
@@ -35,7 +35,7 @@ class AtividadeRequest extends FormRequest
     {
         return [
             'id_evento_eve.required' => 'Campo <strong>Evento</strong> é obrigatório',
-            'id_sala_sal.required' => 'Campo <strong>Local/Sala</strong> é obrigatório',
+            'id_sala_sal.required_if' => 'Campo <strong>Local/Sala</strong> é obrigatório',
             'id_tipo_atividade_tia.required' => 'Campo <strong>Tipo de Atividade</strong> é obrigatório',
             'nm_atividade_ati.required' => 'Campo <strong>Título</strong> é obrigatório'
         ];

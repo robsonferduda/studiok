@@ -30,7 +30,7 @@
                                             <p class="mb-1 font-21">{!! ($atividade->fl_destaque_ati) ? '<i title="Atividade Destaque" class="fa fa-star text-warning font-21"></i>' : '' !!} {{ $atividade->nm_atividade_ati }}</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="mb-1"><strong>Local: </strong> {{ $atividade->sala->nm_sala_sal }}</p>
+                                            <p class="mb-1"><strong>Local: </strong> {{ ($atividade->sala) ? $atividade->sala->nm_sala_sal : 'Não requerido' }}</p>
                                             <p class="mb-1"><strong>Tipo de Atividade: </strong> {{ $atividade->tipo->ds_tipo_atividade_tia }}</p>
                                             <p class="mb-1"><strong>Data/Hora Início: </strong> {{ ($atividade->dt_inicio_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }}</p>
                                             <p class="mb-1"><strong>Data/Hora Término: </strong> {{ ($atividade->dt_termino_atividade_ati) ? Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('d/m/Y H:i') : 'Não informada' }}</p>

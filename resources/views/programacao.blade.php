@@ -41,7 +41,10 @@
                                             <div class="block">
                                                 <div class="time valign-top">
                                                     <i class="fa fa-clock-o"></i>
-                                                    <span class="time">{{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('H:i') }}</span>
+                                                    <span class="time">
+                                                        {{ Carbon\Carbon::parse($atividade->dt_inicio_atividade_ati)->format('H:i') }} -
+                                                        {{ Carbon\Carbon::parse($atividade->dt_termino_atividade_ati)->format('H:i') }}
+                                                    </span>
                                                 </div>
                                                 <div class="subject valign-top">{{ $atividade->nm_atividade_ati }}</div>
                                                 <div class="speaker">
@@ -52,7 +55,7 @@
                                                         <p>{{ $palestrante->ds_tratamento_pal }} {{ $palestrante->pessoa->nm_pessoa_pes }}</p>                          
                                                     @endforeach										
                                                 </div>											
-                                                <div class="venue valign-top"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}" class="link-programacao">{{ $atividade->sala->nm_sala_sal }}</a></div>
+                                                <div class="venue valign-top"><a href="{{ url('programacao/sala/atividade/'.$atividade->id_atividade_ati) }}" class="link-programacao">{{ ($atividade->sala) ? $atividade->sala->nm_sala_sal : '' }}</a></div>
                                             </div>
                                         </li>
                                     @endforeach
