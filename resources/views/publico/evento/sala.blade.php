@@ -3,7 +3,7 @@
     <div class="col-lg-12 col-md-8 w-100">
         <h2 class="text-white text-center">12º Workshop EGC</h2>
     </div>
-    <div class="col-lg-12 col-md-12 m-auto bg-white" style="border-radius: 12px;">
+    <div class="col-lg-12 col-md-12 m-auto bg-white rd-12">
         @if($atividade)
             <div class="row">
                 <div class="col-lg-12 col-md-12 align-self-center">  

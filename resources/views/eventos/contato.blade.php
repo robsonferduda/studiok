@@ -1,9 +1,9 @@
 @extends('layouts.evento')
 @section('content')
     <div class="col-lg-12 col-md-8 w-100">
-        <h2 class="text-white text-center">12º Workshop EGC</h2>
+        <h2 class="text-white text-center">{{ Session::get('evento')->nm_evento_eve }}</h2>
     </div>
-    <div class="col-lg-12 col-md-12 m-auto bg-white">
+    <div class="col-lg-12 col-md-12 m-auto bg-white rd-12">
         <div class="row">
             <div class="col-12 schedule">
                 <h4 class="text-center">Contato</h4>
