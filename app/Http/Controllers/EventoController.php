@@ -69,6 +69,9 @@ class EventoController extends Controller
                 $conferencistas[] = $palestrante;
             }
         }  
+
+        $temp = collect($conferencistas);
+        $conferencistas = $temp->sortBy('pessoa.nm_pessoa_pes');
         
         return view('eventos/conferencistas', compact('evento','conferencistas'));
     }
