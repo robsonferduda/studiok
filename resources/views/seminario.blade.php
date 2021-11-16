@@ -13,9 +13,6 @@
                 <p class="menu-evento"><i class="nc-icon nc-tv-2 ml-2"></i><a href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/salas') }}"> Salas</a></p>
                 <p class="menu-evento"><i class="fa fa-group ml-2"></i><a href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/conferencistas') }}"> Conferencistas</a></p>
                 <p class="menu-evento"><i class="fa fa-envelope ml-2"></i><a href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/contato') }}"> Contato</a></p>
-                @foreach($salas as $key => $sala)
-                    <p class="menu-evento"><i class="fa fa-desktop ml-2"></i><a href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/sala/'.$sala->id_sala_sal) }}"> {{ $sala->nm_sala_sal }}</a></p>
-                @endforeach
             </div>
         </div>
     </div>

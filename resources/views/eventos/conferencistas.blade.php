@@ -28,7 +28,15 @@
         </div>
         <div class="col-12 schedule text-center">
             <div class="download-button text-center">
-                <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                @if(Auth::user()->hasRole(['administrador']))
+                    @if(Session::get('evento')->fl_publicado_eve)
+                        <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                    @else
+                        <a href="{{ url('temporario', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                    @endif
+                @else
+                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                @endif
             </div>
         </div>
     </div>

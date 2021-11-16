@@ -9,7 +9,15 @@
                 <img src="{{ url('img/eventos/ciki_2021.jpeg') }}">
             </div>
             <div class="col-lg-6 col-md-6 ml-auto box-programacao">
-                <p class="menu-evento"><i class="nc-icon nc-shop ml-2"></i><a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}"> Início</a></p>
+                @if(Auth::user()->hasRole(['administrador']))
+                    @if(Session::get('evento')->fl_publicado_eve)
+                        <p class="menu-evento"><i class="nc-icon nc-shop ml-2"></i><a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}"> Início</a></p>
+                    @else
+                        <p class="menu-evento"><i class="nc-icon nc-shop ml-2"></i><a href="{{ url('temporario', Session::get('evento')->ds_apelido_eve) }}"> Início</a></p>
+                    @endif
+                @else
+                    <p class="menu-evento"><i class="nc-icon nc-shop ml-2"></i><a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}"> Início</a></p>
+                @endif
                 @foreach($salas as $key => $sala)
                     <p class="menu-evento"><i class="fa fa-desktop ml-2"></i><a href="{{ url('eventos/'.Session::get('evento')->ds_apelido_eve.'/sala/'.$sala->id_sala_sal) }}"> {{ $sala->nm_sala_sal }}</a></p>
                 @endforeach
