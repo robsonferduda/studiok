@@ -1,6 +1,6 @@
 @extends('layouts.conferencia')
 @section('content')
-    <div class="col-lg-12 col-md-12 m-auto bg-white p-5" style="border-radius: 12px;">
+    <div class="col-lg-12 col-md-12 m-auto bg-white p-5 rd-12">
         <div class="row">
             <h5 class="ml-3">Meus Dados</h5>
         </div>
