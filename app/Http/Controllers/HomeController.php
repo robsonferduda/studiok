@@ -62,27 +62,25 @@ class HomeController extends Controller
         $meus_eventos = array();
         $programacao = array();
         $eventos = Evento::all();
+        $msg = "";
 
-        if(Auth::user()->hasRole('participante')){
-
-            $p = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();
+        $p = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();
             
-            if($p){
+        if($p){
+            $eventos_participante = $p->eventos->pluck('id_evento_eve')->toArray();
+            $eventos = Evento::whereNotIn('id_evento_eve', $eventos_participante)->where('dt_fim_eve', '<', date('Y-m-d') )->where('fl_publicado_eve', true)->get();
 
-                $eventos_participante = $p->eventos->pluck('id_evento_eve')->toArray();
-                $eventos = Evento::whereNotIn('id_evento_eve', $eventos_participante)->where('dt_fim_eve', '<', date('Y-m-d') )->where('fl_publicado_eve', true)->get();
+            $meus_eventos = $p->eventos;
+            $evento = Evento::find(1);
+            $programacao = $evento->atividades->sortBy('dt_inicio_atividade_ati');
 
-                $meus_eventos = $p->eventos;
-                $evento = Evento::find(1);
-                $programacao = $evento->atividades->sortBy('dt_inicio_atividade_ati');
-            }
+        }else{
+            $msg = "Você não está cadastrado como participante e não possui vínculos em eventos";
+        }
 
-            return view('painel', compact('sala','palestrante','participante','atividade','meus_eventos','programacao','eventos'));
-        }   
-        
         Session::put('meus_eventos', $meus_eventos);
-
-        return view('dashboard', compact('sala','palestrante','participante','atividade','meus_eventos','programacao','eventos'));
+        return view('painel', compact('sala','palestrante','participante','atividade','meus_eventos','programacao','eventos','msg')); 
+        
     }
 
     public function dashboard()

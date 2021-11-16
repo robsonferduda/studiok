@@ -1,11 +1,11 @@
 @extends('layouts.conferencia')
 @section('content')
 <div class="col-lg-12 col-md-12 m-auto bg-white p-5" style="border-radius: 12px;">
-@role('participante')
     <div class="row">
     <h5 class="ml-3">Meus Eventos</h5>
     </div>
     <div class="row">
+        <h4>{{ $msg }}</h4>
     @forelse($meus_eventos as $key => $evento)
         <div class="col-md-12 col-lg-12">
             <div class="card">
@@ -69,6 +69,5 @@
         </div>
     @endforelse
     </div>
-    @endrole
 </div>
 @endsection
