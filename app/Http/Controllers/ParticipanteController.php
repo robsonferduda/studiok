@@ -263,7 +263,7 @@ class ParticipanteController extends Controller
                 $pessoa = Pessoa::updateOrCreate($chave_pessoa, $dados_pessoa);
 
                 $chave_participante = array('id_pessoa_pes' => $pessoa->id_pessoa_pes);
-                $dados_participante = array('nm_cracha_par' => $row[2]);
+                $dados_participante = array('nm_cracha_par' => $row[1]);
                 $participante = Participante::updateOrCreate($chave_participante, $dados_participante);
 
                 $chave_usuario = array('email' => $row[0]);
