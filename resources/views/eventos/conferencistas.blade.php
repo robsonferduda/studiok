@@ -4,6 +4,19 @@
         <h2 class="text-white text-center">{{ Session::get('evento')->nm_evento_eve }} - Conferencistas</h2>
     </div>
     <div class="col-lg-12 col-md-12 m-auto bg-white rd-12">
+        <div class="col-12 schedule text-center">
+            <div class="download-button text-center">
+                @if(Auth::user()->hasRole(['administrador']))
+                    @if(Session::get('evento')->fl_publicado_eve)
+                        <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                    @else
+                        <a href="{{ url('temporario', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                    @endif
+                @else
+                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                @endif
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 ml-auto">
                 @forelse($conferencistas as $key => $conferencista)
