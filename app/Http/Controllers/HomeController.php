@@ -61,7 +61,7 @@ class HomeController extends Controller
         $participante = new Participante();
         $meus_eventos = array();
         $programacao = array();
-        $eventos = Evento::all();
+        $eventos = array();
         $msg = "";
 
         $p = Participante::where('id_pessoa_pes', Auth::user()->id_pessoa_pes)->first();
