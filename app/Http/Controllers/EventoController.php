@@ -51,7 +51,7 @@ class EventoController extends Controller
     public function salas($apelido_evento)
     {
         $evento = Evento::where('ds_apelido_eve',$apelido_evento)->first();
-        $salas = Sala::where('id_evento_eve',$evento->id_evento_eve)->get();
+        $salas = Sala::where('id_evento_eve',$evento->id_evento_eve)->orderBy('nm_sala_sal')->get();
         Session::put('evento',$evento);
 
         return view('eventos/salas', compact('evento','salas'));
