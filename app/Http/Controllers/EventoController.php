@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Utils;
+use App\Sala;
 use App\Evento;
 use App\Participante;
 use App\TipoParticipacao;
@@ -45,6 +46,31 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
         return view('eventos/detalhes', compact('evento'));
+    }
+
+    public function salas($apelido_evento)
+    {
+        $evento = Evento::where('ds_apelido_eve',$apelido_evento)->first();
+        $salas = Sala::where('id_evento_eve',$evento->id_evento_eve)->get();
+        Session::put('evento',$evento);
+
+        return view('eventos/salas', compact('evento','salas'));
+    }
+
+    public function conferencistas($apelido_evento)
+    {
+        $conferencistas = array();
+        $evento = Evento::where('ds_apelido_eve',$apelido_evento)->first();
+        
+        Session::put('evento',$evento);
+
+        foreach($evento->atividades as $atividade){
+            foreach($atividade->palestrantes as $palestrante){
+                $conferencistas[] = $palestrante;
+            }
+        }     
+
+        return view('eventos/conferencistas', compact('evento','conferencistas'));
     }
 
     public function inscricao($id)
