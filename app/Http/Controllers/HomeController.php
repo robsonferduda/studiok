@@ -92,6 +92,7 @@ class HomeController extends Controller
         $meus_eventos = array();
         $programacao = array();
         $eventos = Evento::all();
+        $msg = "";
 
         if(Auth::user()->hasRole('administrador')){
             $meus_eventos = Evento::all();
