@@ -5,7 +5,6 @@
     <h5 class="ml-3">Meus Eventos</h5>
     </div>
     <div class="row">
-        <h4>{{ ($msg) ? $msg : "" }}</h4>
     @forelse($meus_eventos as $key => $evento)
         <div class="col-md-12 col-lg-12">
             <div class="card">
