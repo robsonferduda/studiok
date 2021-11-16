@@ -91,10 +91,11 @@ class HomeController extends Controller
         $participante = new Participante();
         $meus_eventos = array();
         $programacao = array();
-        $eventos = Evento::all();
+        $eventos = array();
         $msg = "";
 
         if(Auth::user()->hasRole('administrador')){
+            $eventos = Evento::all();
             $meus_eventos = Evento::all();
         }
 
