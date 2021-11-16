@@ -16,7 +16,7 @@
                             @endif
                         </div>
                         <div class="col-md-10">
-                            <p class="mb-1">{{ $conferencista->pessoa->nm_pessoa_pes }}</p>
+                            <p class="mb-1">{{ $conferencista->ds_tratamento_pal }} {{ $conferencista->pessoa->nm_pessoa_pes }}</p>
                             <p class="mb-1">{{ $conferencista->ds_empresa_pal }}</p>
                             <p class="mb-1">{{ $conferencista->ds_cargo_pal }}</p>
                         </div>

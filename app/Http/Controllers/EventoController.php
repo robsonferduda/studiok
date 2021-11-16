@@ -68,8 +68,8 @@ class EventoController extends Controller
             foreach($atividade->palestrantes as $palestrante){
                 $conferencistas[] = $palestrante;
             }
-        }     
-
+        }  
+        
         return view('eventos/conferencistas', compact('evento','conferencistas'));
     }
 
