@@ -189,7 +189,7 @@ class ParticipanteController extends Controller
             if(!$user->hasRole($role->name))
                 $user->attachRole($role); 
 
-            $participante->eventos()->sync($evento);  
+            $participante->eventos()->attach($evento);  
             $participante->eventos()->updateExistingPivot($evento, array('id_situacao_sit' => $request->situacao, 'id_tipo_inscricao_tii' => $request->tipo),false);  
 
             Flash::success('<i class="fa fa-check"></i> Participante cadastrado com sucesso');
@@ -214,7 +214,7 @@ class ParticipanteController extends Controller
             if(!$user->hasRole($role->name))
                 $user->attachRole($role); 
 
-            $participante->eventos()->sync($evento);  
+            $participante->eventos()->attach($evento);  
             $participante->eventos()->updateExistingPivot($evento, array('id_situacao_sit' => $request->situacao, 'id_tipo_inscricao_tii' => $request->tipo),false); 
             
             Flash::success('<i class="fa fa-check"></i> Participante cadastrado com sucesso');
