@@ -166,7 +166,7 @@ class HomeController extends Controller
     {      
         $evento = Evento::where('ds_apelido_eve',$e)->first();
         Session::put('evento',$evento);
-        $atividades = Atividade::all();
+        $atividades = Atividade::where('id_evento_eve', $evento->id_evento_eve)->orderBy('dt_inicio_atividade_ati')->orderBy('nm_atividade_ati')->get();
         $palestrantes = Palestrante::all();
 
         return view('programacao',compact('evento','atividades','palestrantes'));
