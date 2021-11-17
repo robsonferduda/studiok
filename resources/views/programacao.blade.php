@@ -4,13 +4,19 @@
         <h2 class="text-white text-center">{{ Session::get('evento')->nm_evento_eve }}</h2>
     </div>
     <div class="col-lg-12 col-md-12 m-auto bg-white rd-12">
+        <div class="text-center">
+            <h5 class="mb-1 mt-3 pt-4">Programação</h5>
+            @if(Auth::user()->hasRole(['administrador']))
+                @if(Session::get('evento')->fl_publicado_eve)
+                    <h6 class="mb-3"><a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="link-home">Hall de Entrada</a></h6>
+                @else
+                    <h6 class="mb-3"><a href="{{ url('temporario', Session::get('evento')->ds_apelido_eve) }}" class="link-home">Hall de Entrada</a></h6>
+                @endif
+            @else
+                <h6 class="mb-3"><a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="link-home">Hall de Entrada</a></h6>
+            @endif
+        </div>
         <div class="row">
-            <div class="col-12 schedule">
-                <div class="download-button text-center">
-                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
-                </div>
-                <h4 class="text-center">Programação</h4>
-            </div>
             <div class="col-12 schedule">
                 <div class="schedule-tab">
                     <ul class="nav nav-pills text-center" >
@@ -66,9 +72,6 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
-                <div class="download-button text-center">
-                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
                 </div>
             </div>
         </div>

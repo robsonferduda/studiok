@@ -37,6 +37,8 @@ Route::get('eventos/{evento}/contato','EventoController@contato');
 Route::get('eventos/{evento}/sala/{sala}','SalaController@sala');
 Route::get('eventos/{evento}/salas','EventoController@salas');
 Route::get('eventos/{evento}/conferencistas','EventoController@conferencistas');
+Route::get('eventos/{evento}/zoom','EventoController@zoom');
+Route::get('eventos/{evento}/apresentacoes','EventoController@apresentacoes');
 
 Route::get('salas/{evento}','SalaController@listar');
 Route::get('palestrantes/{evento}','PalestranteController@listar');

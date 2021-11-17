@@ -48,6 +48,22 @@ class EventoController extends Controller
         return view('eventos/detalhes', compact('evento'));
     }
 
+    public function zoom($apelido_evento)
+    {
+        $evento = Evento::where('ds_apelido_eve',$apelido_evento)->first();
+        Session::put('evento',$evento);
+
+        return view('eventos/zoom', compact('evento'));
+    }
+
+    public function apresentacoes($apelido_evento)
+    {
+        $evento = Evento::where('ds_apelido_eve',$apelido_evento)->first();
+        Session::put('evento',$evento);
+        
+        return view('eventos/apresentacoes', compact('evento'));
+    }
+
     public function salas($apelido_evento)
     {
         $evento = Evento::where('ds_apelido_eve',$apelido_evento)->first();
