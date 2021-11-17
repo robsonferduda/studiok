@@ -57,6 +57,27 @@ class EventoController extends Controller
         return view('eventos/salas', compact('evento','salas'));
     }
 
+    function my_array_unique($array, $keep_key_assoc = false){
+        $duplicate_keys = array();
+        $tmp = array();       
+    
+        foreach ($array as $key => $val){
+            // convert objects to arrays, in_array() does not support objects
+            if (is_object($val))
+                $val = (array)$val;
+    
+            if (!in_array($val, $tmp))
+                $tmp[] = $val;
+            else
+                $duplicate_keys[] = $key;
+        }
+    
+        foreach ($duplicate_keys as $key)
+            unset($array[$key]);
+    
+        return $keep_key_assoc ? $array : array_values($array);
+    }
+
     public function conferencistas($apelido_evento)
     {
         $conferencistas = array();
@@ -71,7 +92,7 @@ class EventoController extends Controller
             }
         }  
 
-        $temp = collect($conferencistas);
+        $temp = collect($this->my_array_unique($conferencistas));
         $conferencistas = $temp->sortBy('pessoa.nm_pessoa_pes');
         
         return view('eventos/conferencistas', compact('evento','conferencistas'));
