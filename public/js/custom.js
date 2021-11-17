@@ -151,7 +151,7 @@ $(document).ready(function() {
                                     $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
                                 }
                             });
-                            $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+                            $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
                         }
                     });
                 }
@@ -160,9 +160,35 @@ $(document).ready(function() {
 
     }
 
+    function atualizaBatePapo(){
+
+        var atividade = $("#chat-content").data("atividade");
+
+        $(".ps-container > .media-chat").remove();
+
+                $.ajax({
+                    url: '../../../atividades/'+atividade+'/chat',
+                    type: 'GET',
+                    success: function(response) {
+                        $.each(response, function( key, value ) {
+                            if(value.mensagem){
+                                $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
+                            }
+                        });
+                        $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
+                        //$(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+                    }
+                });
+
+    }
+
+    setInterval(function(){
+        atualizaBatePapo()
+      }, 5000);
+
     setInterval(function(){
       refresh()
-    }, 15000);
+    }, 10000);
 
     $(document).on('keypress',function(e) {
         if(e.which == 13) {
