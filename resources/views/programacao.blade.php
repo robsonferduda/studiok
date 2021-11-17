@@ -45,7 +45,7 @@
                                         <div class="venue">Local</div>
                                     </li>
 
-                                    @foreach($atividades->whereBetween('dt_inicio_atividade_ati', [$date->format('Y-m-d'), $date->addDays(1)->format('Y-m-d')])->sortBy('dt_inicio_atividade_ati')->sortBy('nm_atividade_ati') as $atividade)
+                                    @foreach($atividades->whereBetween('dt_inicio_atividade_ati', [$date->format('Y-m-d'), $date->addDays(1)->format('Y-m-d')])->sortBy('dt_inicio_atividade_ati') as $atividade)
                                         <li class="schedule-details">
                                             <div class="block">
                                                 <div class="time valign-top">
