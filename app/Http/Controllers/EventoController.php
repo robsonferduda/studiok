@@ -81,13 +81,15 @@ class EventoController extends Controller
     public function conferencistas($apelido_evento)
     {
         $conferencistas = array();
+        $controle = array();
         $evento = Evento::where('ds_apelido_eve',$apelido_evento)->first();
         
         Session::put('evento',$evento);
 
         foreach($evento->atividades as $atividade){
             foreach($atividade->palestrantes as $palestrante){
-                if(!in_array($palestrante, $conferencistas))
+                $controle[] = $palestrante->id_palestrante_pal;
+                if(in_array($palestrante->id_palestrante_pal, $controle))
                     $conferencistas[] = $palestrante;
             }
         }  
