@@ -9,7 +9,7 @@
                         <h4 class="card-title"><i class="nc-icon nc-tv-2"></i> Salas</h4>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ url('sala') }}" class="btn btn-info pull-right" style="margin-right: 12px;"><i class="fa fa-table"></i> Salas</a>
+                        <a href="{{ url('salas', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-info pull-right" style="margin-right: 12px;"><i class="fa fa-table"></i> Salas</a>
                     </div>
                 </div>
                 @include('layouts.mensagens')

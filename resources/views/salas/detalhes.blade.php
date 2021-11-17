@@ -8,7 +8,7 @@
                     <h4 class="card-title"><i class="nc-icon nc-tv-2"></i> {{ $sala->nm_sala_sal }}</h4>
                 </div>
                 <div class="col-md-6">
-                    <a href="{{ url('sala') }}" class="btn btn-info pull-right"><i class="nc-icon nc-tv-2"></i> Salas</a>
+                    <a href="{{ url('salas', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-info pull-right"><i class="nc-icon nc-tv-2"></i> Salas</a>
                     <a href="{{ route('sala.edit',$sala->id_sala_sal) }}" class="btn btn-primary pull-right" style="margin-right: 12px;"><i class="fa fa-edit"></i> Editar</a>                        
                 </div>
             </div>
