@@ -9,7 +9,7 @@
             <h6 class="mb-3"><a class="link-home" href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}">Hall de Entrada</a></h6>
         </div>
         <div class="col-12 schedule text-center mb-3">
-            <p><i class="fa fa-envelope"></i> studiok.suporte@gmail.com</p>
+            <p><i class="fa fa-envelope"></i> comissaocientificaciki@gmail.com</p>
         </div>
     </div>
 @endsection

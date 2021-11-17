@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 mt-1">  
                     <input type="hidden" id="id_sala_sal" value="{{ $atividade->sala->id_sala_sal }}">              
-                    <iframe width="100%" height="460px" src="{{ $atividade->sala->ds_local_sal }}" title="YouTube video player" frameborder="0" autoplay="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="460px" src="{{ $atividade->sala->ds_local_sal }}" title="YouTube Video Player" frameborder="0" autoplay="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="mt-2 mb-3" style="display: none;">
                         <p>Conferencistas</p>
                         @foreach($atividade->palestrantes as $key => $palestrante)
