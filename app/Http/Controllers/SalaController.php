@@ -131,7 +131,7 @@ class SalaController extends Controller
 
         if ($retorno['flag']) {
             Flash::success($retorno['msg']);
-            return redirect('sala')->withInput();
+            return redirect('salas/'.Session::get('evento')->ds_apelido_eve)->withInput();
         } else {
             Flash::error($retorno['msg']);
             return redirect()->route('sala.edit', $sala->id_sala_sal)->withInput();

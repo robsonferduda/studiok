@@ -69,6 +69,7 @@ $(document).ready(function() {
 
     //$(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
 
+    var atividade_inicial = 0;
     //Posiciona a lista de mensagens na última mensagem enviada
     $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
 
@@ -112,8 +113,6 @@ $(document).ready(function() {
         $("#text_chat").val("");
         $("#text_chat").focus();
     }
-
-    var atividade_inicial = 0;
    
     function refresh(){
 
