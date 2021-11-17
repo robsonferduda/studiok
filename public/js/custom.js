@@ -67,7 +67,10 @@ $(document).ready(function() {
         removeItemButton: true
     });
 
-    $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+    //$(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+
+    //Posiciona a lista de mensagens na última mensagem enviada
+    $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
 
     function atualizaChat(){
 
@@ -95,7 +98,8 @@ $(document).ready(function() {
                                 $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
                             }
                         });
-                        $(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+                        $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
+                        //$(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
                     }
                 });
                 

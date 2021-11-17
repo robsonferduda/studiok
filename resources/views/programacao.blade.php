@@ -6,6 +6,9 @@
     <div class="col-lg-12 col-md-12 m-auto bg-white rd-12">
         <div class="row">
             <div class="col-12 schedule">
+                <div class="download-button text-center">
+                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                </div>
                 <h4 class="text-center">Programação</h4>
             </div>
             <div class="col-12 schedule">

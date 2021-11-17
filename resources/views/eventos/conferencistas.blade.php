@@ -1,24 +1,24 @@
-@extends('layouts.conferencia')
+@extends('layouts.evento')
 @section('content')
-    <div class="col-lg-12 col-md-8">
+    <div class="col-lg-12 col-md-8 w-100">
         <h2 class="text-white text-center">{{ Session::get('evento')->nm_evento_eve }} - Conferencistas</h2>
     </div>
     <div class="col-lg-12 col-md-12 m-auto bg-white rd-12">
         <div class="col-12 schedule text-center">
-            <div class="download-button text-center">
+            <div class="download-button text-center mb-1">
                 @if(Auth::user()->hasRole(['administrador']))
                     @if(Session::get('evento')->fl_publicado_eve)
-                        <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                        <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md mt-0">Hall de Entrada</a>
                     @else
-                        <a href="{{ url('temporario', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                        <a href="{{ url('temporario', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md mt-0">Hall de Entrada</a>
                     @endif
                 @else
-                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
+                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md mt-0">Hall de Entrada</a>
                 @endif
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-12 ml-auto">
+            <div class="col-lg-12 col-md-12 ml-auto mb-3">
                 @forelse($conferencistas as $key => $conferencista)
                     <div class="row mt-3 mb-3 hover-overlay">
                         <div class="col-md-1">
@@ -37,19 +37,6 @@
                 @empty
                     <h4 class="text-center">Nenhum conferencista cadastrado</h4>      
                 @endforelse
-            </div>
-        </div>
-        <div class="col-12 schedule text-center">
-            <div class="download-button text-center">
-                @if(Auth::user()->hasRole(['administrador']))
-                    @if(Session::get('evento')->fl_publicado_eve)
-                        <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
-                    @else
-                        <a href="{{ url('temporario', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
-                    @endif
-                @else
-                    <a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="btn btn-main-md">Hall de Entrada</a>
-                @endif
             </div>
         </div>
     </div>
