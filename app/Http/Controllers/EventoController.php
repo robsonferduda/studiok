@@ -88,9 +88,11 @@ class EventoController extends Controller
 
         foreach($evento->atividades as $atividade){
             foreach($atividade->palestrantes as $palestrante){
-                $controle[] = $palestrante->id_palestrante_pal;
-                if(in_array($palestrante->id_palestrante_pal, $controle))
+                
+                if(!in_array($palestrante->id_palestrante_pal, $controle))
                     $conferencistas[] = $palestrante;
+
+                $controle[] = $palestrante->id_palestrante_pal;
             }
         }  
 
