@@ -18,12 +18,20 @@
           {{ Auth::user()->name }}
         </a>
       </li>
+      @if(Auth::user()->hasRole('administrador'))
+        <li class="nav-item ">
+          <a href="{{ url('dashboard') }}" class="nav-link text-none">
+            <i class="nc-icon nc-laptop"></i>
+            <p>Painel Administrativo</p>
+          </a>
+        </li>
+      @endif
       <li class="nav-item ">
         <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="nav-link text-none">
           <i class="nc-icon nc-button-power"></i>
           <p>Sair</p>
         </a>
-    </li>
+      </li>
     @else
       <li class="nav-item ">
         <a href="{{ url('cadastrar') }}" class="nav-link text-none">
