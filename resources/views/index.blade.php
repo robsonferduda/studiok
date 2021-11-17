@@ -9,13 +9,9 @@
           <hr/>
           <div class="card-footer mt-0">
             @if(Auth::user())
-              @if(count($meus_eventos))
-                <a href="{{ url('eventos/ciki-2021') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
-              @else
-                <a href="{{ url('dashboard') }}" class="btn btn-info"><i class="fa fa-check"></i> Inscreva-se</a>
-              @endif
+              <a href="{{ url('eventos/ciki-2021') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
             @else
-              <a href="{{ url('cadastrar') }}" class="btn btn-success"><i class="fa fa-check"></i> Inscreva-se</a>
+              <a href="{{ url('eventos/ciki-2021') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
               <a href="{{ url('primeiro-acesso') }}" class="btn btn-primary"><i class="fa fa-lock"></i> Primeiro Acesso</a>
             @endif
           </div>
