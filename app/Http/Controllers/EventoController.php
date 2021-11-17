@@ -66,7 +66,7 @@ class EventoController extends Controller
 
         foreach($evento->atividades as $atividade){
             foreach($atividade->palestrantes as $palestrante){
-                if(!in_array($palestrante, $conferencistas, TRUE))
+                if(!in_array($palestrante, $conferencistas))
                     $conferencistas[] = $palestrante;
             }
         }  
