@@ -114,7 +114,7 @@ class AtividadeController extends Controller
             Flash::error('<i class="fa fa-times"></i> Erro ao cadastrar a atividade: <strong>'.$atividade->nm_atividade_ati.'</strong>');
         }
 
-        return redirect('programacao')->withInput();       
+        return redirect('programacao/'.Session::get('evento')->ds_apelido_eve)->withInput();       
     }
 
     public function update(Request $request, Atividade $atividade)
@@ -142,7 +142,7 @@ class AtividadeController extends Controller
         }
 
         Flash::success('<i class="fa fa-check"></i> Dados atualizados com sucesso');
-        return redirect('programacao')->withInput();
+        return redirect('programacao/'.Session::get('evento')->ds_apelido_eve)->withInput();
     }
 
     public function paralelas($atividade)

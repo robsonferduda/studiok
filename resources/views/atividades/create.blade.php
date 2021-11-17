@@ -8,7 +8,7 @@
                     <h4 class="card-title"><i class="nc-icon nc-calendar-60"></i> Atividades</h4>
                 </div>
                 <div class="col-md-6">
-                    <a href="{{ url('programacao') }}" class="btn btn-primary pull-right"><i class="nc-icon nc-calendar-60"></i> Programação</a>
+                    <a href="{{ url('programacao',Session::get('evento')->ds_apelido_eve) }}" class="btn btn-primary pull-right"><i class="nc-icon nc-calendar-60"></i> Programação</a>
                 </div>
             </div>
         </div>
