@@ -184,7 +184,7 @@ class AtividadeController extends Controller
         foreach($dados as $chat){
             $mensagens[] = array('mensagem' => $chat->mensagem_cha, 
                                  'usuario' => $chat->user->name,
-                                 'id' => substr($chat->user->name, 0, 1),
+                                 'id' => $chat->id_chat_atividade_cha,
                                  'data' => date('d/m/Y H:i:s', strtotime($chat->created_at)));
         }
 

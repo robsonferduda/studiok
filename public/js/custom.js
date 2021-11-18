@@ -68,6 +68,9 @@ $(document).ready(function() {
     });
 
     var atividade_inicial = $('#id_atividade_ati').val();
+    var ids = [];
+    var controle = true;
+
     $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
 
     function enviarMensagem(){
@@ -121,15 +124,20 @@ $(document).ready(function() {
 
     function atualizaBatePapo(){
 
-        $(".ps-container > .media-chat").remove();
+        if(controle){
+            $(".ps-container > .media-chat").remove();
+            controle = false;
+        }
+        
         $.ajax({
             url: '../../../atividades/'+atividade_inicial+'/chat',
             type: 'GET',
             success: function(response) {
                 $.each(response, function( key, value ) {
-                    if(value.mensagem){
+                    if(value.mensagem && ids.indexOf(value.id) < 0){
                         $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
                     }
+                    ids.push(value.id);
                 });
                 $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
             }
@@ -138,7 +146,7 @@ $(document).ready(function() {
 
     setInterval(function(){
         atualizaBatePapo()
-      }, 5000);
+      }, 3000);
 
     setInterval(function(){
       refresh()
