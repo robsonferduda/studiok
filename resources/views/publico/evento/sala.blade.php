@@ -7,6 +7,7 @@
         @if($atividade)
             <div class="row">
                 <div class="col-lg-12 col-md-12 align-self-center">  
+                    <input type="hidden" id="id_atividade_ati" value="{{ $atividade->id_atividade_ati }}"> 
                     <h4 class="mb-1 mt-2 mb-0"><strong class="lbl_sala">{{ $atividade->sala->nm_sala_sal }}</strong> <span class="lbl_atividade">{{ $atividade->nm_atividade_ati }}</span></h4> 
                     <h4 class="mb-1 mt-0"><strong></strong> </h4>  
                     <div>

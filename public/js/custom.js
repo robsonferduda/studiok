@@ -67,43 +67,23 @@ $(document).ready(function() {
         removeItemButton: true
     });
 
-    //$(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
-
-    var atividade_inicial = 0;
-    //Posiciona a lista de mensagens na última mensagem enviada
+    var atividade_inicial = $('#id_atividade_ati').val();
     $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
 
-    function atualizaChat(){
+    function enviarMensagem(){
 
         var text = $("#text_chat").val();    
-        var atividade = $("#chat-content").data("atividade");
     
         $.ajax({
             url: '../../../atividades/chat/salvar',
                type: 'POST',
                data: {
                     "mensagem_cha": text,
-                    "id_atividade_ati": atividade,
+                    "id_atividade_ati": atividade_inicial,
                     "_token": $('meta[name="csrf-token"]').attr('content'),
             },
             success: function(response) {
-
-                $(".ps-container > .media-chat").remove();
-
-                $.ajax({
-                    url: '../../../atividades/'+atividade+'/chat',
-                    type: 'GET',
-                    success: function(response) {
-                        $.each(response, function( key, value ) {
-                            if(value.mensagem){
-                                $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
-                            }
-                        });
-                        $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
-                        //$(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
-                    }
-                });
-                
+                atualizaBatePapo();                
             },
             error: function(response){
                 console.log(response);
@@ -127,32 +107,12 @@ $(document).ready(function() {
             type: 'GET',
             success: function(response) {
 
-                var ativ = $("#chat-content").data("atividade");
-               
-                    var data = new Date();
-                    dataAtual = data.toLocaleString();
-
-                    sala.html(response.sala);
-                    atividade.html(response.atividade);
-                    hora.html(response.data);
+                sala.html(response.sala);
+                atividade.html(response.atividade);
+                hora.html(response.data);
                                     
                 if(atividade_inicial != response.id_atividade_ati){
-
                     atividade_inicial = response.id_atividade_ati;
-
-                    $(".ps-container > .media-chat").remove();
-                    $.ajax({
-                        url: '../../../atividades/'+atividade_inicial+'/chat',
-                        type: 'GET',
-                        success: function(response) {
-                            $.each(response, function( key, value ) {
-                                if(value.mensagem){
-                                    $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
-                                }
-                            });
-                            $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
-                        }
-                    });
                 }
             }
         });
@@ -161,24 +121,19 @@ $(document).ready(function() {
 
     function atualizaBatePapo(){
 
-        var atividade = $("#chat-content").data("atividade");
-
         $(".ps-container > .media-chat").remove();
-
-                $.ajax({
-                    url: '../../../atividades/'+atividade+'/chat',
-                    type: 'GET',
-                    success: function(response) {
-                        $.each(response, function( key, value ) {
-                            if(value.mensagem){
-                                $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
-                            }
-                        });
-                        $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
-                        //$(".ps-container").animate({ scrollTop: $('.ps-container').prop("scrollHeight")}, 200);
+        $.ajax({
+            url: '../../../atividades/'+atividade_inicial+'/chat',
+            type: 'GET',
+            success: function(response) {
+                $.each(response, function( key, value ) {
+                    if(value.mensagem){
+                        $(".ps-container").append('<div class="media media-chat" style="padding: 0px !important; padding-right: 8px !important;"><div class="media-body"><p class="font-12"><strong>'+value.usuario+'</strong> '+value.mensagem+'</p></div></div>');
                     }
                 });
-
+                $(".ps-container").scrollTop($('.ps-container').prop("scrollHeight"));
+            }
+        });
     }
 
     setInterval(function(){
@@ -187,16 +142,16 @@ $(document).ready(function() {
 
     setInterval(function(){
       refresh()
-    }, 10000);
+    }, 15000);
 
     $(document).on('keypress',function(e) {
         if(e.which == 13) {
-            atualizaChat();
+            enviarMensagem();
         }
     });
 
     $("body").on("click",".publisher-btn", function(e){
-        atualizaChat();
+        enviarMensagem();
     });
 
     $('.customer-logos').slick({
