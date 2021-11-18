@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 @section('content')
 <div class="row">
-  <div class="col-lg-4 col-md-6 ml-auto mr-auto mt-5">
+  <div class="col-lg-4 col-md-6 ml-auto mr-auto mt-2">
     <form method="POST" action="{{ route('login') }}">
       @csrf
         <div class="card card-login">
@@ -73,6 +73,16 @@
           </div>
         </div>
     </form>
+  </div>
+  <div class="col-lg-4 col-md-4 mr-auto mt-2">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 ml-auto mb-4 pb-3 bg-white rd-12 text-center">
+        <h5 class="mt-3 mb-3">Acesso ao Público</h5>
+        <p>Todo o conteúdo do Ciki pode ser assitido de forma aberta clicando no endereço abaixo.</p>
+        <p>Para emissão de certificados, realize seu login e acompanhe a programação do evento pela nossa plataforma.</p>
+        <a href="https://www.youtube.com/playlist?list=PLlrwBGCrNusnJJhVTxRFaNnK2roiL8kc7" target="_BLANK">Acesso Aberto</a>
+      </div>
+    </div>
   </div>
 </div>
 @endsection
