@@ -39,7 +39,8 @@ class SalaController extends Controller
                                 ->first();
         */
 
-        $atividade = Atividade::where('id_sala_sal', $id_sala)
+        $atividade = Atividade::with('evento')
+                                ->where('id_sala_sal', $id_sala)
                                 ->where('fl_corrente_ati','=', true)
                                 ->first();
 
