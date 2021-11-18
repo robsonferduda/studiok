@@ -23,7 +23,7 @@ class AuditoriaController extends Controller
 
     public function index()
     {
-        $audits = Audit::with('user')->get();
+        $audits = Audit::with('user')->orderBy('created_at')->get();
         return view('auditoria/index',compact('audits'));
     }
 
