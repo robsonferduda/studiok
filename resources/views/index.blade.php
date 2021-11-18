@@ -9,9 +9,9 @@
           <hr/>
           <div class="card-footer mt-0">
             @if(Auth::user())
-              <a href="{{ url('eventos/ciki-2021') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
+              <a href="{{ url('eventos/ciki-2021') }}" class="btn btn-warning"><i class="fa fa-paper-plane"></i> Acesse</a>
             @else
-              <a href="{{ url('eventos/ciki-2021') }}" class="btn btn-warning"><i class="fa fa-lock"></i> Acesse</a>
+              <a href="{{ url('eventos/ciki-2021') }}" class="btn btn-warning"><i class="fa fa-paper-plane"></i> Acesse</a>
               <a href="{{ url('primeiro-acesso') }}" class="btn btn-primary"><i class="fa fa-lock"></i> Primeiro Acesso</a>
             @endif
           </div>
