@@ -68,6 +68,8 @@ class ParticipanteController extends Controller
     {
         $pessoa = Pessoa::find($usuario);
         $user = User::where('id_pessoa_pes',$usuario)->first();
+        
+
         if($user){
             Flash::success('<i class="fa fa-warning"></i> Senha atualizada com sucesso');
         }else{
