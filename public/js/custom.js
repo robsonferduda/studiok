@@ -113,6 +113,16 @@ $(document).ready(function() {
                 sala.html(response.sala);
                 atividade.html(response.atividade);
                 hora.html(response.data);
+
+                if(response.status == 'online'){
+                    $('.lbl_status').removeClass('badge-danger');
+                    $('.lbl_status').addClass('badge-success');
+                    $('.lbl_status').html("ONLINE");
+                }else{
+                    $('.lbl_status').removeClass('badge-success');
+                    $('.lbl_status').addClass('badge-danger');
+                    $('.lbl_status').html("OFFLINE");
+                }
                                     
                 if(atividade_inicial != response.id_atividade_ati){
                     atividade_inicial = response.id_atividade_ati;
