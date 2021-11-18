@@ -17,7 +17,7 @@ class EventoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['contato','zoom','conferencistas']]);
+        $this->middleware('auth', ['except' => ['contato','zoom','conferencistas','apresentacoes']]);
         Session::put('url','evento');
     }
 

@@ -6,7 +6,7 @@
     <div class="col-lg-12 col-md-12 m-auto bg-white rd-12">
         <div class="text-center">
             <h5 class="mb-1 mt-3 pt-4">Conferencistas</h5>
-            @if(Auth::user()->hasRole(['administrador']))
+            @if(Auth::user() and Auth::user()->hasRole(['administrador']))
                 @if(Session::get('evento')->fl_publicado_eve)
                     <h6 class="mb-3"><a href="{{ url('eventos', Session::get('evento')->ds_apelido_eve) }}" class="link-home">Hall de Entrada</a></h6>
                 @else
